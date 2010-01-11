@@ -1,0 +1,18 @@
+.section
+  %h2 References
+  %h4
+    Please list four people we can contact as references. They must include your pastor, a friend, your employer, and one other person in leadership over you.
+    %strong
+      Please submit a reference letter from at least two of those people together with your application.
+      %span(style='color:red') TODO
+  = reference(:pastor, 'Pastor Reference')
+  = reference(:friend, 'Friend Reference')
+  = reference(:employer, 'Employer Reference')
+  = reference(:leader, 'Other Leadership Reference')
+
+.section
+  %h2 Emergency Information
+  = text(:emcontact, 'Emergency Contact Name')
+  = text(:emrelationship, 'Relationship')
+  = text(:emphone1, 'Phone Number')
+  = text(:emphone2, 'Alternate Phone Number')

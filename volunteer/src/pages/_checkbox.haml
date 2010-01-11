@@ -1,0 +1,23 @@
+.field
+  - if label
+    = label(id, label)
+    %br
+    :javascript
+      save_handlers.push(function (info) {
+        info['#{id}'] = [];
+      });
+  - options.each_with_index do |option, i|
+    %input{:type => 'checkbox', :name => id, :id => "#{id}#{i}", :value => option}
+    = label("#{id}#{i}", option, 'option')
+    %br
+    :javascript
+      load_handlers.push(function (info) {
+        var val = info['#{id}'];
+        $('##{id}#{i}').get(0).checked = (typeof(val) != 'undefined')
+                                         && (val.indexOf('#{option}') >= 0);
+      });
+      save_handlers.push(function (info) {
+        var values = [];
+        if ($('##{id}#{i}').get(0).checked)
+          info['#{id}'].push('#{option}')
+      });

@@ -1,0 +1,19 @@
+.section
+  %h2 Church
+  = text(:church, 'Name of your home church')
+  = textarea_sm(:churchaddress, 'Address')
+  = text(:churchphone, 'Phone')
+  = text(:pastor, 'Senior Pastor')
+  = text(:attendance, 'Length of time in attendance')
+  = textarea_med(:involvement, 'Describe your involvement')
+
+.section
+  %h2 Health
+  = boolplus(:healthissues, 'Do you have any physical handicaps, disabilities, or diseases that might affect your ability to fully function in remote areas or harsh conditions?')
+  = boolplus(:chronicconditions, 'Do you have any chronic illnesses or allergies?')
+  = boolplus(:foodallergies, 'Do you have any food or drug related allergies?')
+  = boolplus(:otherhealth, 'Do you have any other medical problems that we should be aware of?')
+
+.section
+  %h2 Personal History
+  = boolplus(:alcoholdrugs, 'Do you use alcohol or drugs?')

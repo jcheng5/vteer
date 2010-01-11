@@ -1,0 +1,29 @@
+.field
+  - if label
+    = label(id, label)
+    %br
+  - options.each_with_index do |option, i|
+    %input{:type => 'radio', :name => id, :id => "#{id}#{i}", :value => option}
+    = label("#{id}#{i}", option, 'option')
+  :javascript
+    load_handlers.push(function (info, form) {
+      var val = info['#{id}'];
+      var options = form.elements['#{id}'];
+      for (var i = 0; i < options.length; i++) {
+        if (options[i].value == val) {
+          options[i].checked = true;
+          break;
+        }
+      }
+    });
+    save_handlers.push(function (info, form) {
+      var options = form.elements['#{id}'];
+      var value = '';
+      for (var i = 0; i < options.length; i++) {
+        if (options[i].checked) {
+          value = options[i].value;
+          break;
+        }
+      }
+      info['#{id}'] = value;
+    });

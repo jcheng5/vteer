@@ -1,0 +1,18 @@
+- @layout = 'static'
+%h1 Living Hope Volunteer Application
+%p Thanks for your interest! Blah blah blah.
+%h3 Let's get started!
+%form{:method=>'POST', :action=>'register.php'}
+  = text('firstname', 'First name')
+  = text('lastname', 'Surname')
+  = text('email', 'E-mail address')
+  = password('password', 'Password')
+  = password('password2', 'Password (confirm)')
+  %p
+    %input{:type=>'submit', :value=>'Register'}
+%h3 Or, continue an application that's in progress...
+%form{:method=>'POST', :action=>'login.php'}
+  = text('email', 'E-mail address')
+  = password('password', 'Password')
+  %p
+    %input{:type=>'submit', :value=>'Log in'}

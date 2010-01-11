@@ -1,0 +1,27 @@
+.field
+  - if label
+    = label(id, label)
+    %br
+  %select(name=id id=id)
+    %option(value='')
+    - options.each do |option|
+      %option
+        &= option
+  :javascript
+    load_handlers.push(function (info, form) {
+      var val = info['#{id}'];
+      var select = form.elements['#{id}'];
+      for (var i = 0; i < select.options.length; i++) {
+        if (select.options[i].value == val) {
+          select.selectedIndex = i;
+          break;
+        }
+      }
+    });
+    save_handlers.push(function (info, form) {
+      var select = form.elements['#{id}'];
+      if (select.selectedIndex >= 0)
+        info['#{id}'] = select.options[select.selectedIndex].value;
+      else
+        info['#{id}'] = '';
+    });

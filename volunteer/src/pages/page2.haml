@@ -1,0 +1,18 @@
+.section
+  %h2 Education
+  = select(:educationlevel, 'Highest level of education completed', ['Some high school', 'High school diploma or equivalent', 'Some college', 'Associate Degree', 'Bachelor Degree', 'Advanced Degree'])
+  = textarea_med(:schools, 'List any post-high school institutions attended, as well as the dates attended, degrees attained, and major/minor fields of study.')
+
+.section
+  %h2 Career History
+  = text(:occupation, 'Present Occupation')
+  = text(:employer, 'Company/Organization')
+  = date(:datehired, 'Date Hired')
+  = text(:employercontact, 'Contact & Phone')
+  = textarea_med(:career, 'Briefly describe your career history and tell us how this relates to your ministry.')
+  
+.section
+  %h2 Ministry
+  = bool(:crosscultural, 'Do you have experience in cross-cultural ministry?')
+  = textarea_lg(:travel, 'List the countries you have been to, including the dates, the organization(s) you traveled with, the types of ministry you were involved in, and any leadership positions you held.')
+  = textarea_lg(:ministry, 'List any other formal ministry experience you have had and leadership positions you have held. For each, list the organization/church, responsibilities, and dates.')

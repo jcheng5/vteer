@@ -1,0 +1,19 @@
+.section
+  %h2 Biographical Information
+  = textarea_med(:conversion, 'How and when did you become a Christian?')
+  = textarea_med(:lifechange, 'Describe how your life has changed.')
+  = textarea_lg(:history, 'Please write a brief overview of your personal history (where you grew up, childhood experiences, and how these affect your life now).')
+  = textarea_med(:strength, 'What would others say is your strongest quality, and why?')
+  = textarea_med(:weakness, 'What would others say is your weakest quality, and why?')
+  = textarea_med(:submission, 'When do you find it difficult to submit to others?')
+  = textarea_lg(:churchhistory, 'Describe your personal church history (various ones you\'ve attended, why you switched, etc.).')
+  = textarea_lg(:faith, 'Describe your personal "statement of faith." What do you believe?')
+  = textarea_med(:southafrica, 'Do you feel specifically called to South Africa? Explain.')
+  = textarea_med(:fiveyearplan, 'Where do you want to be in five years? What is your personal vision for your life and ministry?')
+  = textarea_lg(:calling, 'Explain how and why you feel God is calling you to be part of Living Hope. Also include what area of ministry you would specifically like to get involved in and how you see yourself fitting in.')
+  = checkbox(:gifts, 'Please check all areas you consider yourself gifted in', ['Sports', 'Administration', 'Children', 'Healthcare', 'Photography', 'Landscaping', 'Construction or Maintenance', 'Music', 'Schoolteacher'])
+  = textarea_sm(:leadgifts, 'Of the areas you checked, please note which ones you would consider yourself strong enough to lead a team in projects within this area.')
+
+.section
+  %h2 Volunteer Positions
+  %div(style='color:red') TODO

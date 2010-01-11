@@ -1,0 +1,12 @@
+.field
+  = label(id, label)
+  %br
+  %textarea(name=id id=id rows=rows cols=cols)
+  :javascript
+    load_handlers.push(function (info) {
+      var val = info['#{id}'] || '';
+      $('##{id}').get(0).value = val;
+    });
+    save_handlers.push(function (info, form) {
+      info['#{id}'] = $('##{id}').get(0).value;
+    });

@@ -1,0 +1,15 @@
+<?php
+
+// database config
+$db_host = 'localhost';
+$db_user = 'root';
+$db_pass = '';
+$db_name = 'vteer';
+
+$mail_gmail_username = 'my_gmail_username';
+$mail_gmail_password = 'my_gmail_password';
+$mail_sender = '"John Doe" <john@doe.com>'; // The e-mail address in $mail_sender must be registered with the gmail account: http://mail.google.com/support/bin/answer.py?hl=en&answer=22370
+
+$admin_time_zone = 'America/Los_Angeles';
+
+?>

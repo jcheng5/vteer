@@ -1,0 +1,29 @@
+.field
+  - if label
+    = label(id, label)
+    %br
+  %input{:type => 'radio', :name => id, :id => "#{id}-yes", :value => 'Yes', :onclick => "syncExplain('#{id}')"}
+  = label("#{id}-yes", 'Yes', 'option')
+  %input{:type => 'radio', :name => id, :id => "#{id}-no", :value => 'No', :onclick => "syncExplain('#{id}')"}
+  = label("#{id}-no", 'No', 'option')
+  .explain{:id => "#{id}-explaincontainer"}
+    = textarea_med("#{id}-explain", "If yes, please explain")
+  
+  :javascript
+    load_handlers.push(function(info) {
+      var val = info['#{id}'];
+      $('##{id}-yes').get(0).checked = (val === 'Yes');
+      $('##{id}-no').get(0).checked = (val === 'No');
+      syncExplain('#{id}');
+    });
+    save_handlers.push(function (info) {
+      var value;
+      if ($('##{id}-yes').get(0).checked)
+        value = 'Yes';
+      else if ($('##{id}-no').get(0).checked)
+        value = 'No';
+      else
+        value = '';
+      
+      info['#{id}'] = value;
+    });

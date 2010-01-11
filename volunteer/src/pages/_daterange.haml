@@ -1,0 +1,14 @@
+.field
+  = label("#{id}-from", label)
+  %br
+  %input(name="#{id}-from" id="#{id}-from")
+  %input(name="#{id}-to" id="#{id}-to")
+  :javascript
+    load_handlers.push(function (info) {
+      var val = info['#{id}'] || [null, null];
+      $('##{id}-from').get(0).value = val[0] || '';
+      $('##{id}-to').get(0).value = val[1] || '';
+    });
+    save_handlers.push(function (info) {
+      info['#{id}'] = [$('##{id}-from').get(0).value, $('##{id}-to').get(0).value];
+    });
