@@ -30,13 +30,32 @@ function get_users_by_state($state)
    return $db->query('select * from users where status in ?', $state);
 }
 
+function get_user_by_credentials($email, $password)
+{
+   $db = new DbConn();
+   return $db->fetch('select * from users where email = ? and password = ?', $email, $password);
+}
+
+function get_user_by_email($email)
+{
+   $db = new DbConn();
+   return $db->fetch('select * from users where email = ?', $email);
+}
+
 function transition_user_to_state($user_id, $newState, $force = false)
 {
    $user = get_user($user_id);
+   if (!$user)
+      throw new RuntimeException('Unknown user');
    $status = $user->status;
-
+   
    if (!$force)
    {
+      if ($newState == $status)
+      {
+         return 0;
+      }
+   
       // The list of state transitions that are valid.
       $transitions = array(
          STATUS_CREATED     =>   array(STATUS_DRAFT),

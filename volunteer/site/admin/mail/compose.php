@@ -16,7 +16,7 @@ $verb = $mail_template ? "Edit" : "Create New";
 vt_header("$verb E-mail");
 vt_require_yui();
 ?>
-<script type="text/javascript" src="../javascripts/ckeditor/ckeditor_basic.js"></script>
+<script type="text/javascript" src="../../javascripts/ckeditor/ckeditor_basic.js"></script>
 <script type="text/javascript" src="compose.js"></script>
 <style type="text/css">
 #subject {

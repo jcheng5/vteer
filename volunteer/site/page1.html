@@ -81,60 +81,37 @@
           }
         }
         
+        function finish() {
+          var xhr = getHTTPObject();
+          xhr.open('GET', 'submit.php', false);
+          xhr.send(null);
+          if (xhr.readyState==4 && xhr.status==200) {
+            location.href = 'success.html';
+          }
+          else {
+            alert("Unable to submit application:\n" + xhr.responseText);
+            return null;
+          }
+        }
+        
         load_handlers = [];
         save_handlers = [];
       //]]>
     </script>
   </head>
   <body>
-    <div class="nav">
-      Page:
-      <a class="active" href="javascript:if (save()) nav(1)">1</a>
-      <a class="" href="javascript:if (save()) nav(2)">2</a>
-      <a class="" href="javascript:if (save()) nav(3)">3</a>
-      <a class="" href="javascript:if (save()) nav(4)">4</a>
-      <a class="" href="javascript:if (save()) nav(5)">5</a>
-      <a class="" href="javascript:if (save()) nav(6)">6</a>
-    </div>
     <form name="mainform">
+      <div class="nav">
+        <button disabled="disabled" onclick="if (save()) nav(0)" type="button">
+          Previous page
+        </button>
+        &nbsp; Page 1 of 6 &nbsp;
+        <button onclick="if (save()) nav(2)" type="button">
+          <b>Next page</b>
+        </button>
+      </div>
       <div class="section">
         <h2>Basic Information</h2>
-        <div class="field">
-          <label for="firstname">
-            First Name
-          </label>
-          <br />
-          <input id="firstname" name="firstname" type="text" />
-          <script type="text/javascript">
-            //<![CDATA[
-              load_handlers.push(function (info) {
-                var val = info['firstname'] || '';
-                $('#firstname').get(0).value = val;
-              });
-              save_handlers.push(function (info, form) {
-                info['firstname'] = $('#firstname').get(0).value;
-              });
-            //]]>
-          </script>
-        </div>
-        <div class="field">
-          <label for="lastname">
-            Surname
-          </label>
-          <br />
-          <input id="lastname" name="lastname" type="text" />
-          <script type="text/javascript">
-            //<![CDATA[
-              load_handlers.push(function (info) {
-                var val = info['lastname'] || '';
-                $('#lastname').get(0).value = val;
-              });
-              save_handlers.push(function (info, form) {
-                info['lastname'] = $('#lastname').get(0).value;
-              });
-            //]]>
-          </script>
-        </div>
         <div class="field">
           <label for="dob">
             Date of birth
@@ -317,24 +294,6 @@
               });
               save_handlers.push(function (info, form) {
                 info['fax'] = $('#fax').get(0).value;
-              });
-            //]]>
-          </script>
-        </div>
-        <div class="field">
-          <label for="email">
-            E-mail
-          </label>
-          <br />
-          <input id="email" name="email" type="text" />
-          <script type="text/javascript">
-            //<![CDATA[
-              load_handlers.push(function (info) {
-                var val = info['email'] || '';
-                $('#email').get(0).value = val;
-              });
-              save_handlers.push(function (info, form) {
-                info['email'] = $('#email').get(0).value;
               });
             //]]>
           </script>
@@ -535,6 +494,15 @@
             //]]>
           </script>
         </div>
+      </div>
+      <div class="nav">
+        <button disabled="disabled" onclick="if (save()) nav(0)" type="button">
+          Previous page
+        </button>
+        &nbsp; Page 1 of 6 &nbsp;
+        <button onclick="if (save()) nav(2)" type="button">
+          <b>Next page</b>
+        </button>
       </div>
     </form>
     <script type="text/javascript">

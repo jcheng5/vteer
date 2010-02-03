@@ -1,4 +1,7 @@
 !!!
+- (1..6).each do |i|
+  - if current_page =~ /page#{i}/
+    - @pagenum = i
 %html
   %head
     %title Living Hope
@@ -80,20 +83,39 @@
           load_handlers[i](info, document.mainform);
         }
       }
+      
+      function finish() {
+        var xhr = getHTTPObject();
+        xhr.open('GET', 'submit.php', false);
+        xhr.send(null);
+        if (xhr.readyState==4 && xhr.status==200) {
+          location.href = 'success.html';
+        }
+        else {
+          alert("Unable to submit application:\n" + xhr.responseText);
+          return null;
+        }
+      }
 
       load_handlers = [];
       save_handlers = [];
 
   %body
-    .nav
-      Page:
-      - (1..6).each do |i|
-        - if current_page =~ /page#{i}/
-          - @pagenum = i
-        = partial('navlink', :locals => {:pagenum => i})
+    -#
+      .nav
+        Page:
+        - (1..6).each do |i|
+          - if current_page =~ /page#{i}/
+            - @pagenum = i
+          = partial('navlink', :locals => {:pagenum => i})
     %form{:name => 'mainform'}
+      -if @pagenum
+        = partial('navlinks', :locals => {:pagenum => @pagenum})
       = yield
-    :javascript
-      var existingInfo = downloadInfo();
-      load(existingInfo);
-      setInterval(save, 3000);
+      -if @pagenum
+        = partial('navlinks', :locals => {:pagenum => @pagenum})
+    -if !@suppressautosave
+      :javascript
+        var existingInfo = downloadInfo();
+        load(existingInfo);
+        setInterval(save, 3000);

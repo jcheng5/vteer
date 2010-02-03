@@ -1,0 +1,12 @@
+.nav
+  %button{:type => 'button',
+          :disabled => pagenum == 1,
+          :onclick => "if (save()) nav(#{pagenum-1})"}
+    Previous page
+  = "&nbsp; Page #{pagenum} of 6 &nbsp;"
+  - if pagenum < 6
+    %button{:type => 'button', :onclick => "if (save()) nav(#{pagenum+1})"}
+      %b Next page
+  - if pagenum == 6
+    %button{:type => 'button', :onclick => "if (save()) finish()"}
+      %b Submit application

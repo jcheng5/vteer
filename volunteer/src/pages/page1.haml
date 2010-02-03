@@ -1,7 +1,5 @@
 .section
   %h2 Basic Information
-  = text(:firstname, 'First Name')
-  = text(:lastname, 'Surname')
   = date(:dob, 'Date of birth')
   = radio(:gender, 'Gender', ['Male', 'Female'])
   = radio(:marital, 'Marital Status', ['Single', 'Married'])
@@ -10,7 +8,6 @@
   = textarea_sm(:address, 'Mailing Address')
   = text(:phone, 'Telephone')
   = text(:fax, 'Fax')
-  = text(:email, 'E-mail')
   = select(:referrer, 'How did you hear about our ministry?', ['ACTS', 'African Encounter', 'Living Hope', 'Friend', 'I am a former volunteer', 'Through my local church', 'Internet Living Hope/Way/Grace', 'Internet ACTS', 'Internet African Encounter', 'Other'])
 
 .section

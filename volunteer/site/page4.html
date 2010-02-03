@@ -81,22 +81,35 @@
           }
         }
         
+        function finish() {
+          var xhr = getHTTPObject();
+          xhr.open('GET', 'submit.php', false);
+          xhr.send(null);
+          if (xhr.readyState==4 && xhr.status==200) {
+            location.href = 'success.html';
+          }
+          else {
+            alert("Unable to submit application:\n" + xhr.responseText);
+            return null;
+          }
+        }
+        
         load_handlers = [];
         save_handlers = [];
       //]]>
     </script>
   </head>
   <body>
-    <div class="nav">
-      Page:
-      <a class="" href="javascript:if (save()) nav(1)">1</a>
-      <a class="" href="javascript:if (save()) nav(2)">2</a>
-      <a class="" href="javascript:if (save()) nav(3)">3</a>
-      <a class="active" href="javascript:if (save()) nav(4)">4</a>
-      <a class="" href="javascript:if (save()) nav(5)">5</a>
-      <a class="" href="javascript:if (save()) nav(6)">6</a>
-    </div>
     <form name="mainform">
+      <div class="nav">
+        <button onclick="if (save()) nav(3)" type="button">
+          Previous page
+        </button>
+        &nbsp; Page 4 of 6 &nbsp;
+        <button onclick="if (save()) nav(5)" type="button">
+          <b>Next page</b>
+        </button>
+      </div>
       <div class="section">
         <h2>Biographical Information</h2>
         <div class="field">
@@ -503,6 +516,15 @@
       <div class="section">
         <h2>Volunteer Positions</h2>
         <div style="color:red">TODO</div>
+      </div>
+      <div class="nav">
+        <button onclick="if (save()) nav(3)" type="button">
+          Previous page
+        </button>
+        &nbsp; Page 4 of 6 &nbsp;
+        <button onclick="if (save()) nav(5)" type="button">
+          <b>Next page</b>
+        </button>
       </div>
     </form>
     <script type="text/javascript">

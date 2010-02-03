@@ -37,6 +37,7 @@ function merge_data($userid, $jsonData) {
 }
 
 try {
+  transition_user_to_state($_SESSION['userid'], STATUS_DRAFT);
   merge_data($_SESSION['userid'], file_get_contents("php://input"));
   echo "OK";
 } catch (Exception $e) {

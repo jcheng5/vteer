@@ -1,0 +1,2 @@
+register.php and login.php should become JSON-RPC endpoints
+Add validation and error reporting to index.html

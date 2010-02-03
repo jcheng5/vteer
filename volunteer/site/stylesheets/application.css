@@ -16,9 +16,10 @@ h4 {
 
 .section {
   border: 1px solid #CCC;
-  padding: 1em;
-  margin-top: 2em;
-  margin-bottom: 2em; }
+  padding: 1em; }
+
+.section + .section {
+  margin-top: 2em; }
 
 label {
   font-weight: bold; }
@@ -35,8 +36,8 @@ label.option {
 
 .nav {
   text-align: center;
-  font-weight: bold;
-  font-size: 24pt; }
+  margin-top: 1.4em;
+  margin-bottom: 1.2em; }
   .nav a {
     text-decoration: none;
     color: black; }
