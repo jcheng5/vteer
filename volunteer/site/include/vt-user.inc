@@ -9,6 +9,17 @@ define("STATUS_CONFIRMED", 4);  # Travel itinerary has been confirmed.
 define("STATUS_REJECTED", -1);  # Application has been rejected by admin.
 define("STATUS_INACTIVE", -2);  # Application is no longer active.
 
+function format_status($status) {
+   $map = array(
+      STATUS_CREATED => 'Created',
+      STATUS_DRAFT => 'Draft',
+      STATUS_SUBMITTED => 'Submitted',
+      STATUS_ACCEPTED => 'Accepted',
+      STATUS_CONFIRMED => 'Confirmed',
+      STATUS_REJECTED => 'Rejected',
+      STATUS_INACTIVE => 'Inactive');
+   return $map[$status];
+}
 
 function get_user($user_id)
 {
@@ -90,6 +101,10 @@ function transition_user_to_state($user_id, $newState, $force = false)
          break;
       case STATUS_SUBMITTED:
          schedule_mail($user_id, MAIL_CONFIRM_APP);
+         $headers = array(
+            'From' => $mail_sender,
+            'Subject' => $mail->subject);
+         send_mail($admin_email, $headers, "A new application has been submitted: " . $user->firstname  . " " . $user->lastname);
          break;
       case STATUS_ACCEPTED:
          schedule_mail($user_id, MAIL_ACCEPTED);

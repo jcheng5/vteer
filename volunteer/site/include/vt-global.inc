@@ -13,6 +13,8 @@ $lib = "$base/lib";
 function restrict_to_admins()
 {
 	# TODO: enforce admin role, preferably using BASIC auth
+   global $admin_id;
+	$admin_id = 1;
 }
 
 require_once('vt-class-applicant.inc');
@@ -20,6 +22,7 @@ require_once('vt-db.inc');
 require_once('vt-user.inc');
 require_once('vt-mail.inc');
 require_once('vt-util.inc');
+require_once('vt-notes.inc');
 
 header('Content-Type: text/html;charset=utf-8');
 

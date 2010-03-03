@@ -20,4 +20,9 @@ function vt_format_duration($secs)
     return number_format($days) . " days";
 }
 
+function vt_format_datetime_ago($datetime) {
+   $dt = new DateTime($datetime);
+   $seconds_ago = time() - (int)$dt->format('U');
+   return vt_format_duration($seconds_ago) . " ago";
+}
 ?>

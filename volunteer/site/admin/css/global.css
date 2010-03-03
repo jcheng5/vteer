@@ -1,4 +1,4 @@
-body, td, th, input {
+body, td, th, input, textarea {
 	font-family: Lucida Grande, Lucida Sans Unicode, Segoe UI, Tahoma, Verdana, sans-serif;
 	font-size: 12px;
 }
