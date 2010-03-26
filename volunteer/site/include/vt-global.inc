@@ -2,6 +2,9 @@
 
 require_once('vt-config.inc');
 
+if (!is_dir($upload_dir))
+  die("Incorrect configuration: $upload_dir doesn't exist");
+
 date_default_timezone_set('UTC');
 
 require_once('PEAR.php');

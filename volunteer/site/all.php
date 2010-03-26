@@ -96,10 +96,16 @@
         
         load_handlers = [];
         save_handlers = [];
+        child_windows = [];
+        
+        function closeChildWindows() {
+          for (var i = 0; i < child_windows.length; i++)
+            child_windows[i].close();
+        }
       //]]>
     </script>
   </head>
-  <body>
+  <body onunload="closeChildWindows();">
     <form name="mainform">
       <div class="section">
         <h2>Basic Information</h2>
@@ -1661,6 +1667,52 @@
               //]]>
             </script>
           </div>
+          <div class="field">
+            <label for="pastor_letter">
+              Reference Letter
+            </label>
+            <br />
+            <div id="pastor_letter-nofile">
+              <span>
+                <i>(None attached)</i>
+              </span>
+              <button id="pastor_letter-attach" type="button">
+                Attach File
+              </button>
+            </div>
+            <div id="pastor_letter-hasfile">
+              <a href="#" id="pastor_letter-link" target="_blank"></a>
+              <button id="pastor_letter-remove" type="button">
+                Remove File
+              </button>
+            </div>
+            <script type="text/javascript">
+              //<![CDATA[
+                load_handlers.push(function(info) {
+                  var val = info['pastor_letter'];
+                  if (val) {
+                    var link = $('#pastor_letter-link').get(0);
+                    link.href = '#'; // TODO
+                    link.innerText = val['name'];
+                    $('#pastor_letter-nofile').get(0).style.display = 'none';
+                    $('#pastor_letter-hasfile').get(0).style.display = 'inline';
+                  }
+                  else {
+                    $('#pastor_letter-nofile').get(0).style.display = 'inline';
+                    $('#pastor_letter-hasfile').get(0).style.display = 'none';
+                  }
+                });
+                save_handlers.push(function(info) {
+                  // info['pastor_letter'] = value;
+                });
+                $('#pastor_letter-attach').get(0).onclick = function() {
+                  // TODO: pass field label, not just ID
+                  var childWindow = window.open('attach.php?id=pastor_letter', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
+                  child_windows.push(childWindow);
+                };
+              //]]>
+            </script>
+          </div>
         </div>
         <div class="reference">
           <h3>
@@ -1737,6 +1789,52 @@
                 save_handlers.push(function (info, form) {
                   info['friend_email'] = $('#friend_email').get(0).value;
                 });
+              //]]>
+            </script>
+          </div>
+          <div class="field">
+            <label for="friend_letter">
+              Reference Letter
+            </label>
+            <br />
+            <div id="friend_letter-nofile">
+              <span>
+                <i>(None attached)</i>
+              </span>
+              <button id="friend_letter-attach" type="button">
+                Attach File
+              </button>
+            </div>
+            <div id="friend_letter-hasfile">
+              <a href="#" id="friend_letter-link" target="_blank"></a>
+              <button id="friend_letter-remove" type="button">
+                Remove File
+              </button>
+            </div>
+            <script type="text/javascript">
+              //<![CDATA[
+                load_handlers.push(function(info) {
+                  var val = info['friend_letter'];
+                  if (val) {
+                    var link = $('#friend_letter-link').get(0);
+                    link.href = '#'; // TODO
+                    link.innerText = val['name'];
+                    $('#friend_letter-nofile').get(0).style.display = 'none';
+                    $('#friend_letter-hasfile').get(0).style.display = 'inline';
+                  }
+                  else {
+                    $('#friend_letter-nofile').get(0).style.display = 'inline';
+                    $('#friend_letter-hasfile').get(0).style.display = 'none';
+                  }
+                });
+                save_handlers.push(function(info) {
+                  // info['friend_letter'] = value;
+                });
+                $('#friend_letter-attach').get(0).onclick = function() {
+                  // TODO: pass field label, not just ID
+                  var childWindow = window.open('attach.php?id=friend_letter', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
+                  child_windows.push(childWindow);
+                };
               //]]>
             </script>
           </div>
@@ -1819,6 +1917,52 @@
               //]]>
             </script>
           </div>
+          <div class="field">
+            <label for="employer_letter">
+              Reference Letter
+            </label>
+            <br />
+            <div id="employer_letter-nofile">
+              <span>
+                <i>(None attached)</i>
+              </span>
+              <button id="employer_letter-attach" type="button">
+                Attach File
+              </button>
+            </div>
+            <div id="employer_letter-hasfile">
+              <a href="#" id="employer_letter-link" target="_blank"></a>
+              <button id="employer_letter-remove" type="button">
+                Remove File
+              </button>
+            </div>
+            <script type="text/javascript">
+              //<![CDATA[
+                load_handlers.push(function(info) {
+                  var val = info['employer_letter'];
+                  if (val) {
+                    var link = $('#employer_letter-link').get(0);
+                    link.href = '#'; // TODO
+                    link.innerText = val['name'];
+                    $('#employer_letter-nofile').get(0).style.display = 'none';
+                    $('#employer_letter-hasfile').get(0).style.display = 'inline';
+                  }
+                  else {
+                    $('#employer_letter-nofile').get(0).style.display = 'inline';
+                    $('#employer_letter-hasfile').get(0).style.display = 'none';
+                  }
+                });
+                save_handlers.push(function(info) {
+                  // info['employer_letter'] = value;
+                });
+                $('#employer_letter-attach').get(0).onclick = function() {
+                  // TODO: pass field label, not just ID
+                  var childWindow = window.open('attach.php?id=employer_letter', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
+                  child_windows.push(childWindow);
+                };
+              //]]>
+            </script>
+          </div>
         </div>
         <div class="reference">
           <h3>
@@ -1895,6 +2039,52 @@
                 save_handlers.push(function (info, form) {
                   info['leader_email'] = $('#leader_email').get(0).value;
                 });
+              //]]>
+            </script>
+          </div>
+          <div class="field">
+            <label for="leader_letter">
+              Reference Letter
+            </label>
+            <br />
+            <div id="leader_letter-nofile">
+              <span>
+                <i>(None attached)</i>
+              </span>
+              <button id="leader_letter-attach" type="button">
+                Attach File
+              </button>
+            </div>
+            <div id="leader_letter-hasfile">
+              <a href="#" id="leader_letter-link" target="_blank"></a>
+              <button id="leader_letter-remove" type="button">
+                Remove File
+              </button>
+            </div>
+            <script type="text/javascript">
+              //<![CDATA[
+                load_handlers.push(function(info) {
+                  var val = info['leader_letter'];
+                  if (val) {
+                    var link = $('#leader_letter-link').get(0);
+                    link.href = '#'; // TODO
+                    link.innerText = val['name'];
+                    $('#leader_letter-nofile').get(0).style.display = 'none';
+                    $('#leader_letter-hasfile').get(0).style.display = 'inline';
+                  }
+                  else {
+                    $('#leader_letter-nofile').get(0).style.display = 'inline';
+                    $('#leader_letter-hasfile').get(0).style.display = 'none';
+                  }
+                });
+                save_handlers.push(function(info) {
+                  // info['leader_letter'] = value;
+                });
+                $('#leader_letter-attach').get(0).onclick = function() {
+                  // TODO: pass field label, not just ID
+                  var childWindow = window.open('attach.php?id=leader_letter', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
+                  child_windows.push(childWindow);
+                };
               //]]>
             </script>
           </div>

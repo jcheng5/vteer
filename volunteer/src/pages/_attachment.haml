@@ -1,0 +1,40 @@
+-require 'cgi'
+.field
+  - if label
+    = label(id, label)
+    %br
+    
+  %div{:id => "#{id}-nofile"}
+    %span
+      %i (None attached)
+    %button{:id => "#{id}-attach", :type => 'button'}
+      Attach File
+      
+  %div{:id => "#{id}-hasfile"}
+    %a{:id => "#{id}-link", :href => '#', :target => '_blank'}
+    %button{:id => "#{id}-remove", :type => 'button'}
+      Remove File
+      
+  :javascript
+    load_handlers.push(function(info) {
+      var val = info['#{id}'];
+      if (val) {
+        var link = $('##{id}-link').get(0);
+        link.href = '#'; // TODO
+        link.innerText = val['name'];
+        $('##{id}-nofile').get(0).style.display = 'none';
+        $('##{id}-hasfile').get(0).style.display = 'inline';
+      }
+      else {
+        $('##{id}-nofile').get(0).style.display = 'inline';
+        $('##{id}-hasfile').get(0).style.display = 'none';
+      }
+    });
+    save_handlers.push(function(info) {
+      // info['#{id}'] = value;
+    });
+    $('##{id}-attach').get(0).onclick = function() {
+      // TODO: pass field label, not just ID
+      var childWindow = window.open('attach.php?id=#{CGI::escape(id)}', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
+      child_windows.push(childWindow);
+    };

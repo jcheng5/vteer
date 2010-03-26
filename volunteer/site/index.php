@@ -9,6 +9,13 @@
     <h1>Living Hope Volunteer Application</h1>
     <p>Thanks for your interest! Blah blah blah.</p>
     <h3>Let's get started!</h3>
+    <script type="text/javascript">
+      //<![CDATA[
+        // dummy handler arrays--will never be used
+        load_handlers = [];
+        save_handlers = [];
+      //]]>
+    </script>
     <form action="register.php" method="POST">
       <div class="field">
         <label for="firstname">

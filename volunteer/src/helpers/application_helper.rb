@@ -65,4 +65,8 @@ module ApplicationHelper
   def reference(id, label)
     partial('reference', :locals => { :id => id, :label => label })
   end
+  
+  def attachment(id, label)
+    partial('attachment', :locals => { :id => id, :label => label })
+  end
 end

@@ -2,6 +2,10 @@
 %h1 Living Hope Volunteer Application
 %p Thanks for your interest! Blah blah blah.
 %h3 Let's get started!
+:javascript
+  // dummy handler arrays--will never be used
+  load_handlers = [];
+  save_handlers = [];
 %form{:method=>'POST', :action=>'register.php'}
   = text('firstname', 'First name')
   = text('lastname', 'Surname')

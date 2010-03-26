@@ -96,10 +96,16 @@
         
         load_handlers = [];
         save_handlers = [];
+        child_windows = [];
+        
+        function closeChildWindows() {
+          for (var i = 0; i < child_windows.length; i++)
+            child_windows[i].close();
+        }
       //]]>
     </script>
   </head>
-  <body>
+  <body onunload="closeChildWindows();">
     <form name="mainform">
       <div class="nav">
         <button onclick="if (save()) nav(3)" type="button">

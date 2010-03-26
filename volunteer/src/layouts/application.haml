@@ -99,8 +99,14 @@
 
       load_handlers = [];
       save_handlers = [];
+      child_windows = [];
+      
+      function closeChildWindows() {
+        for (var i = 0; i < child_windows.length; i++)
+          child_windows[i].close();
+      }
 
-  %body
+  %body{:onunload => 'closeChildWindows();'}
     -#
       .nav
         Page:
