@@ -20,7 +20,6 @@ function restrict_to_admins()
 	$admin_id = 1;
 }
 
-require_once('vt-class-applicant.inc');
 require_once('vt-db.inc');
 require_once('vt-user.inc');
 require_once('vt-mail.inc');
