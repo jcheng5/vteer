@@ -1,44 +1,3 @@
-<?php
-require_once('./common.inc');
-vt_require_yui();
-
-function format_value($value) {
-  if (is_null($value) || $value === '') {
-    return '<em>(blank)</em>';
-  }
-  else if (is_array($value)) {
-    // dates or checkboxes
-    if (count($value) == 0) {
-      return '<em>(blank)</em>';
-    }
-    $str_val = '';
-    $delim = '';
-    foreach ($value as $el) {
-      $str_val = $str_val . $delim . format_value($el);
-      $delim = ', ';
-    }
-    return $str_val;
-  }
-  else if (is_string($value)) {
-    return nl2br(htmlspecialchars($value));
-  }
-  else {
-    echo("(Warning: Unknown data type)");
-    return format_value("$value");
-  }
-}
-
-$id = (int)$_REQUEST['id'];
-$user = get_user($id);
-if (!$user)
-   throw new RuntimeException('User not found');
-$notes = get_notes($user->id);
-
-$fields = json_decode(file_get_contents('fields.json'));
-$data = json_decode($user->data, TRUE);
-
-vt_header("Volunteer - $user->firstname $user->lastname");
-?>
 <style type="text/css">
 .field {
   font-size: 1.2em;
@@ -79,10 +38,15 @@ h2 {
    font-weight: bold;
 }
 </style>
-<script type="text/javascript" src="view.js"></script>
+<script type="text/javascript">
+$(function() {
+    new YAHOO.widget.Button('btnAccept');
+    new YAHOO.widget.Button('btnReject');
+});
+</script>
 
 <div style="float: right">
-   <a href="../">Back to list</a>
+   <?php echo anchor('admin/volunteers', 'Back to list'); ?>
 </div>
 
 <h1><?php echo format_value("$user->firstname $user->lastname"); ?></h1>

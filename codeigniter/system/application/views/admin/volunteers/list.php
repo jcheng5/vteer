@@ -36,14 +36,14 @@ $(function() {
       </tr>
       <?php $i = 0; while ($user = $users->next()): ?>
       <tr class="<?php echo ($i++ % 2) == 0 ? 'odd' : 'even'; ?>">
-         <td width="120"><a id="detail<?php echo $user->id; ?>" class="detaillink" href="volunteers/view.php?id=<?php echo $user->id; ?>">View details</a></td>
+         <td width="120"><a id="detail<?php echo $user->id; ?>" class="detaillink" href="<?php echo site_url("admin/volunteers/show/$user->id"); ?>">View details</a></td>
          <td class="name" width="200">
             <?php echo htmlentities("$user->firstname $user->lastname"); ?>
          </td>
          <td width="115"><?php
             $submitted = '?';
             if ($user->submitdate)
-               $submitted = vt_format_datetime_ago($user->submitdate);
+               $submitted = format_datetime_ago($user->submitdate);
             echo $submitted;
          ?></td>
       </tr>
