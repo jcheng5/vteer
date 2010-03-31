@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
    <title><?php echo htmlentities(isset($title) ? $title : 'Living Hope'); ?></title>

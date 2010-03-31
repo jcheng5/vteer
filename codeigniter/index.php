@@ -112,7 +112,13 @@ else
 | And away we go...
 |
 */
-require_once BASEPATH.'codeigniter/CodeIgniter'.EXT;
-
+try
+{
+  require_once BASEPATH.'codeigniter/CodeIgniter'.EXT;
+}
+catch (Exception $e)
+{
+  show_error($e);
+}
 /* End of file index.php */
 /* Location: ./index.php */
