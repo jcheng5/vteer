@@ -1,12 +1,13 @@
 <?php
 
-class Welcome extends Controller {
+class Welcome extends Controller
+{
 
   function Welcome()
   {
-    parent::Controller();	
+    parent::Controller();
   }
-  
+
   function index()
   {
     $email = $this->input->post('email');
@@ -17,10 +18,10 @@ class Welcome extends Controller {
       $password = '';
 
     $this->load->view('header');
-    $this->load->view('index');      
+    $this->load->view('index');
     $this->load->view('footer');
   }
-  
+
   function login()
   {
     $this->_logout();
@@ -32,19 +33,21 @@ class Welcome extends Controller {
     if (!($email === FALSE || $password === FALSE))
       $user = get_user_by_credentials($email, $password);
 
-    if (!$user) {
+    if (!$user)
+    {
       $errmsg = 'Sorry, unrecognized e-mail or incorrect password.';
       $this->load->view('header');
       $this->load->view('index', array('login_error' => $errmsg));
       $this->load->view('footer');
     }
-    else {
+    else
+    {
       $this->session->set_userdata('userid', $user->id);
       // TODO: Pick up where user left off, not on page 1
       redirect('apply/page/1');
     }
   }
-  
+
   function register()
   {
     $this->_logout();
@@ -80,7 +83,7 @@ class Welcome extends Controller {
     $db = new DbConn();
     $db->exec('INSERT INTO users (firstname, lastname, email, password) VALUES (?, ?, ?, ?)',
               $firstname, $lastname, $email, $password);
-    
+
     $newUser = get_user_by_email($email);
     if (!$newUser)
     {
@@ -92,28 +95,28 @@ class Welcome extends Controller {
 
     redirect('apply/page/1');
   }
-  
+
   function logout()
   {
     $this->_logout();
-    
+
     $this->load->view('header');
     $this->load->view('logout');
     $this->load->view('footer');
   }
-  
+
   function _index_with_error($error)
   {
     $this->load->view('header');
     $this->load->view('index', array('register_error' => $error));
     $this->load->view('footer');
   }
-  
+
   function _logout()
   {
     $this->session->unset_userdata('userid');
   }
-  
+
   function passwordhelp()
   {
     // TODO

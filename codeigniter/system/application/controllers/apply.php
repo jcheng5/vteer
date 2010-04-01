@@ -1,6 +1,7 @@
 <?php
 
-class Apply extends Controller {
+class Apply extends Controller
+{
 
   function Apply()
   {
@@ -13,7 +14,7 @@ class Apply extends Controller {
 
     $max_page = 6;
 
-    $prev_link = $page_num <= 1 ? FALSE : site_url('apply/page/'.($page_num-1));
+    $prev_link = $page_num <= 1 ? FALSE : site_url('apply/page/' . ($page_num - 1));
     if ($page_num >= 6)
     {
       $next_label = 'Submit application';
@@ -21,16 +22,16 @@ class Apply extends Controller {
     }
     else
     {
-      $next_link = site_url('apply/page/'.($page_num+1));
+      $next_link = site_url('apply/page/' . ($page_num + 1));
       $next_label = "Next page";
     }
 
 
     $data = array('page_num' => $page_num,
-                  'max_page' => $max_page,
-                  'prev_link' => $prev_link,
-                  'next_link' => $next_link,
-                  'next_label' => $next_label); 
+      'max_page' => $max_page,
+      'prev_link' => $prev_link,
+      'next_link' => $next_link,
+      'next_label' => $next_label);
 
     $this->load->view('apply/header', $data);
     $this->load->view('apply/nav', $data);
@@ -39,6 +40,7 @@ class Apply extends Controller {
     $this->load->view('apply/footer', $data);
   }
 
+  // JSON-RPC
   function retrieve()
   {
     header('Content-Type: text/plain');
@@ -61,6 +63,7 @@ class Apply extends Controller {
     }
   }
 
+  // JSON-RPC
   function update()
   {
     header('Content-Type: text/plain');
@@ -98,7 +101,7 @@ class Apply extends Controller {
   function submit()
   {
     $user = $this->_get_current_user();
-    
+
     transition_user_to_state($user->id, STATUS_SUBMITTED);
     $db = new DbConn();
     $db->exec('update users set submitdate = ? where id = ?',
@@ -121,7 +124,7 @@ class Apply extends Controller {
     $userid = $this->session->userdata('userid');
     if (!$userid)
       throw new RuntimeException("User ID was not found");
-    $user = get_user((int)$userid);
+    $user = get_user((int) $userid);
     if (!$user)
       throw new RuntimeException("User ID was not found");
     return $user;

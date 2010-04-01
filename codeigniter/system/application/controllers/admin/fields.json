@@ -2,104 +2,210 @@
   {
     "name": "Basic Information",
     "fields": [
-      {"dob": "Date of birth"},
-      {"gender": "Gender"},
-      {"marital": "Marital Status"},
-      {"ssn": "Social Security # or ID #"},
-      {"nickname": "What would you like to be called (name you go by)"},
-      {"address": "Mailing Address"},
-      {"phone": "Telephone"},
-      {"fax": "Fax"},
-      {"referrer": "How did you hear about our ministry?"}
+      {
+        "dob": "Date of birth"
+      },
+      {
+        "gender": "Gender"
+      },
+      {
+        "marital": "Marital Status"
+      },
+      {
+        "ssn": "Social Security # or ID #"
+      },
+      {
+        "nickname": "What would you like to be called (name you go by)"
+      },
+      {
+        "address": "Mailing Address"
+      },
+      {
+        "phone": "Telephone"
+      },
+      {
+        "fax": "Fax"
+      },
+      {
+        "referrer": "How did you hear about our ministry?"
+      }
     ]
   },
   {
     "name": "Preferred Dates",
     "fields": [
-      {"dates1": "First preference of dates"},
-      {"dates2": "Second preference of dates"},
-      {"dates3": "Third preference of dates"}
+      {
+        "dates1": "First preference of dates"
+      },
+      {
+        "dates2": "Second preference of dates"
+      },
+      {
+        "dates3": "Third preference of dates"
+      }
     ]
   },
   {
     "name": "Transport",
     "fields": [
-      {"transport": "Will you have your own transportation? (Do you plan to rent or purchase a car?)"},
-      {"license": "Do you have an international driver's license?"}
+      {
+        "transport": "Will you have your own transportation? (Do you plan to rent or purchase a car?)"
+      },
+      {
+        "license": "Do you have an international driver's license?"
+      }
     ]
   },
   {
     "name": "Education",
     "fields": [
-      {"educationlevel": "Highest level of education completed"},
-      {"schools": "List any post-high school institutions attended, as well as the dates attended, degrees attained, and major/minor fields of study."}
+      {
+        "educationlevel": "Highest level of education completed"
+      },
+      {
+        "schools": "List any post-high school institutions attended, as well as the dates attended, degrees attained, and major/minor fields of study."
+      }
     ]
   },
   {
     "name": "Career History",
     "fields": [
-      {"occupation": "Present Occupation"},
-      {"employer": "Company/Organization"},
-      {"datehired": "Date Hired"},
-      {"employercontact": "Contact & Phone"},
-      {"career": "Briefly describe your career history and tell us how this relates to your ministry."}
+      {
+        "occupation": "Present Occupation"
+      },
+      {
+        "employer": "Company/Organization"
+      },
+      {
+        "datehired": "Date Hired"
+      },
+      {
+        "employercontact": "Contact & Phone"
+      },
+      {
+        "career": "Briefly describe your career history and tell us how this relates to your ministry."
+      }
     ]
   },
   {
     "name": "Ministry",
     "fields": [
-      {"crosscultural": "Do you have experience in cross-cultural ministry?"},
-      {"travel": "List the countries you have been to, including the dates, the organization(s) you traveled with, the types of ministry you were involved in, and any leadership positions you held."},
-      {"ministry": "List any other formal ministry experience you have had and leadership positions you have held. For each, list the organization/church, responsibilities, and dates."}
+      {
+        "crosscultural": "Do you have experience in cross-cultural ministry?"
+      },
+      {
+        "travel": "List the countries you have been to, including the dates, the organization(s) you traveled with, the types of ministry you were involved in, and any leadership positions you held."
+      },
+      {
+        "ministry": "List any other formal ministry experience you have had and leadership positions you have held. For each, list the organization/church, responsibilities, and dates."
+      }
     ]
   },
   {
     "name": "Church",
     "fields": [
-      {"church": "Name of your home church"},
-      {"churchaddress": "Address"},
-      {"churchphone": "Phone"},
-      {"pastor": "Senior Pastor"},
-      {"attendance": "Length of time in attendance"},
-      {"involvement": "Describe your involvement"}
+      {
+        "church": "Name of your home church"
+      },
+      {
+        "churchaddress": "Address"
+      },
+      {
+        "churchphone": "Phone"
+      },
+      {
+        "pastor": "Senior Pastor"
+      },
+      {
+        "attendance": "Length of time in attendance"
+      },
+      {
+        "involvement": "Describe your involvement"
+      }
     ]
   },
   {
     "name": "Health",
     "fields": [
-      {"healthissues": "Do you have any physical handicaps, disabilities, or diseases that might affect your ability to fully function in remote areas or harsh conditions?"},
-      {"healthissues-explain": "If yes, please explain"},
-      {"chronicconditions": "Do you have any chronic illnesses or allergies?"},
-      {"chronicconditions-explain": "If yes, please explain"},
-      {"foodallergies": "Do you have any food or drug related allergies?"},
-      {"foodallergies-explain": "If yes, please explain"},
-      {"otherhealth": "Do you have any other medical problems that we should be aware of?"},
-      {"otherhealth-explain": "If yes, please explain"}
+      {
+        "healthissues": "Do you have any physical handicaps, disabilities, or diseases that might affect your ability to fully function in remote areas or harsh conditions?"
+      },
+      {
+        "healthissues-explain": "If yes, please explain"
+      },
+      {
+        "chronicconditions": "Do you have any chronic illnesses or allergies?"
+      },
+      {
+        "chronicconditions-explain": "If yes, please explain"
+      },
+      {
+        "foodallergies": "Do you have any food or drug related allergies?"
+      },
+      {
+        "foodallergies-explain": "If yes, please explain"
+      },
+      {
+        "otherhealth": "Do you have any other medical problems that we should be aware of?"
+      },
+      {
+        "otherhealth-explain": "If yes, please explain"
+      }
     ]
   },
   {
     "name": "Personal History",
     "fields": [
-      {"alcoholdrugs": "Do you use alcohol or drugs?"},
-      {"alcoholdrugs-explain": "If yes, please explain"}
+      {
+        "alcoholdrugs": "Do you use alcohol or drugs?"
+      },
+      {
+        "alcoholdrugs-explain": "If yes, please explain"
+      }
     ]
   },
   {
     "name": "Biographical Information",
     "fields": [
-      {"conversion": "How and when did you become a Christian?"},
-      {"lifechange": "Describe how your life has changed."},
-      {"history": "Please write a brief overview of your personal history (where you grew up, childhood experiences, and how these affect your life now)."},
-      {"strength": "What would others say is your strongest quality, and why?"},
-      {"weakness": "What would others say is your weakest quality, and why?"},
-      {"submission": "When do you find it difficult to submit to others?"},
-      {"churchhistory": "Describe your personal church history (various ones you've attended, why you switched, etc.)."},
-      {"faith": "Describe your personal \"statement of faith.\" What do you believe?"},
-      {"southafrica": "Do you feel specifically called to South Africa? Explain."},
-      {"fiveyearplan": "Where do you want to be in five years? What is your personal vision for your life and ministry?"},
-      {"calling": "Explain how and why you feel God is calling you to be part of Living Hope. Also include what area of ministry you would specifically like to get involved in and how you see yourself fitting in."},
-      {"gifts": "Please check all areas you consider yourself gifted in."},
-      {"leadgifts": "Of the areas you checked, please note which ones you would consider yourself strong enough to lead a team in projects within this area."}
+      {
+        "conversion": "How and when did you become a Christian?"
+      },
+      {
+        "lifechange": "Describe how your life has changed."
+      },
+      {
+        "history": "Please write a brief overview of your personal history (where you grew up, childhood experiences, and how these affect your life now)."
+      },
+      {
+        "strength": "What would others say is your strongest quality, and why?"
+      },
+      {
+        "weakness": "What would others say is your weakest quality, and why?"
+      },
+      {
+        "submission": "When do you find it difficult to submit to others?"
+      },
+      {
+        "churchhistory": "Describe your personal church history (various ones you've attended, why you switched, etc.)."
+      },
+      {
+        "faith": "Describe your personal \"statement of faith.\" What do you believe?"
+      },
+      {
+        "southafrica": "Do you feel specifically called to South Africa? Explain."
+      },
+      {
+        "fiveyearplan": "Where do you want to be in five years? What is your personal vision for your life and ministry?"
+      },
+      {
+        "calling": "Explain how and why you feel God is calling you to be part of Living Hope. Also include what area of ministry you would specifically like to get involved in and how you see yourself fitting in."
+      },
+      {
+        "gifts": "Please check all areas you consider yourself gifted in."
+      },
+      {
+        "leadgifts": "Of the areas you checked, please note which ones you would consider yourself strong enough to lead a team in projects within this area."
+      }
     ]
   },
   {
@@ -110,44 +216,90 @@
   {
     "name": "References",
     "fields": [
-      {"pastor_name": "Pastor name"},
-      {"pastor_address": "Pastor address"},
-      {"pastor_phone": "Pastor phone"},
-      {"pastor_email": "Pastor e-mail"},
-      {"friend_name": "Friend name"},
-      {"friend_address": "Friend address"},
-      {"friend_phone": "Friend phone"},
-      {"friend_email": "Friend e-mail"},
-      {"employer_name": "Employer name"},
-      {"employer_address": "Employer address"},
-      {"employer_phone": "Employer phone"},
-      {"employer_email": "Employer e-mail"},
-      {"leader_name": "Other Leadership Reference name"},
-      {"leader_address": "Other Leadership Reference address"},
-      {"leader_phone": "Other Leadership Reference phone"},
-      {"leader_email": "Other Leadership Reference e-mail"}
+      {
+        "pastor_name": "Pastor name"
+      },
+      {
+        "pastor_address": "Pastor address"
+      },
+      {
+        "pastor_phone": "Pastor phone"
+      },
+      {
+        "pastor_email": "Pastor e-mail"
+      },
+      {
+        "friend_name": "Friend name"
+      },
+      {
+        "friend_address": "Friend address"
+      },
+      {
+        "friend_phone": "Friend phone"
+      },
+      {
+        "friend_email": "Friend e-mail"
+      },
+      {
+        "employer_name": "Employer name"
+      },
+      {
+        "employer_address": "Employer address"
+      },
+      {
+        "employer_phone": "Employer phone"
+      },
+      {
+        "employer_email": "Employer e-mail"
+      },
+      {
+        "leader_name": "Other Leadership Reference name"
+      },
+      {
+        "leader_address": "Other Leadership Reference address"
+      },
+      {
+        "leader_phone": "Other Leadership Reference phone"
+      },
+      {
+        "leader_email": "Other Leadership Reference e-mail"
+      }
     ]
   },
   {
     "name": "Emergency Information",
     "fields": [
-      {"emcontact": "Emergency Contact Name"},
-      {"emrelationship": "Relationship"},
-      {"emphone1": "Phone Number"},
-      {"emphone2": "Alternate Phone Number"}
+      {
+        "emcontact": "Emergency Contact Name"
+      },
+      {
+        "emrelationship": "Relationship"
+      },
+      {
+        "emphone1": "Phone Number"
+      },
+      {
+        "emphone2": "Alternate Phone Number"
+      }
     ]
   },
   {
     "name": "Comments/Concerns",
     "fields": [
-      {"comments": "Please note any additional comments or concerns you have."}
+      {
+        "comments": "Please note any additional comments or concerns you have."
+      }
     ]
   },
   {
     "name": "Application Commitment",
     "fields": [
-      {"signature": "Signature (type your full name)"},
-      {"signaturedate": "Today's Date"}
+      {
+        "signature": "Signature (type your full name)"
+      },
+      {
+        "signaturedate": "Today's Date"
+      }
     ]
   }
 ]
