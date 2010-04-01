@@ -1,0 +1,19 @@
+P1
+- Admin authentication/authorization
+- Fix notes feature
+- Mail editing interface ported to CI
+- Mail editing interface finished
+- Show what e-mails have been sent to a user
+- Enter confirmed date for user
+- Send password reminder to user
+- Ability to delete users (possibly just tombstone...?)
+- File attachments
+- Validation (required fields)
+- Date fields/date ranges
+
+P2
+- Add/manage admin accounts
+- Paging for volunteer dashboard
+- Error reporting
+- Local install of YUI?
+- Make deployment scripts easier to manage
