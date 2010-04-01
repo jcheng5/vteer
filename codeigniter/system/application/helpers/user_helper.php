@@ -1,4 +1,6 @@
 <?php
+$CI =& get_instance();
+$CI->load->helper('mail');
 
 # Status for volunteer applications
 define("STATUS_CREATED", 0);    # Only basic info has been provided.
@@ -100,11 +102,14 @@ function transition_user_to_state($user_id, $newState, $force = false)
       case STATUS_DRAFT:
          break;
       case STATUS_SUBMITTED:
+         $CI =& get_instance();
+         $mail_sender = $CI->config->item('mail_sender');
+         $admin_email = $CI->config->item('admin_email');
          schedule_mail($user_id, MAIL_CONFIRM_APP);
-         $headers = array(
-            'From' => $mail_sender,
-            'Subject' => $mail->subject);
-         send_mail($admin_email, $headers, "A new application has been submitted: " . $user->firstname  . " " . $user->lastname);
+         send_mail($mail_sender,
+                   $admin_email,
+                   "New volunteer application: $user->firstname  $user->lastname",
+                   base_url());
          break;
       case STATUS_ACCEPTED:
          schedule_mail($user_id, MAIL_ACCEPTED);

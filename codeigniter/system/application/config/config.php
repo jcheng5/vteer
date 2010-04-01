@@ -1,5 +1,10 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+// Custom config properties for vteer
+$config['mail_sender'] = 'starmonkey@gmail.com';
+$config['admin_email'] = 'starmonkey@gmail.com';
+
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL

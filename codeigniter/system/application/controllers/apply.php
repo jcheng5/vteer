@@ -14,13 +14,23 @@ class Apply extends Controller {
     $max_page = 6;
 
     $prev_link = $page_num <= 1 ? FALSE : site_url('apply/page/'.($page_num-1));
-    $next_link = $page_num >= 6 ? FALSE : site_url('apply/page/'.($page_num+1));
+    if ($page_num >= 6)
+    {
+      $next_label = 'Submit application';
+      $next_link = site_url('apply/submit');
+    }
+    else
+    {
+      $next_link = site_url('apply/page/'.($page_num+1));
+      $next_label = "Next page";
+    }
 
 
     $data = array('page_num' => $page_num,
                   'max_page' => $max_page,
                   'prev_link' => $prev_link,
-                  'next_link' => $next_link); 
+                  'next_link' => $next_link,
+                  'next_label' => $next_label); 
 
     $this->load->view('apply/header', $data);
     $this->load->view('apply/nav', $data);
@@ -83,6 +93,27 @@ class Apply extends Controller {
   function upload($field)
   {
     // TODO
+  }
+
+  function submit()
+  {
+    $user = $this->_get_current_user();
+    
+    transition_user_to_state($user->id, STATUS_SUBMITTED);
+    $db = new DbConn();
+    $db->exec('update users set submitdate = ? where id = ?',
+              date_create(), $user->id);
+
+    //redirect("apply/success");
+    $this->success();
+  }
+
+  function success()
+  {
+    // Use the standard header/footer to not invoke the auto-save javascript
+    $this->load->view('header');
+    $this->load->view('apply/success');
+    $this->load->view('footer');
   }
 
   function _get_current_user()
