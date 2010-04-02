@@ -2,7 +2,7 @@ P1
 - Admin authentication/authorization
 - Fix notes feature
 - Mail editing interface ported to CI
-- Mail editing interface finished
+- Mail editing interface finished (attachments, labeling)
 - Show what e-mails have been sent to a user
 - Enter confirmed date for user
 - Send password reminder to user
@@ -10,6 +10,7 @@ P1
 - File attachments
 - Validation (required fields)
 - Date fields/date ranges
+- Document deployment process
 
 P2
 - Add/manage admin accounts
@@ -17,3 +18,5 @@ P2
 - Error reporting
 - Local install of YUI?
 - Make deployment scripts easier to manage
+- Figure out what to do about application page markup (HAML vs. HTML)
+- Document application architecture
