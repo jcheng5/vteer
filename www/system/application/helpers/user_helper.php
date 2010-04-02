@@ -60,7 +60,7 @@ function transition_user_to_state($user_id, $newState, $force = false)
 {
   $user = get_user($user_id);
   if (!$user)
-    show_error('Unknown user');
+    throw new RuntimeException('Unknown user');
   $status = $user->status;
 
   if (!$force)
@@ -80,12 +80,12 @@ function transition_user_to_state($user_id, $newState, $force = false)
 
     if (!array_key_exists($status, $transitions))
     {
-      show_error('Unknown starting state ' . $status);
+      throw new RuntimeException('Unknown starting state ' . $status);
     }
 
     if (array_search($newState, $transitions[$status]) === false)
     {
-      show_error('Invalid state transition: ' . $status . '->' . $newState);
+      throw new RuntimeException('Invalid state transition: ' . $status . '->' . $newState);
     }
   }
 
@@ -148,16 +148,16 @@ function merge_data($userid, $jsonData)
 {
   $newData = json_decode($jsonData, true);
   if (is_null($newData))
-    show_error("JSON decoding failed!");
+    throw new RuntimeException("JSON decoding failed!");
 
   $user = get_user($userid);
   if (!$user)
-    show_error("Unknown user $userid");
+    throw new RuntimeException("Unknown user $userid");
   $oldJson = ($user->data && strlen($user->data) > 0) ? $user->data : "{}";
 
   $oldData = json_decode($oldJson, true);
   if (is_null($oldData))
-    show_error("JSON decoding failed!");
+    throw new RuntimeException("JSON decoding failed!");
 
   foreach ($newData as $key => $val)
   {

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Controller for the authenticated part of the application process.
+ * IMPORTANT: All methods must have $this->_get_current_user() in order
+ * to ensure the user is authenticated.
+ */
 class Apply extends Controller
 {
 
@@ -85,7 +90,7 @@ class Apply extends Controller
 
   function apply_js()
   {
-    $this->load->view('apply_js');
+    $this->load->view('apply/apply_js');
   }
 
   function attach($field)

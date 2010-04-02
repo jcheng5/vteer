@@ -37,7 +37,7 @@ class Volunteers extends Controller
 
     $user = get_user($id);
     if (!$user)
-      show_error('User not found');
+      throw new RuntimeException('User not found');
 
     $notes = get_notes($user->id);
 
