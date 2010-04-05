@@ -6,12 +6,13 @@ class Volunteers extends Controller
   function Volunteers()
   {
     parent::Controller();
+    $this->load->library('admin');
+    $this->admin->enforce();
   }
 
   function index()
   {
     $this->load->helper('format');
-    //vt_header('Volunteers');
 
     $users_submitted = get_users_by_state(STATUS_SUBMITTED);
     $users_accepted = get_users_by_state(STATUS_ACCEPTED);
@@ -53,12 +54,40 @@ class Volunteers extends Controller
                         'data' => $data,
                         'notes' => $notes,
                         'user' => $user,
-                        'admin_id' => 0)); // TODO: Use real admin id
+                        'admin_id' => $this->admin->id())); // TODO: Use real admin id
     $this->load->view('admin/footer');
   }
 
-  function acceptreject($id)
+  function acceptreject()
   {
-    // TODO
+    $user_id = $this->input->post('id');
+    $action = $this->input->post('action');
+
+    if ($action != 'accept' && $action != 'reject')
+      throw new RuntimeException("Unknown action: $action");
+    if (!is_numeric($user_id))
+      throw new RuntimeException("Non-numeric id: $user_id");
+
+    if ($action == 'accept')
+      transition_user_to_state($user_id, STATUS_ACCEPTED);
+    else if ($action == 'reject')
+      transition_user_to_state($user_id, STATUS_REJECTED);
+
+    redirect("admin/volunteers/show/$user_id");
+  }
+
+  function addnote()
+  {
+    $this->load->helper('note');
+
+    $user_id = $this->input->post('userid');
+    $source = $this->input->post('source');
+    $contents = $this->input->post('contents');
+
+    $admin_id = $this->admin->id();
+
+    add_note($user_id, $admin_id, $source, $contents);
+
+    redirect("admin/volunteers/show/$user_id");
   }
 }

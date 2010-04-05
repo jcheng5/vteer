@@ -8,5 +8,5 @@
   <script type="text/javascript" src="<?php echo base_url(); ?>static/js/json2.js"></script>
   <?php //$this->load->view('yui'); ?>
 </head>
-<body>
+<body class="narrow">
 <div id="pageframe">

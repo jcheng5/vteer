@@ -49,8 +49,15 @@
 <script type="text/javascript">
   $(function()
   {
-    new YAHOO.widget.Button('btnAccept');
-    new YAHOO.widget.Button('btnReject');
+    var btnAccept = new YAHOO.widget.Button('btnAccept');
+    btnAccept.on('click', function() {
+      return confirm("Are you sure you want to ACCEPT this application?");
+    });
+    var btnReject = new YAHOO.widget.Button('btnReject');
+    btnReject.on('click', function() {
+      return confirm("Are you sure you want to REJECT this application?");
+    });
+    new YAHOO.widget.Button('btnAddNote');    
   });
 </script>
 
@@ -65,7 +72,10 @@
 
 <?php if ($user->status == STATUS_SUBMITTED): ?>
 
-<form action="acceptreject.php" method="POST">
+<?php
+  $this->load->helper('form');
+  echo form_open('admin/volunteers/acceptreject');
+?>
   <input type="hidden" name="id" value="<?php echo $user->id; ?>"
   <button id="btnAccept" type="submit" name="action" value="accept"><h3 style="color: #060">Accept</h3></button>
   <button id="btnReject" type="submit" name="action" value="reject"><h3 style="color: #D00">Reject</h3></button>
@@ -95,11 +105,11 @@
 <?php endwhile; ?>
 
 <div id="addnote">
-  <form action="addnote.php" method="POST">
+  <?php echo form_open('admin/volunteers/addnote'); ?>
     <input type="hidden" name="userid" value="<?php echo $user->id; ?>"/>
     <input type="hidden" name="source" value="Web"/>
     <textarea name="contents" cols="40" rows="6"></textarea><br/>
-    <button type="submit">Add Note</button>
+    <button id="btnAddNote" type="submit">Add Note</button>
   </form>
 </div>
 

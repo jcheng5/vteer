@@ -1,67 +1,51 @@
 body {
   font-family: 'Lucida Grande', 'Lucida Sans Unicode', Tahoma, Helvetica, sans-serif;
-  font-size: 10pt;
+  font-size: 10pt; }
+
+body.narrow {
   padding-left: 20%;
-  padding-right: 20%;
-}
+  padding-right: 20%; }
 
 h2 {
-  margin-top: 0;
-}
+  margin-top: 0; }
 
 h4 {
   font-style: italic;
-  font-weight: normal;
-}
+  font-weight: normal; }
 
 .field {
-  margin-bottom: 1.4em;
-}
+  margin-bottom: 1.4em; }
 
 .section {
   border: 1px solid #CCC;
-  padding: 1em;
-}
+  padding: 1em; }
 
 .section + .section {
-  margin-top: 2em;
-}
+  margin-top: 2em; }
 
 label {
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 label.option {
-  font-weight: normal;
-}
+  font-weight: normal; }
 
 .explain {
-  margin-left: 2em;
-}
+  margin-left: 2em; }
 
 .reference .field {
   margin-left: 2em;
-  margin-bottom: 0.7em;
-}
+  margin-bottom: 0.7em; }
 
 .nav {
   text-align: center;
   margin-top: 1.4em;
-  margin-bottom: 1.2em;
-}
+  margin-bottom: 1.2em; }
+  .nav a {
+    text-decoration: none;
+    color: black; }
+  .nav a.active {
+    color: red; }
 
-.nav a {
-  text-decoration: none;
-  color: black;
-}
-
-.nav a.active {
-  color: red;
-}
-
-.error {
-  display: block;
-}
 .error div {
   float: left;
   font-weight: bold;
@@ -69,5 +53,4 @@ label.option {
   border: red dotted 1px;
   background-color: #ffc;
   padding: 0.6em;
-  margin-bottom: 1em;
-}
+  margin-bottom: 1em; }
