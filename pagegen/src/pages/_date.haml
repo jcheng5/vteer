@@ -1,12 +1,4 @@
 .field
   = label(id, label)
   %br
-  %input(name=id id=id)
-  :javascript
-    load_handlers.push(function (info) {
-      var val = info['#{id}'] || '';
-      $('##{id}').get(0).value = val;
-    });
-    save_handlers.push(function (info) {
-      info['#{id}'] = $('##{id}').get(0).value;
-    });
+  = date_raw(id, -100)

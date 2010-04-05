@@ -1,0 +1,76 @@
+%select{ :name => "#{id}_month", :id => "#{id}_month" }
+  %option [Month]
+  %option January
+  %option February
+  %option March
+  %option April
+  %option May
+  %option June
+  %option July
+  %option August
+  %option September
+  %option October
+  %option November
+  %option December
+%select{ :name => "#{id}_day", :id => "#{id}_day" }
+  %option [Day]
+  - (1..31).each do |i|
+    %option= i
+%select{ :name => "#{id}_year", :id => "#{id}_year" }
+  %option [Year]
+  - if year_offset < 0
+    - Date.today.year.downto(Date.today.year + year_offset) do |i|
+      %option= i
+  - else
+    - Date.today.year.upto(Date.today.year + year_offset) do |i|
+      %option= i
+:javascript
+  load_handlers.push(function (info) {
+    var year = $('##{id}_year').get(0);
+    var month = $('##{id}_month').get(0);
+    var day = $('##{id}_day').get(0);
+    
+    var value = info['#{id}'];
+    var regexp = /^([a-z]+) ([0-9]+), ([0-9]+)$/i
+
+    if (!value || !value.match(regexp)) {
+      year.selectedIndex = 0;
+      month.selectedIndex = 0;
+      day.selectedIndex = 0;
+    }
+    else {
+      var result = regexp.exec(value);
+      var monthStr = result[1];
+      var dayStr = result[2];
+      var yearStr = result[3];
+      
+      function restore(select, val) {
+        for (var i = 0; i < select.options.length; i++)
+          if (select.options[i].value == val) {
+            select.selectedIndex = i;
+            break;
+          }
+      }
+      
+      restore(year, yearStr);
+      restore(month, monthStr);
+      restore(day, dayStr);
+    }
+    
+  });
+  save_handlers.push(function (info) {
+    var year = $('##{id}_year').get(0);
+    var month = $('##{id}_month').get(0);
+    var day = $('##{id}_day').get(0);
+    
+    if (year.selectedIndex == 0 ^ month.selectedIndex == 0 ^ day.selectedIndex == 0) {
+      // TODO: show validation error
+      info['#{id}'] == null;
+    }
+    else if (year.selectedIndex == 0) {
+      info['#{id}'] == null;
+    }
+    else {
+      info['#{id}'] = month.value + " " + day.value + ", " + year.value;
+    }
+  });

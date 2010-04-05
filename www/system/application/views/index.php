@@ -23,7 +23,7 @@ if (!isset($login_error))
   <tr>
     <td valign="top" style="padding-right: 6em">
 
-      <h3><strong>Let's get started!</strong></h3>
+    <h3><strong>Let's get started!</strong></h3>
     <?php $this->load->view('error', array('error' => $register_error)); ?>
 
     <?php echo form_open('welcome/register'); ?>
@@ -67,7 +67,7 @@ if (!isset($login_error))
     <?php echo form_close(); ?>
 
     </td>
-    <td valign="top">
+    <td valign="top" nowrap="nowrap">
 
       <h3>Or, <strong>login to continue</strong> an application.</h3>
 

@@ -11,6 +11,12 @@ module ApplicationHelper
     partial('date', :locals => { :id => id, :label => label })    
   end
   
+  # year_offset determines the range of years to show the user--from now to
+  # ([current year] + year_offset). It can be positive or negative.
+  def date_raw(id, year_offset)
+    partial('date_raw', :locals => { :id => id, :year_offset => year_offset })    
+  end
+  
   def radio(id, label, options)
     partial('radio', :locals => { :id => id, :label => label, :options => options })
   end

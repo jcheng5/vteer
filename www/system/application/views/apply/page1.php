@@ -5,15 +5,209 @@
       Date of birth
     </label>
     <br />
-    <input id="dob" name="dob" />
+    <select id="dob_month" name="dob_month">
+      <option>[Month]</option>
+      <option>January</option>
+      <option>February</option>
+      <option>March</option>
+      <option>April</option>
+      <option>May</option>
+      <option>June</option>
+      <option>July</option>
+      <option>August</option>
+      <option>September</option>
+      <option>October</option>
+      <option>November</option>
+      <option>December</option>
+    </select>
+    <select id="dob_day" name="dob_day">
+      <option>[Day]</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
+      <option>13</option>
+      <option>14</option>
+      <option>15</option>
+      <option>16</option>
+      <option>17</option>
+      <option>18</option>
+      <option>19</option>
+      <option>20</option>
+      <option>21</option>
+      <option>22</option>
+      <option>23</option>
+      <option>24</option>
+      <option>25</option>
+      <option>26</option>
+      <option>27</option>
+      <option>28</option>
+      <option>29</option>
+      <option>30</option>
+      <option>31</option>
+    </select>
+    <select id="dob_year" name="dob_year">
+      <option>[Year]</option>
+      <option>2010</option>
+      <option>2009</option>
+      <option>2008</option>
+      <option>2007</option>
+      <option>2006</option>
+      <option>2005</option>
+      <option>2004</option>
+      <option>2003</option>
+      <option>2002</option>
+      <option>2001</option>
+      <option>2000</option>
+      <option>1999</option>
+      <option>1998</option>
+      <option>1997</option>
+      <option>1996</option>
+      <option>1995</option>
+      <option>1994</option>
+      <option>1993</option>
+      <option>1992</option>
+      <option>1991</option>
+      <option>1990</option>
+      <option>1989</option>
+      <option>1988</option>
+      <option>1987</option>
+      <option>1986</option>
+      <option>1985</option>
+      <option>1984</option>
+      <option>1983</option>
+      <option>1982</option>
+      <option>1981</option>
+      <option>1980</option>
+      <option>1979</option>
+      <option>1978</option>
+      <option>1977</option>
+      <option>1976</option>
+      <option>1975</option>
+      <option>1974</option>
+      <option>1973</option>
+      <option>1972</option>
+      <option>1971</option>
+      <option>1970</option>
+      <option>1969</option>
+      <option>1968</option>
+      <option>1967</option>
+      <option>1966</option>
+      <option>1965</option>
+      <option>1964</option>
+      <option>1963</option>
+      <option>1962</option>
+      <option>1961</option>
+      <option>1960</option>
+      <option>1959</option>
+      <option>1958</option>
+      <option>1957</option>
+      <option>1956</option>
+      <option>1955</option>
+      <option>1954</option>
+      <option>1953</option>
+      <option>1952</option>
+      <option>1951</option>
+      <option>1950</option>
+      <option>1949</option>
+      <option>1948</option>
+      <option>1947</option>
+      <option>1946</option>
+      <option>1945</option>
+      <option>1944</option>
+      <option>1943</option>
+      <option>1942</option>
+      <option>1941</option>
+      <option>1940</option>
+      <option>1939</option>
+      <option>1938</option>
+      <option>1937</option>
+      <option>1936</option>
+      <option>1935</option>
+      <option>1934</option>
+      <option>1933</option>
+      <option>1932</option>
+      <option>1931</option>
+      <option>1930</option>
+      <option>1929</option>
+      <option>1928</option>
+      <option>1927</option>
+      <option>1926</option>
+      <option>1925</option>
+      <option>1924</option>
+      <option>1923</option>
+      <option>1922</option>
+      <option>1921</option>
+      <option>1920</option>
+      <option>1919</option>
+      <option>1918</option>
+      <option>1917</option>
+      <option>1916</option>
+      <option>1915</option>
+      <option>1914</option>
+      <option>1913</option>
+      <option>1912</option>
+      <option>1911</option>
+      <option>1910</option>
+    </select>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
-          var val = info['dob'] || '';
-          $('#dob').get(0).value = val;
+          var year = $('#dob_year').get(0);
+          var month = $('#dob_month').get(0);
+          var day = $('#dob_day').get(0);
+          
+          var value = info['dob'];
+          var regexp = /^([a-z]+) ([0-9]+), ([0-9]+)$/i
+        
+          if (!value || !value.match(regexp)) {
+            year.selectedIndex = 0;
+            month.selectedIndex = 0;
+            day.selectedIndex = 0;
+          }
+          else {
+            var result = regexp.exec(value);
+            var monthStr = result[1];
+            var dayStr = result[2];
+            var yearStr = result[3];
+            
+            function restore(select, val) {
+              for (var i = 0; i < select.options.length; i++)
+                if (select.options[i].value == val) {
+                  select.selectedIndex = i;
+                  break;
+                }
+            }
+            
+            restore(year, yearStr);
+            restore(month, monthStr);
+            restore(day, dayStr);
+          }
+          
         });
         save_handlers.push(function (info) {
-          info['dob'] = $('#dob').get(0).value;
+          var year = $('#dob_year').get(0);
+          var month = $('#dob_month').get(0);
+          var day = $('#dob_day').get(0);
+          
+          if (year.selectedIndex == 0 ^ month.selectedIndex == 0 ^ day.selectedIndex == 0) {
+            // TODO: show validation error
+            info['dob'] == null;
+          }
+          else if (year.selectedIndex == 0) {
+            info['dob'] == null;
+          }
+          else {
+            info['dob'] = month.value + " " + day.value + ", " + year.value;
+          }
         });
       //]]>
     </script>
@@ -255,17 +449,223 @@
       First preference of dates
     </label>
     <br />
-    <input id="dates1-from" name="dates1-from" />
-    <input id="dates1-to" name="dates1-to" />
+    From
+    <select id="dates1-from_month" name="dates1-from_month">
+      <option>[Month]</option>
+      <option>January</option>
+      <option>February</option>
+      <option>March</option>
+      <option>April</option>
+      <option>May</option>
+      <option>June</option>
+      <option>July</option>
+      <option>August</option>
+      <option>September</option>
+      <option>October</option>
+      <option>November</option>
+      <option>December</option>
+    </select>
+    <select id="dates1-from_day" name="dates1-from_day">
+      <option>[Day]</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
+      <option>13</option>
+      <option>14</option>
+      <option>15</option>
+      <option>16</option>
+      <option>17</option>
+      <option>18</option>
+      <option>19</option>
+      <option>20</option>
+      <option>21</option>
+      <option>22</option>
+      <option>23</option>
+      <option>24</option>
+      <option>25</option>
+      <option>26</option>
+      <option>27</option>
+      <option>28</option>
+      <option>29</option>
+      <option>30</option>
+      <option>31</option>
+    </select>
+    <select id="dates1-from_year" name="dates1-from_year">
+      <option>[Year]</option>
+      <option>2010</option>
+      <option>2011</option>
+      <option>2012</option>
+      <option>2013</option>
+    </select>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
-          var val = info['dates1'] || [null, null];
-          $('#dates1-from').get(0).value = val[0] || '';
-          $('#dates1-to').get(0).value = val[1] || '';
+          var year = $('#dates1-from_year').get(0);
+          var month = $('#dates1-from_month').get(0);
+          var day = $('#dates1-from_day').get(0);
+          
+          var value = info['dates1-from'];
+          var regexp = /^([a-z]+) ([0-9]+), ([0-9]+)$/i
+        
+          if (!value || !value.match(regexp)) {
+            year.selectedIndex = 0;
+            month.selectedIndex = 0;
+            day.selectedIndex = 0;
+          }
+          else {
+            var result = regexp.exec(value);
+            var monthStr = result[1];
+            var dayStr = result[2];
+            var yearStr = result[3];
+            
+            function restore(select, val) {
+              for (var i = 0; i < select.options.length; i++)
+                if (select.options[i].value == val) {
+                  select.selectedIndex = i;
+                  break;
+                }
+            }
+            
+            restore(year, yearStr);
+            restore(month, monthStr);
+            restore(day, dayStr);
+          }
+          
         });
         save_handlers.push(function (info) {
-          info['dates1'] = [$('#dates1-from').get(0).value, $('#dates1-to').get(0).value];
+          var year = $('#dates1-from_year').get(0);
+          var month = $('#dates1-from_month').get(0);
+          var day = $('#dates1-from_day').get(0);
+          
+          if (year.selectedIndex == 0 ^ month.selectedIndex == 0 ^ day.selectedIndex == 0) {
+            // TODO: show validation error
+            info['dates1-from'] == null;
+          }
+          else if (year.selectedIndex == 0) {
+            info['dates1-from'] == null;
+          }
+          else {
+            info['dates1-from'] = month.value + " " + day.value + ", " + year.value;
+          }
+        });
+      //]]>
+    </script>
+    to
+    <select id="dates1-to_month" name="dates1-to_month">
+      <option>[Month]</option>
+      <option>January</option>
+      <option>February</option>
+      <option>March</option>
+      <option>April</option>
+      <option>May</option>
+      <option>June</option>
+      <option>July</option>
+      <option>August</option>
+      <option>September</option>
+      <option>October</option>
+      <option>November</option>
+      <option>December</option>
+    </select>
+    <select id="dates1-to_day" name="dates1-to_day">
+      <option>[Day]</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
+      <option>13</option>
+      <option>14</option>
+      <option>15</option>
+      <option>16</option>
+      <option>17</option>
+      <option>18</option>
+      <option>19</option>
+      <option>20</option>
+      <option>21</option>
+      <option>22</option>
+      <option>23</option>
+      <option>24</option>
+      <option>25</option>
+      <option>26</option>
+      <option>27</option>
+      <option>28</option>
+      <option>29</option>
+      <option>30</option>
+      <option>31</option>
+    </select>
+    <select id="dates1-to_year" name="dates1-to_year">
+      <option>[Year]</option>
+      <option>2010</option>
+      <option>2011</option>
+      <option>2012</option>
+      <option>2013</option>
+    </select>
+    <script type="text/javascript">
+      //<![CDATA[
+        load_handlers.push(function (info) {
+          var year = $('#dates1-to_year').get(0);
+          var month = $('#dates1-to_month').get(0);
+          var day = $('#dates1-to_day').get(0);
+          
+          var value = info['dates1-to'];
+          var regexp = /^([a-z]+) ([0-9]+), ([0-9]+)$/i
+        
+          if (!value || !value.match(regexp)) {
+            year.selectedIndex = 0;
+            month.selectedIndex = 0;
+            day.selectedIndex = 0;
+          }
+          else {
+            var result = regexp.exec(value);
+            var monthStr = result[1];
+            var dayStr = result[2];
+            var yearStr = result[3];
+            
+            function restore(select, val) {
+              for (var i = 0; i < select.options.length; i++)
+                if (select.options[i].value == val) {
+                  select.selectedIndex = i;
+                  break;
+                }
+            }
+            
+            restore(year, yearStr);
+            restore(month, monthStr);
+            restore(day, dayStr);
+          }
+          
+        });
+        save_handlers.push(function (info) {
+          var year = $('#dates1-to_year').get(0);
+          var month = $('#dates1-to_month').get(0);
+          var day = $('#dates1-to_day').get(0);
+          
+          if (year.selectedIndex == 0 ^ month.selectedIndex == 0 ^ day.selectedIndex == 0) {
+            // TODO: show validation error
+            info['dates1-to'] == null;
+          }
+          else if (year.selectedIndex == 0) {
+            info['dates1-to'] == null;
+          }
+          else {
+            info['dates1-to'] = month.value + " " + day.value + ", " + year.value;
+          }
         });
       //]]>
     </script>
@@ -275,17 +675,223 @@
       Second preference of dates
     </label>
     <br />
-    <input id="dates2-from" name="dates2-from" />
-    <input id="dates2-to" name="dates2-to" />
+    From
+    <select id="dates2-from_month" name="dates2-from_month">
+      <option>[Month]</option>
+      <option>January</option>
+      <option>February</option>
+      <option>March</option>
+      <option>April</option>
+      <option>May</option>
+      <option>June</option>
+      <option>July</option>
+      <option>August</option>
+      <option>September</option>
+      <option>October</option>
+      <option>November</option>
+      <option>December</option>
+    </select>
+    <select id="dates2-from_day" name="dates2-from_day">
+      <option>[Day]</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
+      <option>13</option>
+      <option>14</option>
+      <option>15</option>
+      <option>16</option>
+      <option>17</option>
+      <option>18</option>
+      <option>19</option>
+      <option>20</option>
+      <option>21</option>
+      <option>22</option>
+      <option>23</option>
+      <option>24</option>
+      <option>25</option>
+      <option>26</option>
+      <option>27</option>
+      <option>28</option>
+      <option>29</option>
+      <option>30</option>
+      <option>31</option>
+    </select>
+    <select id="dates2-from_year" name="dates2-from_year">
+      <option>[Year]</option>
+      <option>2010</option>
+      <option>2011</option>
+      <option>2012</option>
+      <option>2013</option>
+    </select>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
-          var val = info['dates2'] || [null, null];
-          $('#dates2-from').get(0).value = val[0] || '';
-          $('#dates2-to').get(0).value = val[1] || '';
+          var year = $('#dates2-from_year').get(0);
+          var month = $('#dates2-from_month').get(0);
+          var day = $('#dates2-from_day').get(0);
+          
+          var value = info['dates2-from'];
+          var regexp = /^([a-z]+) ([0-9]+), ([0-9]+)$/i
+        
+          if (!value || !value.match(regexp)) {
+            year.selectedIndex = 0;
+            month.selectedIndex = 0;
+            day.selectedIndex = 0;
+          }
+          else {
+            var result = regexp.exec(value);
+            var monthStr = result[1];
+            var dayStr = result[2];
+            var yearStr = result[3];
+            
+            function restore(select, val) {
+              for (var i = 0; i < select.options.length; i++)
+                if (select.options[i].value == val) {
+                  select.selectedIndex = i;
+                  break;
+                }
+            }
+            
+            restore(year, yearStr);
+            restore(month, monthStr);
+            restore(day, dayStr);
+          }
+          
         });
         save_handlers.push(function (info) {
-          info['dates2'] = [$('#dates2-from').get(0).value, $('#dates2-to').get(0).value];
+          var year = $('#dates2-from_year').get(0);
+          var month = $('#dates2-from_month').get(0);
+          var day = $('#dates2-from_day').get(0);
+          
+          if (year.selectedIndex == 0 ^ month.selectedIndex == 0 ^ day.selectedIndex == 0) {
+            // TODO: show validation error
+            info['dates2-from'] == null;
+          }
+          else if (year.selectedIndex == 0) {
+            info['dates2-from'] == null;
+          }
+          else {
+            info['dates2-from'] = month.value + " " + day.value + ", " + year.value;
+          }
+        });
+      //]]>
+    </script>
+    to
+    <select id="dates2-to_month" name="dates2-to_month">
+      <option>[Month]</option>
+      <option>January</option>
+      <option>February</option>
+      <option>March</option>
+      <option>April</option>
+      <option>May</option>
+      <option>June</option>
+      <option>July</option>
+      <option>August</option>
+      <option>September</option>
+      <option>October</option>
+      <option>November</option>
+      <option>December</option>
+    </select>
+    <select id="dates2-to_day" name="dates2-to_day">
+      <option>[Day]</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
+      <option>13</option>
+      <option>14</option>
+      <option>15</option>
+      <option>16</option>
+      <option>17</option>
+      <option>18</option>
+      <option>19</option>
+      <option>20</option>
+      <option>21</option>
+      <option>22</option>
+      <option>23</option>
+      <option>24</option>
+      <option>25</option>
+      <option>26</option>
+      <option>27</option>
+      <option>28</option>
+      <option>29</option>
+      <option>30</option>
+      <option>31</option>
+    </select>
+    <select id="dates2-to_year" name="dates2-to_year">
+      <option>[Year]</option>
+      <option>2010</option>
+      <option>2011</option>
+      <option>2012</option>
+      <option>2013</option>
+    </select>
+    <script type="text/javascript">
+      //<![CDATA[
+        load_handlers.push(function (info) {
+          var year = $('#dates2-to_year').get(0);
+          var month = $('#dates2-to_month').get(0);
+          var day = $('#dates2-to_day').get(0);
+          
+          var value = info['dates2-to'];
+          var regexp = /^([a-z]+) ([0-9]+), ([0-9]+)$/i
+        
+          if (!value || !value.match(regexp)) {
+            year.selectedIndex = 0;
+            month.selectedIndex = 0;
+            day.selectedIndex = 0;
+          }
+          else {
+            var result = regexp.exec(value);
+            var monthStr = result[1];
+            var dayStr = result[2];
+            var yearStr = result[3];
+            
+            function restore(select, val) {
+              for (var i = 0; i < select.options.length; i++)
+                if (select.options[i].value == val) {
+                  select.selectedIndex = i;
+                  break;
+                }
+            }
+            
+            restore(year, yearStr);
+            restore(month, monthStr);
+            restore(day, dayStr);
+          }
+          
+        });
+        save_handlers.push(function (info) {
+          var year = $('#dates2-to_year').get(0);
+          var month = $('#dates2-to_month').get(0);
+          var day = $('#dates2-to_day').get(0);
+          
+          if (year.selectedIndex == 0 ^ month.selectedIndex == 0 ^ day.selectedIndex == 0) {
+            // TODO: show validation error
+            info['dates2-to'] == null;
+          }
+          else if (year.selectedIndex == 0) {
+            info['dates2-to'] == null;
+          }
+          else {
+            info['dates2-to'] = month.value + " " + day.value + ", " + year.value;
+          }
         });
       //]]>
     </script>
@@ -295,17 +901,223 @@
       Third preference of dates
     </label>
     <br />
-    <input id="dates3-from" name="dates3-from" />
-    <input id="dates3-to" name="dates3-to" />
+    From
+    <select id="dates3-from_month" name="dates3-from_month">
+      <option>[Month]</option>
+      <option>January</option>
+      <option>February</option>
+      <option>March</option>
+      <option>April</option>
+      <option>May</option>
+      <option>June</option>
+      <option>July</option>
+      <option>August</option>
+      <option>September</option>
+      <option>October</option>
+      <option>November</option>
+      <option>December</option>
+    </select>
+    <select id="dates3-from_day" name="dates3-from_day">
+      <option>[Day]</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
+      <option>13</option>
+      <option>14</option>
+      <option>15</option>
+      <option>16</option>
+      <option>17</option>
+      <option>18</option>
+      <option>19</option>
+      <option>20</option>
+      <option>21</option>
+      <option>22</option>
+      <option>23</option>
+      <option>24</option>
+      <option>25</option>
+      <option>26</option>
+      <option>27</option>
+      <option>28</option>
+      <option>29</option>
+      <option>30</option>
+      <option>31</option>
+    </select>
+    <select id="dates3-from_year" name="dates3-from_year">
+      <option>[Year]</option>
+      <option>2010</option>
+      <option>2011</option>
+      <option>2012</option>
+      <option>2013</option>
+    </select>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
-          var val = info['dates3'] || [null, null];
-          $('#dates3-from').get(0).value = val[0] || '';
-          $('#dates3-to').get(0).value = val[1] || '';
+          var year = $('#dates3-from_year').get(0);
+          var month = $('#dates3-from_month').get(0);
+          var day = $('#dates3-from_day').get(0);
+          
+          var value = info['dates3-from'];
+          var regexp = /^([a-z]+) ([0-9]+), ([0-9]+)$/i
+        
+          if (!value || !value.match(regexp)) {
+            year.selectedIndex = 0;
+            month.selectedIndex = 0;
+            day.selectedIndex = 0;
+          }
+          else {
+            var result = regexp.exec(value);
+            var monthStr = result[1];
+            var dayStr = result[2];
+            var yearStr = result[3];
+            
+            function restore(select, val) {
+              for (var i = 0; i < select.options.length; i++)
+                if (select.options[i].value == val) {
+                  select.selectedIndex = i;
+                  break;
+                }
+            }
+            
+            restore(year, yearStr);
+            restore(month, monthStr);
+            restore(day, dayStr);
+          }
+          
         });
         save_handlers.push(function (info) {
-          info['dates3'] = [$('#dates3-from').get(0).value, $('#dates3-to').get(0).value];
+          var year = $('#dates3-from_year').get(0);
+          var month = $('#dates3-from_month').get(0);
+          var day = $('#dates3-from_day').get(0);
+          
+          if (year.selectedIndex == 0 ^ month.selectedIndex == 0 ^ day.selectedIndex == 0) {
+            // TODO: show validation error
+            info['dates3-from'] == null;
+          }
+          else if (year.selectedIndex == 0) {
+            info['dates3-from'] == null;
+          }
+          else {
+            info['dates3-from'] = month.value + " " + day.value + ", " + year.value;
+          }
+        });
+      //]]>
+    </script>
+    to
+    <select id="dates3-to_month" name="dates3-to_month">
+      <option>[Month]</option>
+      <option>January</option>
+      <option>February</option>
+      <option>March</option>
+      <option>April</option>
+      <option>May</option>
+      <option>June</option>
+      <option>July</option>
+      <option>August</option>
+      <option>September</option>
+      <option>October</option>
+      <option>November</option>
+      <option>December</option>
+    </select>
+    <select id="dates3-to_day" name="dates3-to_day">
+      <option>[Day]</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
+      <option>13</option>
+      <option>14</option>
+      <option>15</option>
+      <option>16</option>
+      <option>17</option>
+      <option>18</option>
+      <option>19</option>
+      <option>20</option>
+      <option>21</option>
+      <option>22</option>
+      <option>23</option>
+      <option>24</option>
+      <option>25</option>
+      <option>26</option>
+      <option>27</option>
+      <option>28</option>
+      <option>29</option>
+      <option>30</option>
+      <option>31</option>
+    </select>
+    <select id="dates3-to_year" name="dates3-to_year">
+      <option>[Year]</option>
+      <option>2010</option>
+      <option>2011</option>
+      <option>2012</option>
+      <option>2013</option>
+    </select>
+    <script type="text/javascript">
+      //<![CDATA[
+        load_handlers.push(function (info) {
+          var year = $('#dates3-to_year').get(0);
+          var month = $('#dates3-to_month').get(0);
+          var day = $('#dates3-to_day').get(0);
+          
+          var value = info['dates3-to'];
+          var regexp = /^([a-z]+) ([0-9]+), ([0-9]+)$/i
+        
+          if (!value || !value.match(regexp)) {
+            year.selectedIndex = 0;
+            month.selectedIndex = 0;
+            day.selectedIndex = 0;
+          }
+          else {
+            var result = regexp.exec(value);
+            var monthStr = result[1];
+            var dayStr = result[2];
+            var yearStr = result[3];
+            
+            function restore(select, val) {
+              for (var i = 0; i < select.options.length; i++)
+                if (select.options[i].value == val) {
+                  select.selectedIndex = i;
+                  break;
+                }
+            }
+            
+            restore(year, yearStr);
+            restore(month, monthStr);
+            restore(day, dayStr);
+          }
+          
+        });
+        save_handlers.push(function (info) {
+          var year = $('#dates3-to_year').get(0);
+          var month = $('#dates3-to_month').get(0);
+          var day = $('#dates3-to_day').get(0);
+          
+          if (year.selectedIndex == 0 ^ month.selectedIndex == 0 ^ day.selectedIndex == 0) {
+            // TODO: show validation error
+            info['dates3-to'] == null;
+          }
+          else if (year.selectedIndex == 0) {
+            info['dates3-to'] == null;
+          }
+          else {
+            info['dates3-to'] = month.value + " " + day.value + ", " + year.value;
+          }
         });
       //]]>
     </script>

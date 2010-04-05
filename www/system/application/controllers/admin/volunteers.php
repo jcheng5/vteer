@@ -16,11 +16,13 @@ class Volunteers extends Controller
     $users_submitted = get_users_by_state(STATUS_SUBMITTED);
     $users_accepted = get_users_by_state(STATUS_ACCEPTED);
     $users_rejected = get_users_by_state(STATUS_REJECTED);
+    $users_draft = get_users_by_state(STATUS_DRAFT);
 
-    $user_groups = array($users_submitted, $users_accepted, $users_rejected);
+    $user_groups = array($users_submitted, $users_accepted, $users_rejected, $users_draft);
     $titles = array('Applicants needing review',
       'Applicants that have been accepted',
-      'Applicants that have been rejected');
+      'Applicants that have been rejected',
+      'Applicants that have not yet submitted');
 
 
     $this->load->view('admin/header');
