@@ -1,9 +1,8 @@
 <!-- Configuration URL:
-http://developer.yahoo.com/yui/articles/hosting/?base&button&calendar&MIN&nocombine&basepath&http://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/&google
+http://developer.yahoo.com/yui/articles/hosting/?button&calendar&MIN&nocombine&basepath&http://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/&google
 -->
 
 <!-- Individual YUI CSS files -->
-<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/base/base-min.css">
 <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/button/assets/skins/sam/button.css">
 <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/calendar/assets/skins/sam/calendar.css">
 <!-- Individual YUI JS files -->
