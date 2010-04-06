@@ -27,18 +27,42 @@ function format_datetime_ago($datetime)
   return format_duration($seconds_ago) . " ago";
 }
 
-function format_value($value)
+function render_field($id, $data, $userId)
+{
+  $type_hint = FALSE;
+
+  $result = preg_split('/\./', $id);
+  if (count($result) > 1)
+  {
+    $id = $result[0];
+    $type_hint = $result[1];
+  }
+
+  if (!isset($data[$id]))
+    return format_value(NULL);
+
+  if ($type_hint == 'file')
+  {
+    return anchor("admin/volunteers/download/$userId/$id",
+                  $data[$id]['name'],
+                  array('target' => '_blank'));
+  }
+
+  return format_value($data[$id], $type_hint);
+}
+
+function format_value($value, $type_hint = FALSE)
 {
   if (is_null($value) || $value === '')
   {
-    return '<em>(blank)</em>';
+    return '<span class="blank">(blank)</span>';
   }
   else if (is_array($value))
   {
     // dates or checkboxes
     if (count($value) == 0)
     {
-      return '<em>(blank)</em>';
+      return '<span class="blank">(blank)</span>';
     }
     $str_val = '';
     $delim = '';

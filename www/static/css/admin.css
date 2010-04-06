@@ -9,3 +9,7 @@ div#pageframe {
 .yui-button a {
    outline: none;
 }
+
+span.blank {
+  color: #ccc;
+}

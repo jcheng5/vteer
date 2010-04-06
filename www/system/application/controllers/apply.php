@@ -186,14 +186,21 @@ class Apply extends Controller
       show_error("File not found", 404);
   }
 
-  function _get_current_user()
+  function _get_current_user($rpc = FALSE)
   {
     $userid = $this->session->userdata('userid');
-    if (!$userid)
-      throw new RuntimeException("User ID was not found");
-    $user = get_user((int) $userid);
-    if (!$user)
-      throw new RuntimeException("User ID was not found");
+    if (!$userid || !($user = get_user((int) $userid)))
+    {
+      if ($rpc)
+        throw new RuntimeException("User ID was not found");
+      else
+      {
+        redirect('welcome');
+        // TODO: Set flashdata?
+        exit;
+      }
+    }
+
     return $user;
   }
 }

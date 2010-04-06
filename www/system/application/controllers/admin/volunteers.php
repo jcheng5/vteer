@@ -23,7 +23,7 @@ class Volunteers extends Controller
     $titles = array('Applicants needing review',
       'Applicants that have been accepted',
       'Applicants that have been rejected',
-      'Applicants that have not yet submitted');
+      'Applicants that have not yet been submitted');
 
 
     $this->load->view('admin/header');
@@ -37,6 +37,7 @@ class Volunteers extends Controller
   {
     $this->load->helper('note');
     $this->load->helper('format');
+    $this->load->helper('form');
 
     $user = get_user($id);
     if (!$user)
@@ -89,5 +90,11 @@ class Volunteers extends Controller
     add_note($user_id, $admin_id, $source, $contents);
 
     redirect("admin/volunteers/show/$user_id");
+  }
+
+  function download($userId, $fieldId)
+  {
+    if (!download_file($userId, $fieldId))
+      show_error("File not found", 404);
   }
 }

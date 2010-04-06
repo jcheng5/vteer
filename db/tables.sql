@@ -4,7 +4,7 @@
 #
 # Host: localhost (MySQL 5.1.38)
 # Database: vteer_dev
-# Generation Time: 2010-03-26 01:47:45 -0700
+# Generation Time: 2010-04-05 21:02:36 -0700
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,8 +27,9 @@ CREATE TABLE `admins` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `name` varchar(100) NOT NULL,
+  `token` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 
 
@@ -79,7 +80,7 @@ CREATE TABLE `mails_scheduled` (
   KEY `IDX_USERID` (`userid`),
   KEY `IDX_MAILID` (`mailid`),
   KEY `IDX_DUE` (`due`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 
 
@@ -93,7 +94,7 @@ CREATE TABLE `mails_sent` (
   `userid` int(11) DEFAULT NULL,
   `templateverid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 
 
@@ -111,7 +112,7 @@ CREATE TABLE `notes` (
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_USERID` (`userid`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 
 
@@ -137,7 +138,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `IDX_EMAIL` (`email`),
   UNIQUE KEY `IDX_FACEBOOKID` (`facebookid`),
   KEY `IDX_STATUS` (`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 
 

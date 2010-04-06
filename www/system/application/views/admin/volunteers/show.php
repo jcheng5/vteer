@@ -126,7 +126,7 @@
       <?php echo htmlspecialchars($label); ?>
       </div>
       <div class="value">
-      <?php echo format_value($data[$id]); ?>
+      <?php echo render_field($id, $data, $user->id); ?>
       </div>
     </div>
   <?php endforeach; ?>
