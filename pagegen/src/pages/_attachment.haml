@@ -1,16 +1,16 @@
 -require 'cgi'
 .field
   - if label
-    = label(id, label)
+    = label(id, label, :required => required)
     %br
     
-  %div{:id => "#{id}-nofile"}
+  %div.nofile{:id => "#{id}-nofile"}
     %span
       %i (None attached)
     %button{:id => "#{id}-attach", :type => 'button'}
       Attach File
       
-  %div{:id => "#{id}-hasfile"}
+  %div.hasfile{:id => "#{id}-hasfile"}
     %a{:id => "#{id}-link", :href => "#", :target => '_blank'}
     %button{:id => "#{id}-remove", :type => 'button', :onclick => "javascript:if (detach_file('#{id}')) {$('##{id}-nofile').get(0).style.display = 'inline'; $('##{id}-hasfile').get(0).style.display = 'none'; }"}
       Remove File

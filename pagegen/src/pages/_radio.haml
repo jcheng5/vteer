@@ -1,10 +1,10 @@
 .field
   - if label
-    = label(id, label)
+    = label(id, label, :required => required)
     %br
   - options.each_with_index do |option, i|
     %input{:type => 'radio', :name => id, :id => "#{id}#{i}", :value => option}
-    = label("#{id}#{i}", option, 'option')
+    = label("#{id}#{i}", option, :class_name => 'option')
   :javascript
     load_handlers.push(function (info, form) {
       var val = info['#{id}'];
@@ -27,3 +27,4 @@
       }
       info['#{id}'] = value;
     });
+  = default_validation(id, required)

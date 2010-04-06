@@ -1,4 +1,5 @@
 .field
-  = label(id, label)
+  = label(id, label, :required => required)
   %br
   = date_raw(id, -100)
+  = default_validation(id, required)

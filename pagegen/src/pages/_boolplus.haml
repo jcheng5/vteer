@@ -1,11 +1,11 @@
 .field
   - if label
-    = label(id, label)
+    = label(id, label, :required => required)
     %br
   %input{:type => 'radio', :name => id, :id => "#{id}-yes", :value => 'Yes', :onclick => "syncExplain('#{id}')"}
-  = label("#{id}-yes", 'Yes', 'option')
+  = label("#{id}-yes", 'Yes', :class_name => 'option')
   %input{:type => 'radio', :name => id, :id => "#{id}-no", :value => 'No', :onclick => "syncExplain('#{id}')"}
-  = label("#{id}-no", 'No', 'option')
+  = label("#{id}-no", 'No', :class_name => 'option')
   .explain{:id => "#{id}-explaincontainer"}
     = textarea_med("#{id}-explain", "If yes, please explain")
   
@@ -27,3 +27,5 @@
       
       info['#{id}'] = value;
     });
+  = default_validation(id, required)
+  / TODO: Make Explanation field required if Yes is answered

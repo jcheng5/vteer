@@ -1,7 +1,18 @@
 .field
-  = label("#{id}-from", label)
+  = label("#{id}-from", label, :required => required)
   %br
   From
   = date_raw("#{id}-from", 3)
   to
   = date_raw("#{id}-to", 3)
+  - if required
+    :javascript
+      validation_handlers.push(function(info) {
+        if (!has_value(info, "#{id}-from") || !has_value(info, "#{id}-to"))
+        {
+          error_field_required("#{id}-from");
+          return false;
+        }
+        else
+          return true;
+      });

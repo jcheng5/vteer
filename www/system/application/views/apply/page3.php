@@ -17,6 +17,7 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="churchaddress">
@@ -35,6 +36,7 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="churchphone">
@@ -53,6 +55,7 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="pastor">
@@ -71,6 +74,7 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="attendance">
@@ -89,6 +93,7 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="involvement">
@@ -107,6 +112,7 @@
         });
       //]]>
     </script>
+    
   </div>
 </div>
 <div class="section">
@@ -142,6 +148,7 @@
             });
           //]]>
         </script>
+        
       </div>
     </div>
     <script type="text/javascript">
@@ -165,6 +172,8 @@
         });
       //]]>
     </script>
+    
+    <!-- TODO: Make Explanation field required if Yes is answered -->
   </div>
   <div class="field">
     <label for="chronicconditions">
@@ -197,6 +206,7 @@
             });
           //]]>
         </script>
+        
       </div>
     </div>
     <script type="text/javascript">
@@ -220,6 +230,8 @@
         });
       //]]>
     </script>
+    
+    <!-- TODO: Make Explanation field required if Yes is answered -->
   </div>
   <div class="field">
     <label for="foodallergies">
@@ -252,6 +264,7 @@
             });
           //]]>
         </script>
+        
       </div>
     </div>
     <script type="text/javascript">
@@ -275,6 +288,8 @@
         });
       //]]>
     </script>
+    
+    <!-- TODO: Make Explanation field required if Yes is answered -->
   </div>
   <div class="field">
     <label for="otherhealth">
@@ -307,6 +322,7 @@
             });
           //]]>
         </script>
+        
       </div>
     </div>
     <script type="text/javascript">
@@ -330,6 +346,8 @@
         });
       //]]>
     </script>
+    
+    <!-- TODO: Make Explanation field required if Yes is answered -->
   </div>
 </div>
 <div class="section">
@@ -365,6 +383,7 @@
             });
           //]]>
         </script>
+        
       </div>
     </div>
     <script type="text/javascript">
@@ -388,5 +407,7 @@
         });
       //]]>
     </script>
+    
+    <!-- TODO: Make Explanation field required if Yes is answered -->
   </div>
 </div>

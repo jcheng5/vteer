@@ -1,8 +1,8 @@
 .reference
   %h3
     = label(id, label)
-  = text("#{id}_name", 'Name')
-  = textarea_sm("#{id}_address", 'Address')
-  = text("#{id}_phone", 'Phone')
-  = text("#{id}_email", 'E-mail')
+  = text("#{id}_name", 'Name', :required => required)
+  = textarea_sm("#{id}_address", 'Address', :required => required)
+  = text("#{id}_phone", 'Phone', :required => required)
+  = text("#{id}_email", 'E-mail', :required => required)
   = attachment("#{id}_letter", "Reference Letter")

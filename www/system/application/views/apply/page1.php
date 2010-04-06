@@ -3,6 +3,7 @@
   <div class="field">
     <label for="dob">
       Date of birth
+      *
     </label>
     <br />
     <select id="dob_month" name="dob_month">
@@ -211,10 +212,23 @@
         });
       //]]>
     </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'dob'))
+          {
+            error_field_required('dob');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="gender">
       Gender
+      *
     </label>
     <br />
     <input id="gender0" name="gender" type="radio" value="Male" />
@@ -250,10 +264,23 @@
         });
       //]]>
     </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'gender'))
+          {
+            error_field_required('gender');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="marital">
       Marital Status
+      *
     </label>
     <br />
     <input id="marital0" name="marital" type="radio" value="Single" />
@@ -289,6 +316,18 @@
         });
       //]]>
     </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'marital'))
+          {
+            error_field_required('marital');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="ssn">
@@ -307,6 +346,7 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="nickname">
@@ -325,10 +365,12 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="address">
       Mailing Address
+      *
     </label>
     <br />
     <textarea cols="30" id="address" name="address" rows="3"></textarea>
@@ -343,10 +385,23 @@
         });
       //]]>
     </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'address'))
+          {
+            error_field_required('address');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="phone">
       Telephone
+      *
     </label>
     <br />
     <input id="phone" name="phone" type="text" />
@@ -358,6 +413,18 @@
         });
         save_handlers.push(function (info, form) {
           info['phone'] = $('#phone').get(0).value;
+        });
+      //]]>
+    </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'phone'))
+          {
+            error_field_required('phone');
+            return false;
+          }
+          return true;
         });
       //]]>
     </script>
@@ -379,10 +446,12 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="referrer">
       How did you hear about our ministry?
+      *
     </label>
     <br />
     <select id="referrer" name="referrer">
@@ -439,6 +508,18 @@
         });
       //]]>
     </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'referrer'))
+          {
+            error_field_required('referrer');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
 </div>
 <div class="section">
@@ -447,6 +528,7 @@
   <div class="field">
     <label for="dates1-from">
       First preference of dates
+      *
     </label>
     <br />
     From
@@ -669,10 +751,24 @@
         });
       //]]>
     </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, "dates1-from") || !has_value(info, "dates1-to"))
+          {
+            error_field_required("dates1-from");
+            return false;
+          }
+          else
+            return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="dates2-from">
       Second preference of dates
+      *
     </label>
     <br />
     From
@@ -892,6 +988,19 @@
           else {
             info['dates2-to'] = month.value + " " + day.value + ", " + year.value;
           }
+        });
+      //]]>
+    </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, "dates2-from") || !has_value(info, "dates2-to"))
+          {
+            error_field_required("dates2-from");
+            return false;
+          }
+          else
+            return true;
         });
       //]]>
     </script>
@@ -1159,39 +1268,6 @@
         });
       //]]>
     </script>
-  </div>
-  <div class="field">
-    <label for="license">
-      Do you have an international driver's license?
-    </label>
-    <br />
-    <input id="license-yes" name="license" type="radio" value="Yes" />
-    <label class="option" for="license-yes">
-      Yes
-    </label>
-    <input id="license-no" name="license" type="radio" value="No" />
-    <label class="option" for="license-no">
-      No
-    </label>
-    <script type="text/javascript">
-      //<![CDATA[
-        load_handlers.push(function(info) {
-          var val = info['license'];
-          $('#license-yes').get(0).checked = (val === 'Yes');
-          $('#license-no').get(0).checked = (val === 'No');
-        });
-        save_handlers.push(function(info) {
-          var value;
-          if ($('#license-yes').get(0).checked)
-            value = 'Yes';
-          else if ($('#license-no').get(0).checked)
-            value = 'No';
-          else
-            value = '';
-          
-          info['license'] = value;
-        });
-      //]]>
-    </script>
+    
   </div>
 </div>

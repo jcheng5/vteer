@@ -1,11 +1,11 @@
 .field
   - if label
-    = label(id, label)
+    = label(id, label, :required => required)
     %br
   %input{:type => 'radio', :name => id, :id => "#{id}-yes", :value => 'Yes'}
-  = label("#{id}-yes", 'Yes', 'option')
+  = label("#{id}-yes", 'Yes', :class_name => 'option')
   %input{:type => 'radio', :name => id, :id => "#{id}-no", :value => 'No'}
-  = label("#{id}-no", 'No', 'option')
+  = label("#{id}-no", 'No', :class_name => 'option')
   :javascript
     load_handlers.push(function(info) {
       var val = info['#{id}'];
@@ -23,3 +23,4 @@
       
       info['#{id}'] = value;
     });
+  = default_validation(id, required)

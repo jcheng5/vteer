@@ -1,24 +1,23 @@
 .section
   %h2 Basic Information
-  = date(:dob, 'Date of birth')
-  = radio(:gender, 'Gender', ['Male', 'Female'])
-  = radio(:marital, 'Marital Status', ['Single', 'Married'])
+  = date(:dob, 'Date of birth', :required => true)
+  = radio(:gender, 'Gender', ['Male', 'Female'], :required => true)
+  = radio(:marital, 'Marital Status', ['Single', 'Married'], :required => true)
   = text(:ssn, 'Social Security # or ID #')
   = text(:nickname, 'What you like to be called (name you go by)')
-  = textarea_sm(:address, 'Mailing Address')
-  = text(:phone, 'Telephone')
+  = textarea_sm(:address, 'Mailing Address', :required => true)
+  = text(:phone, 'Telephone', :required => true)
   = text(:fax, 'Fax')
-  = select(:referrer, 'How did you hear about our ministry?', ['ACTS', 'African Encounter', 'Living Hope', 'Friend', 'I am a former volunteer', 'Through my local church', 'Internet Living Hope/Way/Grace', 'Internet ACTS', 'Internet African Encounter', 'Other'])
+  = select(:referrer, 'How did you hear about our ministry?', ['ACTS', 'African Encounter', 'Living Hope', 'Friend', 'I am a former volunteer', 'Through my local church', 'Internet Living Hope/Way/Grace', 'Internet ACTS', 'Internet African Encounter', 'Other'], :required => true)
 
 .section
   %h2 Preferred Dates
   %h4 Please indicate when you would like to visit. Since there are many factors involved in scheduling volunteers, please indicate your first, second, and third preferences for working with Living Hope. We have a minimum service time commitment of 30 days.
-  = daterange(:dates1, 'First preference of dates')
-  = daterange(:dates2, 'Second preference of dates')
+  = daterange(:dates1, 'First preference of dates', :required => true)
+  = daterange(:dates2, 'Second preference of dates', :required => true)
   = daterange(:dates3, 'Third preference of dates')
   
 .section
   %h2 Transport
   %h4 Please note that there is no public transportation in our area.
   = bool(:transport, 'Will you have your own transportation? (Do you plan to rent or purchase a car?)')
-  = bool(:license, 'Do you have an international driver\'s license?')

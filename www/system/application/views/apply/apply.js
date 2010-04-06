@@ -69,19 +69,40 @@ function downloadInfo()
   }
 }
 
-function save()
+function save(should_validate /* = false */)
 {
+  if (typeof(should_validate) == 'undefined')
+    should_validate = false;
+
   var info = {};
   for (var i = 0; i < save_handlers.length; i++)
   {
     save_handlers[i](info, document.mainform);
   }
+
   // Replacer function is a hack to work around this IE8 bug:
   // http://blogs.msdn.com/jscript/archive/2009/06/23/serializing-the-value-of-empty-dom-elements-using-native-json-in-ie8.aspx
-  var payload = JSON.stringify(info, function(k, v)
-  { return v === "" ? "" : v });
+  var payload = JSON.stringify(info, function(k, v) { return v === "" ? "" : v });
   //console.log(payload);
-  return uploadInfo(payload);
+  if (!uploadInfo(payload))
+    return false;
+
+  if (should_validate)
+    return validate(info);
+
+  return true;
+}
+
+function validate(info)
+{
+  // clear existing errors
+  $('label.error_required').removeClass('error_required');
+  var success = true;
+  for (var i = 0; i < validation_handlers.length; i++)
+  {
+    success &= validation_handlers[i](info);
+  }
+  return success;
 }
 
 function load(info)
@@ -106,8 +127,23 @@ function detach_file(field_id)
   }
 }
 
+function error_field_required(field_id)
+{
+  $('label[for="' + field_id + '"]').addClass('error_required');
+}
+
+function has_value(info, key)
+{
+  var value = info[key];
+  return typeof(value) != 'undefined'
+        && value != null
+        && value != ''
+        && value.replace(/^\s+|\s+$/g, '') != '';
+}
+
 load_handlers = [];
 save_handlers = [];
+validation_handlers = [];
 child_windows = [];
 
 function closeChildWindows()

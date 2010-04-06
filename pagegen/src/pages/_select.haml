@@ -1,6 +1,6 @@
 .field
   - if label
-    = label(id, label)
+    = label(id, label, :required => required)
     %br
   %select(name=id id=id)
     %option(value='')
@@ -25,3 +25,4 @@
       else
         info['#{id}'] = '';
     });
+  = default_validation(id, required)

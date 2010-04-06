@@ -1,0 +1,9 @@
+:javascript
+  validation_handlers.push(function(info) {
+    if (!has_value(info, '#{id}'))
+    {
+      error_field_required('#{id}');
+      return false;
+    }
+    return true;
+  });

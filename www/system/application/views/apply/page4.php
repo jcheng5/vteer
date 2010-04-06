@@ -17,6 +17,7 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="lifechange">
@@ -35,6 +36,7 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="history">
@@ -53,6 +55,7 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="strength">
@@ -71,6 +74,7 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="weakness">
@@ -89,6 +93,7 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="submission">
@@ -107,6 +112,7 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="churchhistory">
@@ -125,6 +131,7 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="faith">
@@ -143,6 +150,7 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="southafrica">
@@ -161,6 +169,7 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="fiveyearplan">
@@ -179,6 +188,7 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="calling">
@@ -197,6 +207,7 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="gifts">
@@ -211,7 +222,7 @@
       //]]>
     </script>
     <input id="gifts0" name="gifts" type="checkbox" value="Sports" />
-    <label class="option" for="gifts0">
+    <label for="gifts0">
       Sports
     </label>
     <br />
@@ -230,7 +241,7 @@
       //]]>
     </script>
     <input id="gifts1" name="gifts" type="checkbox" value="Administration" />
-    <label class="option" for="gifts1">
+    <label for="gifts1">
       Administration
     </label>
     <br />
@@ -249,7 +260,7 @@
       //]]>
     </script>
     <input id="gifts2" name="gifts" type="checkbox" value="Children" />
-    <label class="option" for="gifts2">
+    <label for="gifts2">
       Children
     </label>
     <br />
@@ -268,7 +279,7 @@
       //]]>
     </script>
     <input id="gifts3" name="gifts" type="checkbox" value="Healthcare" />
-    <label class="option" for="gifts3">
+    <label for="gifts3">
       Healthcare
     </label>
     <br />
@@ -287,7 +298,7 @@
       //]]>
     </script>
     <input id="gifts4" name="gifts" type="checkbox" value="Photography" />
-    <label class="option" for="gifts4">
+    <label for="gifts4">
       Photography
     </label>
     <br />
@@ -306,7 +317,7 @@
       //]]>
     </script>
     <input id="gifts5" name="gifts" type="checkbox" value="Landscaping" />
-    <label class="option" for="gifts5">
+    <label for="gifts5">
       Landscaping
     </label>
     <br />
@@ -325,7 +336,7 @@
       //]]>
     </script>
     <input id="gifts6" name="gifts" type="checkbox" value="Construction or Maintenance" />
-    <label class="option" for="gifts6">
+    <label for="gifts6">
       Construction or Maintenance
     </label>
     <br />
@@ -344,7 +355,7 @@
       //]]>
     </script>
     <input id="gifts7" name="gifts" type="checkbox" value="Music" />
-    <label class="option" for="gifts7">
+    <label for="gifts7">
       Music
     </label>
     <br />
@@ -363,7 +374,7 @@
       //]]>
     </script>
     <input id="gifts8" name="gifts" type="checkbox" value="Schoolteacher" />
-    <label class="option" for="gifts8">
+    <label for="gifts8">
       Schoolteacher
     </label>
     <br />
@@ -381,6 +392,7 @@
         });
       //]]>
     </script>
+    
   </div>
   <div class="field">
     <label for="leadgifts">
@@ -399,6 +411,7 @@
         });
       //]]>
     </script>
+    
   </div>
 </div>
 <div class="section">

@@ -1,5 +1,5 @@
 .field
-  = label(id, label)
+  = label(id, label, :required => required)
   %br
   %input{:name=>id, :id=>id, :type=>(defined?(inputtype) ? inputtype : "text")}
   :javascript
@@ -10,3 +10,4 @@
     save_handlers.push(function (info, form) {
       info['#{id}'] = $('##{id}').get(0).value;
     });
+  = default_validation(id, required)

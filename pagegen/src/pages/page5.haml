@@ -2,17 +2,25 @@
   %h2 References
   %h4
     Please list four people we can contact as references. They must include your pastor, a friend, your employer, and one other person in leadership over you.
-    %strong
+    %strong#twoletters
       Please submit a reference letter from at least two of those people together with your application.
-      %span(style='color:red') TODO
-  = reference(:pastor, 'Pastor Reference')
-  = reference(:friend, 'Friend Reference')
-  = reference(:employer, 'Employer Reference')
-  = reference(:leader, 'Other Leadership Reference')
+  = reference(:pastor, 'Pastor Reference', :required => true)
+  = reference(:friend, 'Friend Reference', :required => true)
+  = reference(:employer, 'Employer Reference', :required => true)
+  = reference(:leader, 'Other Leadership Reference', :required => true)
 
 .section
   %h2 Emergency Information
-  = text(:emcontact, 'Emergency Contact Name')
-  = text(:emrelationship, 'Relationship')
-  = text(:emphone1, 'Phone Number')
+  = text(:emcontact, 'Emergency Contact Name', :required => true)
+  = text(:emrelationship, 'Relationship', :required => true)
+  = text(:emphone1, 'Phone Number', :required => true)
   = text(:emphone2, 'Alternate Phone Number')
+
+:javascript
+  validation_handlers.push(function(info) {
+    if ($('div.hasfile:hidden').length > 2) {
+      $('#twoletters').addClass('error_required');
+      return false;
+    }
+    return true;
+  });

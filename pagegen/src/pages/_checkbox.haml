@@ -1,6 +1,6 @@
 .field
   - if label
-    = label(id, label)
+    = label(id, label, :required => required)
     %br
     :javascript
       save_handlers.push(function (info) {
@@ -21,3 +21,4 @@
         if ($('##{id}#{i}').get(0).checked)
           info['#{id}'].push('#{option}')
       });
+  = default_validation(id, required)

@@ -2,9 +2,8 @@
   <h2>References</h2>
   <h4>
     Please list four people we can contact as references. They must include your pastor, a friend, your employer, and one other person in leadership over you.
-    <strong>
+    <strong id="twoletters">
       Please submit a reference letter from at least two of those people together with your application.
-      <span style="color:red">TODO</span>
     </strong>
   </h4>
   <div class="reference">
@@ -16,6 +15,7 @@
     <div class="field">
       <label for="pastor_name">
         Name
+        *
       </label>
       <br />
       <input id="pastor_name" name="pastor_name" type="text" />
@@ -30,10 +30,23 @@
           });
         //]]>
       </script>
+      <script type="text/javascript">
+        //<![CDATA[
+          validation_handlers.push(function(info) {
+            if (!has_value(info, 'pastor_name'))
+            {
+              error_field_required('pastor_name');
+              return false;
+            }
+            return true;
+          });
+        //]]>
+      </script>
     </div>
     <div class="field">
       <label for="pastor_address">
         Address
+        *
       </label>
       <br />
       <textarea cols="30" id="pastor_address" name="pastor_address" rows="3"></textarea>
@@ -48,10 +61,23 @@
           });
         //]]>
       </script>
+      <script type="text/javascript">
+        //<![CDATA[
+          validation_handlers.push(function(info) {
+            if (!has_value(info, 'pastor_address'))
+            {
+              error_field_required('pastor_address');
+              return false;
+            }
+            return true;
+          });
+        //]]>
+      </script>
     </div>
     <div class="field">
       <label for="pastor_phone">
         Phone
+        *
       </label>
       <br />
       <input id="pastor_phone" name="pastor_phone" type="text" />
@@ -66,10 +92,23 @@
           });
         //]]>
       </script>
+      <script type="text/javascript">
+        //<![CDATA[
+          validation_handlers.push(function(info) {
+            if (!has_value(info, 'pastor_phone'))
+            {
+              error_field_required('pastor_phone');
+              return false;
+            }
+            return true;
+          });
+        //]]>
+      </script>
     </div>
     <div class="field">
       <label for="pastor_email">
         E-mail
+        *
       </label>
       <br />
       <input id="pastor_email" name="pastor_email" type="text" />
@@ -84,13 +123,25 @@
           });
         //]]>
       </script>
+      <script type="text/javascript">
+        //<![CDATA[
+          validation_handlers.push(function(info) {
+            if (!has_value(info, 'pastor_email'))
+            {
+              error_field_required('pastor_email');
+              return false;
+            }
+            return true;
+          });
+        //]]>
+      </script>
     </div>
     <div class="field">
       <label for="pastor_letter">
         Reference Letter
       </label>
       <br />
-      <div id="pastor_letter-nofile">
+      <div class="nofile" id="pastor_letter-nofile">
         <span>
           <i>(None attached)</i>
         </span>
@@ -98,7 +149,7 @@
           Attach File
         </button>
       </div>
-      <div id="pastor_letter-hasfile">
+      <div class="hasfile" id="pastor_letter-hasfile">
         <a href="#" id="pastor_letter-link" target="_blank"></a>
         <button id="pastor_letter-remove" onclick="javascript:if (detach_file('pastor_letter')) {$('#pastor_letter-nofile').get(0).style.display = 'inline'; $('#pastor_letter-hasfile').get(0).style.display = 'none'; }" type="button">
           Remove File
@@ -141,6 +192,7 @@
     <div class="field">
       <label for="friend_name">
         Name
+        *
       </label>
       <br />
       <input id="friend_name" name="friend_name" type="text" />
@@ -155,10 +207,23 @@
           });
         //]]>
       </script>
+      <script type="text/javascript">
+        //<![CDATA[
+          validation_handlers.push(function(info) {
+            if (!has_value(info, 'friend_name'))
+            {
+              error_field_required('friend_name');
+              return false;
+            }
+            return true;
+          });
+        //]]>
+      </script>
     </div>
     <div class="field">
       <label for="friend_address">
         Address
+        *
       </label>
       <br />
       <textarea cols="30" id="friend_address" name="friend_address" rows="3"></textarea>
@@ -173,10 +238,23 @@
           });
         //]]>
       </script>
+      <script type="text/javascript">
+        //<![CDATA[
+          validation_handlers.push(function(info) {
+            if (!has_value(info, 'friend_address'))
+            {
+              error_field_required('friend_address');
+              return false;
+            }
+            return true;
+          });
+        //]]>
+      </script>
     </div>
     <div class="field">
       <label for="friend_phone">
         Phone
+        *
       </label>
       <br />
       <input id="friend_phone" name="friend_phone" type="text" />
@@ -191,10 +269,23 @@
           });
         //]]>
       </script>
+      <script type="text/javascript">
+        //<![CDATA[
+          validation_handlers.push(function(info) {
+            if (!has_value(info, 'friend_phone'))
+            {
+              error_field_required('friend_phone');
+              return false;
+            }
+            return true;
+          });
+        //]]>
+      </script>
     </div>
     <div class="field">
       <label for="friend_email">
         E-mail
+        *
       </label>
       <br />
       <input id="friend_email" name="friend_email" type="text" />
@@ -209,13 +300,25 @@
           });
         //]]>
       </script>
+      <script type="text/javascript">
+        //<![CDATA[
+          validation_handlers.push(function(info) {
+            if (!has_value(info, 'friend_email'))
+            {
+              error_field_required('friend_email');
+              return false;
+            }
+            return true;
+          });
+        //]]>
+      </script>
     </div>
     <div class="field">
       <label for="friend_letter">
         Reference Letter
       </label>
       <br />
-      <div id="friend_letter-nofile">
+      <div class="nofile" id="friend_letter-nofile">
         <span>
           <i>(None attached)</i>
         </span>
@@ -223,7 +326,7 @@
           Attach File
         </button>
       </div>
-      <div id="friend_letter-hasfile">
+      <div class="hasfile" id="friend_letter-hasfile">
         <a href="#" id="friend_letter-link" target="_blank"></a>
         <button id="friend_letter-remove" onclick="javascript:if (detach_file('friend_letter')) {$('#friend_letter-nofile').get(0).style.display = 'inline'; $('#friend_letter-hasfile').get(0).style.display = 'none'; }" type="button">
           Remove File
@@ -266,6 +369,7 @@
     <div class="field">
       <label for="employer_name">
         Name
+        *
       </label>
       <br />
       <input id="employer_name" name="employer_name" type="text" />
@@ -280,10 +384,23 @@
           });
         //]]>
       </script>
+      <script type="text/javascript">
+        //<![CDATA[
+          validation_handlers.push(function(info) {
+            if (!has_value(info, 'employer_name'))
+            {
+              error_field_required('employer_name');
+              return false;
+            }
+            return true;
+          });
+        //]]>
+      </script>
     </div>
     <div class="field">
       <label for="employer_address">
         Address
+        *
       </label>
       <br />
       <textarea cols="30" id="employer_address" name="employer_address" rows="3"></textarea>
@@ -298,10 +415,23 @@
           });
         //]]>
       </script>
+      <script type="text/javascript">
+        //<![CDATA[
+          validation_handlers.push(function(info) {
+            if (!has_value(info, 'employer_address'))
+            {
+              error_field_required('employer_address');
+              return false;
+            }
+            return true;
+          });
+        //]]>
+      </script>
     </div>
     <div class="field">
       <label for="employer_phone">
         Phone
+        *
       </label>
       <br />
       <input id="employer_phone" name="employer_phone" type="text" />
@@ -316,10 +446,23 @@
           });
         //]]>
       </script>
+      <script type="text/javascript">
+        //<![CDATA[
+          validation_handlers.push(function(info) {
+            if (!has_value(info, 'employer_phone'))
+            {
+              error_field_required('employer_phone');
+              return false;
+            }
+            return true;
+          });
+        //]]>
+      </script>
     </div>
     <div class="field">
       <label for="employer_email">
         E-mail
+        *
       </label>
       <br />
       <input id="employer_email" name="employer_email" type="text" />
@@ -334,13 +477,25 @@
           });
         //]]>
       </script>
+      <script type="text/javascript">
+        //<![CDATA[
+          validation_handlers.push(function(info) {
+            if (!has_value(info, 'employer_email'))
+            {
+              error_field_required('employer_email');
+              return false;
+            }
+            return true;
+          });
+        //]]>
+      </script>
     </div>
     <div class="field">
       <label for="employer_letter">
         Reference Letter
       </label>
       <br />
-      <div id="employer_letter-nofile">
+      <div class="nofile" id="employer_letter-nofile">
         <span>
           <i>(None attached)</i>
         </span>
@@ -348,7 +503,7 @@
           Attach File
         </button>
       </div>
-      <div id="employer_letter-hasfile">
+      <div class="hasfile" id="employer_letter-hasfile">
         <a href="#" id="employer_letter-link" target="_blank"></a>
         <button id="employer_letter-remove" onclick="javascript:if (detach_file('employer_letter')) {$('#employer_letter-nofile').get(0).style.display = 'inline'; $('#employer_letter-hasfile').get(0).style.display = 'none'; }" type="button">
           Remove File
@@ -391,6 +546,7 @@
     <div class="field">
       <label for="leader_name">
         Name
+        *
       </label>
       <br />
       <input id="leader_name" name="leader_name" type="text" />
@@ -405,10 +561,23 @@
           });
         //]]>
       </script>
+      <script type="text/javascript">
+        //<![CDATA[
+          validation_handlers.push(function(info) {
+            if (!has_value(info, 'leader_name'))
+            {
+              error_field_required('leader_name');
+              return false;
+            }
+            return true;
+          });
+        //]]>
+      </script>
     </div>
     <div class="field">
       <label for="leader_address">
         Address
+        *
       </label>
       <br />
       <textarea cols="30" id="leader_address" name="leader_address" rows="3"></textarea>
@@ -423,10 +592,23 @@
           });
         //]]>
       </script>
+      <script type="text/javascript">
+        //<![CDATA[
+          validation_handlers.push(function(info) {
+            if (!has_value(info, 'leader_address'))
+            {
+              error_field_required('leader_address');
+              return false;
+            }
+            return true;
+          });
+        //]]>
+      </script>
     </div>
     <div class="field">
       <label for="leader_phone">
         Phone
+        *
       </label>
       <br />
       <input id="leader_phone" name="leader_phone" type="text" />
@@ -441,10 +623,23 @@
           });
         //]]>
       </script>
+      <script type="text/javascript">
+        //<![CDATA[
+          validation_handlers.push(function(info) {
+            if (!has_value(info, 'leader_phone'))
+            {
+              error_field_required('leader_phone');
+              return false;
+            }
+            return true;
+          });
+        //]]>
+      </script>
     </div>
     <div class="field">
       <label for="leader_email">
         E-mail
+        *
       </label>
       <br />
       <input id="leader_email" name="leader_email" type="text" />
@@ -459,13 +654,25 @@
           });
         //]]>
       </script>
+      <script type="text/javascript">
+        //<![CDATA[
+          validation_handlers.push(function(info) {
+            if (!has_value(info, 'leader_email'))
+            {
+              error_field_required('leader_email');
+              return false;
+            }
+            return true;
+          });
+        //]]>
+      </script>
     </div>
     <div class="field">
       <label for="leader_letter">
         Reference Letter
       </label>
       <br />
-      <div id="leader_letter-nofile">
+      <div class="nofile" id="leader_letter-nofile">
         <span>
           <i>(None attached)</i>
         </span>
@@ -473,7 +680,7 @@
           Attach File
         </button>
       </div>
-      <div id="leader_letter-hasfile">
+      <div class="hasfile" id="leader_letter-hasfile">
         <a href="#" id="leader_letter-link" target="_blank"></a>
         <button id="leader_letter-remove" onclick="javascript:if (detach_file('leader_letter')) {$('#leader_letter-nofile').get(0).style.display = 'inline'; $('#leader_letter-hasfile').get(0).style.display = 'none'; }" type="button">
           Remove File
@@ -513,6 +720,7 @@
   <div class="field">
     <label for="emcontact">
       Emergency Contact Name
+      *
     </label>
     <br />
     <input id="emcontact" name="emcontact" type="text" />
@@ -527,10 +735,23 @@
         });
       //]]>
     </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'emcontact'))
+          {
+            error_field_required('emcontact');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="emrelationship">
       Relationship
+      *
     </label>
     <br />
     <input id="emrelationship" name="emrelationship" type="text" />
@@ -545,10 +766,23 @@
         });
       //]]>
     </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'emrelationship'))
+          {
+            error_field_required('emrelationship');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="emphone1">
       Phone Number
+      *
     </label>
     <br />
     <input id="emphone1" name="emphone1" type="text" />
@@ -560,6 +794,18 @@
         });
         save_handlers.push(function (info, form) {
           info['emphone1'] = $('#emphone1').get(0).value;
+        });
+      //]]>
+    </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'emphone1'))
+          {
+            error_field_required('emphone1');
+            return false;
+          }
+          return true;
         });
       //]]>
     </script>
@@ -581,5 +827,17 @@
         });
       //]]>
     </script>
+    
   </div>
 </div>
+<script type="text/javascript">
+  //<![CDATA[
+    validation_handlers.push(function(info) {
+      if ($('div.hasfile:hidden').length > 2) {
+        $('#twoletters').addClass('error_required');
+        return false;
+      }
+      return true;
+    });
+  //]]>
+</script>
