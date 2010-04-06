@@ -45,7 +45,7 @@ function syncExplain(baseId)
 function uploadInfo(info)
 {
   var xhr = getHTTPObject();
-  xhr.open('POST', '<?php echo site_url("apply/update"); ?>',false);
+  xhr.open('POST', '<?php echo site_url("apply/update"); ?>', false);
   xhr.send(info);
   if (xhr.status == 200)
     return true;
@@ -56,9 +56,7 @@ function uploadInfo(info)
 function downloadInfo()
 {
   var xhr = getHTTPObject();
-  xhr.open('GET', '<?php echo site_url("apply/retrieve"); ?>',false
-)
-  ;
+  xhr.open('GET', '<?php echo site_url("apply/retrieve"); ?>', false);
   xhr.send(null);
   if (xhr.readyState == 4 && xhr.status == 200)
   {
@@ -91,6 +89,20 @@ function load(info)
   for (var i = 0; i < load_handlers.length; i++)
   {
     load_handlers[i](info, document.mainform);
+  }
+}
+
+function detach_file(field_id)
+{
+  var xhr = getHTTPObject();
+  xhr.open('POST', '<?php echo site_url("apply/detach"); ?>/' + field_id, false);
+  xhr.send(null);
+  if (xhr.readyState == 4 && xhr.status == 200)
+    return true;
+  else
+  {
+    alert("Error detaching file:\n" + xhr.responseText);
+    return false;
   }
 }
 

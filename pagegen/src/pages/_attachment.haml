@@ -11,16 +11,16 @@
       Attach File
       
   %div{:id => "#{id}-hasfile"}
-    %a{:id => "#{id}-link", :href => '#', :target => '_blank'}
-    %button{:id => "#{id}-remove", :type => 'button'}
+    %a{:id => "#{id}-link", :href => "#", :target => '_blank'}
+    %button{:id => "#{id}-remove", :type => 'button', :onclick => "javascript:if (detach_file('#{id}')) {$('##{id}-nofile').get(0).style.display = 'inline'; $('##{id}-hasfile').get(0).style.display = 'none'; }"}
       Remove File
       
   :javascript
     load_handlers.push(function(info) {
       var val = info['#{id}'];
+      var link = $('##{id}-link').get(0);
+      link.href = "<?php echo site_url('apply/download/#{id}') ?>"; // TODO
       if (val) {
-        var link = $('##{id}-link').get(0);
-        link.href = '#'; // TODO
         link.innerText = val['name'];
         $('##{id}-nofile').get(0).style.display = 'none';
         $('##{id}-hasfile').get(0).style.display = 'inline';
@@ -35,6 +35,6 @@
     });
     $('##{id}-attach').get(0).onclick = function() {
       // TODO: pass field label, not just ID
-      var childWindow = window.open('attach.php?id=#{CGI::escape(id)}', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
+      var childWindow = window.open('<?php echo site_url('apply/attach/#{id}'); ?>', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
       child_windows.push(childWindow);
     };

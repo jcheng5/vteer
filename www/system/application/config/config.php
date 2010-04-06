@@ -3,7 +3,7 @@
 // Custom config properties for vteer
 $config['mail_sender'] = 'starmonkey@gmail.com';
 $config['admin_email'] = 'starmonkey@gmail.com';
-
+$config['upload_dir'] = '/Users/jcheng/Development/vteer/uploads';
 
 /*
 |--------------------------------------------------------------------------

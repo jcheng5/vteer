@@ -174,4 +174,29 @@ function merge_data($userid, $jsonData)
   $db->exec('UPDATE users SET data = ? WHERE id = ?', $mergedJson, $userid);
 }
 
+function download_file($userId, $fieldId)
+{
+  $user = get_user($userId);
+
+  $filePath = make_file_path($userId, $fieldId);
+  if (!file_exists($filePath) || !$user->data)
+    return FALSE;
+
+  $data = json_decode($user->data);
+  $fileData = $data->$fieldId;
+  if (!$fileData)
+    return FALSE;
+
+  header("Content-Type: $fileData->type");
+  header("Content-Disposition: inline; filename=$fileData->name");
+  readfile($filePath);
+}
+
+function make_file_path($userId, $fieldId)
+{
+  $CI =& get_instance();
+  $upload_dir = $CI->config->item('upload_dir');
+  return $upload_dir . DIRECTORY_SEPARATOR . $userId . "-" . $fieldId;
+}
+
 ?>

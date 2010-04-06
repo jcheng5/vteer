@@ -95,12 +95,66 @@ class Apply extends Controller
 
   function attach($field)
   {
-    // TODO
+    $this->load->library('input');
+
+    $user = $this->_get_current_user();
+
+    $this->load->view('apply/attach', array('field_id' => $field));
   }
 
-  function upload($field)
+  // JSON-RPC
+  function detach($fieldId)
   {
-    // TODO
+    header('Content-Type: text/plain');
+
+    try
+    {
+      $user = $this->_get_current_user();
+
+      merge_data($user->id, json_encode((array(
+        $fieldId => NULL
+      ))));
+
+      $file = make_file_path($user->id, $fieldId);
+      unlink($file);
+    }
+    catch (Exception $e)
+    {
+      set_status_header(500);
+      echo $e->getMessage();
+      exit;
+    }
+  }
+
+
+  function upload($fieldId)
+  {
+    $user = $this->_get_current_user();
+
+    if (!preg_match('/^[a-z0-9\-_]+$/i', $fieldId))
+      die('Illegal field ID');
+
+    if ($_FILES['file']['error'] !== UPLOAD_ERR_OK) {
+      echo 'File upload failed';
+      die($_FILES['file']['error']);
+    }
+
+    $filename = $_FILES['file']['name'];
+    $filetype = $_FILES['file']['type'];
+
+    $destfile = make_file_path($user->id, $fieldId);
+    if (!move_uploaded_file($_FILES['file']['tmp_name'], $destfile))
+      die('Upload failed');
+
+    merge_data($user->id, json_encode(array(
+      $fieldId => array(
+        'name' => $filename,
+        'type' => $filetype
+      )
+    )));
+
+    $this->load->view('apply/uploaded', array('fieldId' => $fieldId,
+                                              'filename' => $filename));
   }
 
   function submit()
@@ -122,6 +176,14 @@ class Apply extends Controller
     $this->load->view('header');
     $this->load->view('apply/success');
     $this->load->view('footer');
+  }
+
+  function download($fieldId)
+  {
+    $user = $this->_get_current_user();
+
+    if (!download_file($user->id, $fieldId))
+      show_error("File not found", 404);
   }
 
   function _get_current_user()

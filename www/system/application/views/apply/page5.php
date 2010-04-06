@@ -100,7 +100,7 @@
       </div>
       <div id="pastor_letter-hasfile">
         <a href="#" id="pastor_letter-link" target="_blank"></a>
-        <button id="pastor_letter-remove" type="button">
+        <button id="pastor_letter-remove" onclick="javascript:if (detach_file('pastor_letter')) {$('#pastor_letter-nofile').get(0).style.display = 'inline'; $('#pastor_letter-hasfile').get(0).style.display = 'none'; }" type="button">
           Remove File
         </button>
       </div>
@@ -108,9 +108,9 @@
         //<![CDATA[
           load_handlers.push(function(info) {
             var val = info['pastor_letter'];
+            var link = $('#pastor_letter-link').get(0);
+            link.href = "<?php echo site_url('apply/download/pastor_letter') ?>"; // TODO
             if (val) {
-              var link = $('#pastor_letter-link').get(0);
-              link.href = '#'; // TODO
               link.innerText = val['name'];
               $('#pastor_letter-nofile').get(0).style.display = 'none';
               $('#pastor_letter-hasfile').get(0).style.display = 'inline';
@@ -125,7 +125,7 @@
           });
           $('#pastor_letter-attach').get(0).onclick = function() {
             // TODO: pass field label, not just ID
-            var childWindow = window.open('attach.php?id=pastor_letter', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
+            var childWindow = window.open('<?php echo site_url('apply/attach/pastor_letter'); ?>', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
             child_windows.push(childWindow);
           };
         //]]>
@@ -225,7 +225,7 @@
       </div>
       <div id="friend_letter-hasfile">
         <a href="#" id="friend_letter-link" target="_blank"></a>
-        <button id="friend_letter-remove" type="button">
+        <button id="friend_letter-remove" onclick="javascript:if (detach_file('friend_letter')) {$('#friend_letter-nofile').get(0).style.display = 'inline'; $('#friend_letter-hasfile').get(0).style.display = 'none'; }" type="button">
           Remove File
         </button>
       </div>
@@ -233,9 +233,9 @@
         //<![CDATA[
           load_handlers.push(function(info) {
             var val = info['friend_letter'];
+            var link = $('#friend_letter-link').get(0);
+            link.href = "<?php echo site_url('apply/download/friend_letter') ?>"; // TODO
             if (val) {
-              var link = $('#friend_letter-link').get(0);
-              link.href = '#'; // TODO
               link.innerText = val['name'];
               $('#friend_letter-nofile').get(0).style.display = 'none';
               $('#friend_letter-hasfile').get(0).style.display = 'inline';
@@ -250,7 +250,7 @@
           });
           $('#friend_letter-attach').get(0).onclick = function() {
             // TODO: pass field label, not just ID
-            var childWindow = window.open('attach.php?id=friend_letter', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
+            var childWindow = window.open('<?php echo site_url('apply/attach/friend_letter'); ?>', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
             child_windows.push(childWindow);
           };
         //]]>
@@ -350,7 +350,7 @@
       </div>
       <div id="employer_letter-hasfile">
         <a href="#" id="employer_letter-link" target="_blank"></a>
-        <button id="employer_letter-remove" type="button">
+        <button id="employer_letter-remove" onclick="javascript:if (detach_file('employer_letter')) {$('#employer_letter-nofile').get(0).style.display = 'inline'; $('#employer_letter-hasfile').get(0).style.display = 'none'; }" type="button">
           Remove File
         </button>
       </div>
@@ -358,9 +358,9 @@
         //<![CDATA[
           load_handlers.push(function(info) {
             var val = info['employer_letter'];
+            var link = $('#employer_letter-link').get(0);
+            link.href = "<?php echo site_url('apply/download/employer_letter') ?>"; // TODO
             if (val) {
-              var link = $('#employer_letter-link').get(0);
-              link.href = '#'; // TODO
               link.innerText = val['name'];
               $('#employer_letter-nofile').get(0).style.display = 'none';
               $('#employer_letter-hasfile').get(0).style.display = 'inline';
@@ -375,7 +375,7 @@
           });
           $('#employer_letter-attach').get(0).onclick = function() {
             // TODO: pass field label, not just ID
-            var childWindow = window.open('attach.php?id=employer_letter', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
+            var childWindow = window.open('<?php echo site_url('apply/attach/employer_letter'); ?>', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
             child_windows.push(childWindow);
           };
         //]]>
@@ -475,7 +475,7 @@
       </div>
       <div id="leader_letter-hasfile">
         <a href="#" id="leader_letter-link" target="_blank"></a>
-        <button id="leader_letter-remove" type="button">
+        <button id="leader_letter-remove" onclick="javascript:if (detach_file('leader_letter')) {$('#leader_letter-nofile').get(0).style.display = 'inline'; $('#leader_letter-hasfile').get(0).style.display = 'none'; }" type="button">
           Remove File
         </button>
       </div>
@@ -483,9 +483,9 @@
         //<![CDATA[
           load_handlers.push(function(info) {
             var val = info['leader_letter'];
+            var link = $('#leader_letter-link').get(0);
+            link.href = "<?php echo site_url('apply/download/leader_letter') ?>"; // TODO
             if (val) {
-              var link = $('#leader_letter-link').get(0);
-              link.href = '#'; // TODO
               link.innerText = val['name'];
               $('#leader_letter-nofile').get(0).style.display = 'none';
               $('#leader_letter-hasfile').get(0).style.display = 'inline';
@@ -500,7 +500,7 @@
           });
           $('#leader_letter-attach').get(0).onclick = function() {
             // TODO: pass field label, not just ID
-            var childWindow = window.open('attach.php?id=leader_letter', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
+            var childWindow = window.open('<?php echo site_url('apply/attach/leader_letter'); ?>', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
             child_windows.push(childWindow);
           };
         //]]>
