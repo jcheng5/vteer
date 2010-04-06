@@ -16,9 +16,9 @@
   {
     "name": "Preferred Dates",
     "fields": [
-      {"dates1": "First preference of dates"},
-      {"dates2": "Second preference of dates"},
-      {"dates3": "Third preference of dates"}
+      {"dates1.daterange": "First preference of dates"},
+      {"dates2.daterange": "Second preference of dates"},
+      {"dates3.daterange": "Third preference of dates"}
     ]
   },
   {

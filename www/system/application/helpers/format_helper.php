@@ -38,6 +38,12 @@ function render_field($id, $data, $userId)
     $type_hint = $result[1];
   }
 
+  if ($type_hint == 'daterange')
+  {
+    if (isset($data["$id-from"]) && isset($data["$id-to"]))
+      $data[$id] = $data["$id-from"] . " to " . $data["$id-to"];
+  }
+
   if (!isset($data[$id]))
     return format_value(NULL);
 

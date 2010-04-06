@@ -19,7 +19,7 @@ $config['upload_dir'] = '/Users/jcheng/Development/vteer/uploads';
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://localhost/vteer-ci/";
+//$config['base_url']	= "http://localhost/vteer-ci/";
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +31,7 @@ $config['base_url']	= "http://localhost/vteer-ci/";
 | variable so that it is blank.
 |
 */
-$config['index_page'] = "index.php";
+//$config['index_page'] = "index.php";
 
 /*
 |--------------------------------------------------------------------------
