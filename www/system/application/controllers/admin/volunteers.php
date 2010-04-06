@@ -55,7 +55,7 @@ class Volunteers extends Controller
                         'data' => $data,
                         'notes' => $notes,
                         'user' => $user,
-                        'admin_id' => $this->admin->id())); // TODO: Use real admin id
+                        'admin_id' => $this->admin->id()));
     $this->load->view('admin/footer');
   }
 

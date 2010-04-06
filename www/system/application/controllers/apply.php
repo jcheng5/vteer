@@ -2,7 +2,7 @@
 
 /**
  * Controller for the authenticated part of the application process.
- * IMPORTANT: All methods must have $this->_get_current_user() in order
+ * IMPORTANT: All methods must have $this->user->get_current_user() in order
  * to ensure the user is authenticated.
  */
 class Apply extends Controller
@@ -11,11 +11,13 @@ class Apply extends Controller
   function Apply()
   {
     parent::Controller();
+    $this->load->library('user');
   }
 
   function page($page_num)
   {
-    $this->_get_current_user();
+    $user = $this->user->get_current_user();
+    $this->user->verify_draft($user);
 
     $max_page = 6;
 
@@ -52,7 +54,7 @@ class Apply extends Controller
 
     try
     {
-      $user = $this->_get_current_user();
+      $user = $this->user->get_current_user();
 
       $json = ($user->data && strlen($user->data) > 0) ? $user->data : "{}";
       if (is_null(json_decode($json)))
@@ -75,7 +77,7 @@ class Apply extends Controller
 
     try
     {
-      $user = $this->_get_current_user();
+      $user = $this->user->get_current_user();
 
       transition_user_to_state($user->id, STATUS_DRAFT);
       merge_data($user->id, file_get_contents("php://input"));
@@ -97,7 +99,7 @@ class Apply extends Controller
   {
     $this->load->library('input');
 
-    $user = $this->_get_current_user();
+    $user = $this->user->get_current_user();
 
     $this->load->view('apply/attach', array('field_id' => $field));
   }
@@ -109,7 +111,7 @@ class Apply extends Controller
 
     try
     {
-      $user = $this->_get_current_user();
+      $user = $this->user->get_current_user();
 
       merge_data($user->id, json_encode((array(
         $fieldId => NULL
@@ -129,7 +131,7 @@ class Apply extends Controller
 
   function upload($fieldId)
   {
-    $user = $this->_get_current_user();
+    $user = $this->user->get_current_user();
 
     if (!preg_match('/^[a-z0-9\-_]+$/i', $fieldId))
       die('Illegal field ID');
@@ -159,7 +161,8 @@ class Apply extends Controller
 
   function submit()
   {
-    $user = $this->_get_current_user();
+    $user = $this->user->get_current_user();
+    $this->user->verify_draft($user);
 
     transition_user_to_state($user->id, STATUS_SUBMITTED);
     $db = new DbConn();
@@ -172,6 +175,9 @@ class Apply extends Controller
 
   function success()
   {
+    $user = $this->user->get_current_user();
+    $this->user->verify_draft($user);
+
     // Use the standard header/footer to not invoke the auto-save javascript
     $this->load->view('header');
     $this->load->view('apply/success');
@@ -180,27 +186,10 @@ class Apply extends Controller
 
   function download($fieldId)
   {
-    $user = $this->_get_current_user();
+    $user = $this->user->get_current_user();
 
     if (!download_file($user->id, $fieldId))
       show_error("File not found", 404);
   }
 
-  function _get_current_user($rpc = FALSE)
-  {
-    $userid = $this->session->userdata('userid');
-    if (!$userid || !($user = get_user((int) $userid)))
-    {
-      if ($rpc)
-        throw new RuntimeException("User ID was not found");
-      else
-      {
-        redirect('welcome');
-        // TODO: Set flashdata?
-        exit;
-      }
-    }
-
-    return $user;
-  }
 }

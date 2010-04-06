@@ -44,7 +44,38 @@ class Welcome extends Controller
     {
       $this->session->set_userdata('userid', $user->id);
       // TODO: Pick up where user left off, not on page 1
+      redirect('welcome/dispatch');
+    }
+  }
+
+  function dispatch()
+  {
+    $this->load->library('user');
+    $user = $this->user->get_current_user();
+
+    $data = array('user' => $user);
+
+    if ($user->status == STATUS_CREATED || $user->status == STATUS_DRAFT)
       redirect('apply/page/1');
+    else
+    {
+      $this->load->view('header');
+      switch ($user->status)
+      {
+        case STATUS_SUBMITTED:
+          $this->load->view('apply/submitted', $data);
+          break;
+        case STATUS_ACCEPTED:
+        case STATUS_CONFIRMED:
+          $this->load->view('apply/accepted', $data);
+          break;
+        case STATUS_REJECTED:
+          $this->load->view('apply/rejected', $data);
+          break;
+        case STATUS_INACTIVE:
+          break;
+      }
+      $this->load->view('footer');
     }
   }
 
