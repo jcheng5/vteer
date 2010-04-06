@@ -4,7 +4,7 @@
 #
 # Host: localhost (MySQL 5.1.38)
 # Database: vteer_dev
-# Generation Time: 2010-04-05 21:02:36 -0700
+# Generation Time: 2010-04-05 21:15:16 -0700
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -125,19 +125,19 @@ CREATE TABLE `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `firstname` varchar(100) DEFAULT NULL,
   `lastname` varchar(100) DEFAULT NULL,
-  `nickname` varchar(100) DEFAULT NULL,
   `email` varchar(255) NOT NULL DEFAULT '',
-  `facebookid` bigint(20) unsigned DEFAULT NULL,
   `status` int(8) NOT NULL DEFAULT '0',
   `password` varchar(255) DEFAULT NULL,
   `laststatuschange` datetime DEFAULT NULL,
-  `traveldate` datetime DEFAULT NULL,
   `submitdate` datetime DEFAULT NULL,
   `data` longtext,
+  `arrivaldate` date DEFAULT NULL,
+  `departuredate` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `IDX_EMAIL` (`email`),
-  UNIQUE KEY `IDX_FACEBOOKID` (`facebookid`),
-  KEY `IDX_STATUS` (`status`)
+  KEY `IDX_STATUS` (`status`),
+  KEY `IDX_ARRIVALDATE` (`arrivaldate`),
+  KEY `IDX_DEPARTUREDATE` (`departuredate`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 
