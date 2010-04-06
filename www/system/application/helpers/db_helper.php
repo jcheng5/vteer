@@ -8,11 +8,13 @@ class DbConn
 
   function __construct()
   {
-    // TODO: use proper config
-    $db_host = 'localhost';
-    $db_user = 'root';
-    $db_pass = '';
-    $db_name = 'vteer_dev';
+    $CI =& get_instance();
+    $CI->config->load('db', TRUE);
+
+    $db_host = $CI->config->item('host', 'db');
+    $db_user = $CI->config->item('user', 'db');
+    $db_pass = $CI->config->item('pass', 'db');
+    $db_name = $CI->config->item('database', 'db');
 
     $this->db = mysql_connect($db_host, $db_user, $db_pass);
     if (!$this->db)

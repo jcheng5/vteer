@@ -38,11 +38,11 @@ $active_group = "default";
 $active_record = FALSE;
 
 /*
-$db['default']['hostname'] = "localhost";
-$db['default']['username'] = "root";
+$db['default']['hostname'] = "";
+$db['default']['username'] = "";
 $db['default']['password'] = "";
-$db['default']['database'] = "vteer_dev";
-$db['default']['dbdriver'] = "mysql";
+$db['default']['database'] = "";
+$db['default']['dbdriver'] = "";
 $db['default']['dbprefix'] = "";
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;

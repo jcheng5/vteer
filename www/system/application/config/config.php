@@ -1,9 +1,12 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 // Custom config properties for vteer
-$config['mail_sender'] = 'starmonkey@gmail.com';
-$config['admin_email'] = 'starmonkey@gmail.com';
+include('../site_config/config.php');
+/*
+$config['mail_sender'] = 'admin@example.com';
+$config['admin_email'] = 'admin@example.com';
 $config['upload_dir'] = '/Users/jcheng/Development/vteer/uploads';
+*/
 
 /*
 |--------------------------------------------------------------------------

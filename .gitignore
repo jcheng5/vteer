@@ -2,3 +2,7 @@ uploads
 www/.idea/workspace.xml
 www/system/application/config/email.php
 pagegen/site
+site_config/config.php
+site_config/db.php
+site_config/email.php
+
