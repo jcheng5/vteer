@@ -96,7 +96,7 @@ function save(should_validate /* = false */)
 function validate(info)
 {
   // clear existing errors
-  $('label.error_required').removeClass('error_required');
+  $('span.error').remove();
   var success = true;
   for (var i = 0; i < validation_handlers.length; i++)
   {
@@ -129,7 +129,20 @@ function detach_file(field_id)
 
 function error_field_required(field_id)
 {
-  $('label[for="' + field_id + '"]').addClass('error_required');
+  $('label[for="' + field_id + '"]').each(function(index, el) {
+    var img = document.createElement("img");
+    img.src = '<?php echo base_url() . "static/images/required.png"; ?>';
+    img.align = 'baseline';
+    img.style.marginTop = '-10px';
+    var span = document.createElement("span");
+    span.className = 'error';
+    span.appendChild(img);
+    span.style.marginLeft = '1em';
+    if (el.nextSibling)
+      el.parentElement.insertBefore(span, el.nextSibling);
+    else
+      el.parentElement.appendChild(span);
+  });
 }
 
 function has_value(info, key)
