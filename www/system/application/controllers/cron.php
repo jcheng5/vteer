@@ -30,9 +30,6 @@ class Cron extends Controller
 
       send_user_mail($template, $user_id);
 
-      $db->exec('insert into mails_sent (userid, templateverid) values (?, ?)',
-                $user_id,
-                $template->id);
       $db->exec('delete from mails_scheduled where id = ?', $mail->id);
     }
   }

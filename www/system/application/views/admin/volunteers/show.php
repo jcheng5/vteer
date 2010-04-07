@@ -33,8 +33,24 @@
     padding-bottom: 0.4em;
   }
 
+  .deletenote {
+    color: black;
+    text-decoration: none;
+  }
+
+  .deletenote:hover {
+    text-decoration: underline;
+  }
+
   #addnote {
     margin-top: 2em;
+    display: none;
+  }
+  #addnote form,
+  #addnote input[type='hidden'],
+  #addnote textarea {
+    margin: 0;
+    padding: 0;
   }
 
   #status {
@@ -58,11 +74,17 @@
       return confirm("Are you sure you want to REJECT this application?");
     });
     new YAHOO.widget.Button('btnAddNote');    
+    var btnShowAddNote = new YAHOO.widget.Button('btnShowAddNote');
+    btnShowAddNote.on('click', function() {
+      $('#btnShowAddNote').css('display', 'none');
+      $('#addnote').css('display', 'block');
+    });
+    new YAHOO.widget.Button('lnkBackToList');
   });
 </script>
 
 <div style="float: right">
-<?php echo anchor('admin/volunteers', 'Back to list'); ?>
+<?php echo anchor('admin/volunteers', 'Back to list', array('id' => 'lnkBackToList')); ?>
 </div>
 
 <h1><?php echo format_value("$user->firstname $user->lastname"); ?></h1>
@@ -82,6 +104,8 @@
 </form>
 <?php endif; ?>
 
+<p><?php echo anchor("admin/volunteers/email_history/$user->id", 'View e-mails sent'); ?></p>
+
 <h2>Notes</h2>
 
 <?php while ($note = $notes->next()): ?>
@@ -93,7 +117,7 @@
       (<?php echo $note->created; ?>)
   <?php if ($note->adminid == $admin_id): ?>
 
-    <div style="float: right"><a href="deletenote.php?id=<?php echo $note->id; ?>"
+    <div style="float: right"><a class="deletenote" href="<?php echo site_url("admin/volunteers/deletenote/$user->id/$note->id"); ?>"
                                  onclick="return confirm('This note will be permanently deleted. Are you sure?');">Delete</a>
     </div>
   <?php endif; ?>
@@ -109,9 +133,10 @@
     <input type="hidden" name="userid" value="<?php echo $user->id; ?>"/>
     <input type="hidden" name="source" value="Web"/>
     <textarea name="contents" cols="40" rows="6"></textarea><br/>
-    <button id="btnAddNote" type="submit">Add Note</button>
+    <button id="btnAddNote" type="submit">Save Note</button>
   </form>
 </div>
+<button id="btnShowAddNote" type="button">Add Note</button>
 
 <h2>Application</h2>
 <div id="appbody">

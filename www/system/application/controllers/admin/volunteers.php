@@ -59,37 +59,62 @@ class Volunteers extends Controller
     $this->load->view('admin/footer');
   }
 
+  function email_history($id)
+  {
+    $user = get_user($id);
+    if (!$user)
+      throw new RuntimeException('User not found');
+    $db = new DbConn();
+    $sentMails = $db->query('select * from mails_sent, mail_template_versions where mails_sent.templateverid = mail_template_versions.id and mails_sent.userid = ? order by sent desc', $id);
+    $scheduledMails = $db->query('select * from mails_scheduled, mail_templates where mails_scheduled.mailid = mail_templates.id and mails_scheduled.userid = ? order by due asc', $id);
+
+    $this->load->view('admin/header',
+                      array('title' => "E-mail history - $user->firstname $user->lastname"));
+    $this->load->view('admin/volunteers/emails',
+                      array('user' => $user,
+                            'sentMails' => $sentMails,
+                            'scheduledMails' => $scheduledMails));
+  }
+
   function acceptreject()
   {
-    $user_id = $this->input->post('id');
+    $userId = $this->input->post('id');
     $action = $this->input->post('action');
 
     if ($action != 'accept' && $action != 'reject')
       throw new RuntimeException("Unknown action: $action");
-    if (!is_numeric($user_id))
-      throw new RuntimeException("Non-numeric id: $user_id");
+    if (!is_numeric($userId))
+      throw new RuntimeException("Non-numeric id: $userId");
 
     if ($action == 'accept')
-      transition_user_to_state($user_id, STATUS_ACCEPTED);
+      transition_user_to_state($userId, STATUS_ACCEPTED);
     else if ($action == 'reject')
-      transition_user_to_state($user_id, STATUS_REJECTED);
+      transition_user_to_state($userId, STATUS_REJECTED);
 
-    redirect("admin/volunteers/show/$user_id");
+    redirect("admin/volunteers/show/$userId");
   }
 
   function addnote()
   {
     $this->load->helper('note');
 
-    $user_id = $this->input->post('userid');
+    $userId = $this->input->post('userid');
     $source = $this->input->post('source');
     $contents = $this->input->post('contents');
 
     $admin_id = $this->admin->id();
 
-    add_note($user_id, $admin_id, $source, $contents);
+    add_note($userId, $admin_id, $source, $contents);
 
-    redirect("admin/volunteers/show/$user_id");
+    redirect("admin/volunteers/show/$userId");
+  }
+
+  function deletenote($userId, $noteId)
+  {
+    $this->load->helper('note');
+
+    delete_note($noteId);
+    redirect("admin/volunteers/show/$userId");
   }
 
   function download($userId, $fieldId)

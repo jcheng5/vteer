@@ -81,6 +81,13 @@ function send_user_mail($template, $user, $to = NULL)
   $CI->email->message($mail->html);
   $CI->email->set_alt_message($mail->plaintext);
   $CI->email->send();
+
+  $db = new DbConn();
+  $db->exec('insert into mails_sent (userid, templateverid, sent) values (?, ?, ?)',
+            $user['id'],
+            $template->id,
+            date_create());
+
 }
 
 function render_mail($template, $params)
