@@ -173,7 +173,18 @@
       //]]>
     </script>
     
-    <!-- TODO: Make Explanation field required if Yes is answered -->
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function (info) {
+          if (info['healthissues'] == 'Yes' && !has_value(info['healthissues-explain']))
+          {
+            error_field_required('healthissues-explain');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="chronicconditions">
@@ -231,7 +242,18 @@
       //]]>
     </script>
     
-    <!-- TODO: Make Explanation field required if Yes is answered -->
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function (info) {
+          if (info['chronicconditions'] == 'Yes' && !has_value(info['chronicconditions-explain']))
+          {
+            error_field_required('chronicconditions-explain');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="foodallergies">
@@ -289,7 +311,18 @@
       //]]>
     </script>
     
-    <!-- TODO: Make Explanation field required if Yes is answered -->
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function (info) {
+          if (info['foodallergies'] == 'Yes' && !has_value(info['foodallergies-explain']))
+          {
+            error_field_required('foodallergies-explain');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="otherhealth">
@@ -347,7 +380,18 @@
       //]]>
     </script>
     
-    <!-- TODO: Make Explanation field required if Yes is answered -->
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function (info) {
+          if (info['otherhealth'] == 'Yes' && !has_value(info['otherhealth-explain']))
+          {
+            error_field_required('otherhealth-explain');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
 </div>
 <div class="section">
@@ -408,6 +452,17 @@
       //]]>
     </script>
     
-    <!-- TODO: Make Explanation field required if Yes is answered -->
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function (info) {
+          if (info['alcoholdrugs'] == 'Yes' && !has_value(info['alcoholdrugs-explain']))
+          {
+            error_field_required('alcoholdrugs-explain');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
 </div>

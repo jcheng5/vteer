@@ -28,4 +28,12 @@
       info['#{id}'] = value;
     });
   = default_validation(id, required)
-  / TODO: Make Explanation field required if Yes is answered
+  :javascript
+    validation_handlers.push(function (info) {
+      if (info['#{id}'] == 'Yes' && !has_value(info['#{id}-explain']))
+      {
+        error_field_required('#{id}-explain');
+        return false;
+      }
+      return true;
+    });
