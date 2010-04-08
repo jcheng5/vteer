@@ -24,6 +24,19 @@ function format_status($status)
   return $map[$status];
 }
 
+function create_user($firstname, $lastname, $email, $password)
+{
+  $db = new DbConn();
+  if (0 == $db->exec('insert into users (firstname, lastname, email, password) values (?, ?, ?, ?)',
+                     $firstname, $lastname, $email, $password))
+    throw new RuntimeException('A database error occurred');
+  $newId = $db->last_insert_id();
+
+  schedule_mail($newId, MAIL_INTRO);
+
+  return get_user($newId);
+}
+
 function get_user($user_id)
 {
   $db = new DbConn();

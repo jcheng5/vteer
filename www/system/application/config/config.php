@@ -1,12 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-// Custom config properties for vteer
-include('../site_config/config.php');
-/*
-$config['mail_sender'] = 'admin@example.com';
-$config['admin_email'] = 'admin@example.com';
-$config['upload_dir'] = '/Users/jcheng/Development/vteer/uploads';
-*/
+// jcheng: See also site_config/config.php, which is included at the end
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +25,7 @@ $config['upload_dir'] = '/Users/jcheng/Development/vteer/uploads';
 | variable so that it is blank.
 |
 */
-//$config['index_page'] = "index.php";
+$config['index_page'] = "index.php";
 
 /*
 |--------------------------------------------------------------------------
@@ -332,6 +326,7 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+include('../site_config/config.php');
 
 /* End of file config.php */
 /* Location: ./system/application/config/config.php */

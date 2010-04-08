@@ -27,9 +27,5 @@ $(function() {
         ckeditor.focus();
     });
 
-    new YAHOO.widget.Button('btnPreview').on('click', showPreview);
-    new YAHOO.widget.Button('btnSave');
-    new YAHOO.widget.Button('btnCancel').on('click', function() {
-        location.href = 'list.php'
-    });
+    //new YAHOO.widget.Button('btnPreview').on('click', showPreview);
 });

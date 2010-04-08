@@ -35,7 +35,7 @@ $users = $user_groups[$j]; ?>
 <h3><?php echo htmlspecialchars($title); ?> (<?php echo $users->length; ?>)</h3>
 <?php if ($users->length > 0): ?>
 
-<table cellspacing="0">
+<table class="data" cellspacing="0">
   <tr>
     <th></th>
     <th>Name</th>

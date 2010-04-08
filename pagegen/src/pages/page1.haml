@@ -1,6 +1,6 @@
 .section
   %h2 Basic Information
-  = date(:dob, 'Date of birth', :required => true)
+  = text(:dob, 'Date of birth', :required => true)
   = radio(:gender, 'Gender', ['Male', 'Female'], :required => true)
   = radio(:marital, 'Marital Status', ['Single', 'Married'], :required => true)
   = text(:ssn, 'Social Security # or ID #')

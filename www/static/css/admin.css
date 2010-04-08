@@ -13,3 +13,17 @@ div#pageframe {
 span.blank {
   color: #ccc;
 }
+
+table.data td,
+table.data th {
+  padding: .5em;
+  text-align: left;
+}
+
+table.data tr.odd {
+  background-color: #ddd;
+}
+
+table.data tr.even {
+  background-color: #eee;
+}

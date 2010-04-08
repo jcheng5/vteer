@@ -111,11 +111,7 @@ class Welcome extends Controller
       return;
     }
 
-    $db = new DbConn();
-    $db->exec('INSERT INTO users (firstname, lastname, email, password) VALUES (?, ?, ?, ?)',
-              $firstname, $lastname, $email, $password);
-
-    $newUser = get_user_by_email($email);
+    $newUser = create_user($firstname, $lastname, $email, $password);
     if (!$newUser)
     {
       $this->_index_with_error('An unknown error occurred');

@@ -21,7 +21,7 @@ define('MAIL_ONE_WEEK', 8);
 function get_mail_templates()
 {
   $db = new DbConn();
-  $query = 'select mt.id, mt.name, mtv.subject
+  $query = 'select mt.id, mt.name, mtv.subject, mt.role
              from mail_templates as mt, mail_template_versions as mtv
              where mt.id = mtv.templateid
                      and mtv.id in (select max(id) from mail_template_versions where templateid = mt.id)';
