@@ -17,7 +17,7 @@ class Volunteers extends Controller
     $users_submitted = get_users_by_state(STATUS_SUBMITTED);
     $users_accepted = get_users_by_state(STATUS_ACCEPTED);
     $users_rejected = get_users_by_state(STATUS_REJECTED);
-    $users_draft = get_users_by_state(STATUS_DRAFT);
+    $users_draft = get_users_by_state(array(STATUS_DRAFT, STATUS_CREATED));
 
     $user_groups = array($users_submitted, $users_accepted, $users_rejected, $users_draft);
     $titles = array('Applicants needing review',
