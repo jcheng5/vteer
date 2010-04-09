@@ -29,11 +29,13 @@ class Emails extends Controller
       $mailTemplate = get_mail_template($id, true);
       $subject = $mailTemplate->subject;
       $body = $mailTemplate->html;
+      $attachments = $mailTemplate->attachments;
     }
     else
     {
       $subject = '';
       $body = '';
+      $attachments = FALSE;
     }
 
     $verb = $id ? 'Edit' : 'Create New';
@@ -43,7 +45,7 @@ class Emails extends Controller
                       array('id' => $id,
                             'subject' => $subject,
                             'body' => $body,
-                            'attachments' => $mailTemplate->attachments));
+                            'attachments' => $attachments));
     $this->load->view('admin/footer');
   }
 

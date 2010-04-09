@@ -167,14 +167,16 @@ function addFile(id, name, size) {
   <div id="addline">
     <button id="btnAttach" class="native" type="button">Add attachment</button>
   </div>
-  <script type="text/javascript">
-    $(function() {
-      <?php while ($attach = $attachments->next()) {
-        $size = format_filesize($attach->size);
-        echo "addFile($attach->id, '$attach->filename', '$size');";
-      } ?>
-    });
-  </script>
+  <?php if ($attachments): ?>
+    <script type="text/javascript">
+      $(function() {
+        <?php while ($attach = $attachments->next()) {
+          $size = format_filesize($attach->size);
+          echo "addFile($attach->id, '$attach->filename', '$size');";
+        } ?>
+      });
+    </script>
+   <?php endif; ?>
 </div>
 
 <div class="actionbar" style="text-align: right">

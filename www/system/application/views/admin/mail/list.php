@@ -1,39 +1,45 @@
-<script type="text/javascript">
-$(function(){
-  new YAHOO.widget.Button('lnkCreate');
-});
-</script>
+<style type="text/css">
+  div#pageframe {
+    width: 100%;
+  }
+</style>
 
 <h1>Manage E-mail Templates</h1>
 
 <table class="data" cellspacing="0">
   <tr>
     <th></th>
-    <th>Subject</th>
     <th>Role</th>
+    <th>Subject</th>
   </tr>
   <?php $i = 0; while ($mail = $mails->next()): ?>
   <tr class="<?php echo ($i++ % 2) == 0 ? 'odd' : 'even'; ?>"
       id="mail<?php echo $mail->id; ?>">
     <td>
-      <?php echo anchor("admin/emails/compose/$mail->id", "Edit",
+      <?php echo anchor("admin/emails/compose/$mail->id", "View/Edit",
                         array('class' => 'button')); ?>
+    </td>
+    <td>
+      <?php if (!is_null($mail->role)): ?>
+        <strong><?php echo htmlspecialchars($mail->role); ?></strong>
+      <?php else: ?>
+        Custom
+      <?php endif; ?>
     </td>
     <td>
       <?php echo htmlspecialchars($mail->subject); ?>
      </td>
-    <td>
-      <?php echo htmlspecialchars($mail->role); ?>
-    </td>
   </tr>
   <?php endwhile; ?>
 </table>
 
+<!--
 <p>
   <?php echo anchor('admin/emails/compose',
                     'Create a new mail template',
-                    array('id' => 'lnkCreate')); ?>
+                    array('class' => 'button')); ?>
 </p>
+-->
 
 <?php if ($highlightid): ?>
 <script type="text/javascript">

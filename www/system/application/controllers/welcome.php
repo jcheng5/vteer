@@ -10,13 +10,6 @@ class Welcome extends Controller
 
   function index()
   {
-    $email = $this->input->post('email');
-    if ($email === FALSE)
-      $email = '';
-    $password = $this->input->post('password');
-    if ($password === FALSE)
-      $password = '';
-
     $this->load->view('header');
     $this->load->view('index');
     $this->load->view('footer');
@@ -55,7 +48,9 @@ class Welcome extends Controller
 
     $data = array('user' => $user);
 
-    if ($user->status == STATUS_CREATED || $user->status == STATUS_DRAFT)
+    if ($user->status == STATUS_CREATED)
+      redirect('apply/page/1');
+    else if ($user->status == STATUS_DRAFT)
       redirect('apply/page/1');
     else
     {
