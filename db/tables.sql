@@ -4,7 +4,7 @@
 #
 # Host: localhost (MySQL 5.1.38)
 # Database: vteer_dev
-# Generation Time: 2010-04-05 21:15:16 -0700
+# Generation Time: 2010-04-09 12:03:24 -0700
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -33,6 +33,21 @@ CREATE TABLE `admins` (
 
 
 
+# Dump of table mail_attachments
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `mail_attachments`;
+
+CREATE TABLE `mail_attachments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `filename` varchar(255) NOT NULL,
+  `type` varchar(30) NOT NULL,
+  `size` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+
+
 # Dump of table mail_template_versions
 # ------------------------------------------------------------
 
@@ -47,7 +62,7 @@ CREATE TABLE `mail_template_versions` (
   `plaintext` longtext NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_TEMPLATEID` (`templateid`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
 
 
 
@@ -80,7 +95,7 @@ CREATE TABLE `mails_scheduled` (
   KEY `IDX_USERID` (`userid`),
   KEY `IDX_MAILID` (`mailid`),
   KEY `IDX_DUE` (`due`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 
 
@@ -93,8 +108,11 @@ CREATE TABLE `mails_sent` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` int(11) DEFAULT NULL,
   `templateverid` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+  `sent` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_SENT` (`sent`),
+  KEY `IDX_USERID` (`userid`)
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 
 
@@ -112,7 +130,23 @@ CREATE TABLE `notes` (
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_USERID` (`userid`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table templatevers_to_attachments
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `templatevers_to_attachments`;
+
+CREATE TABLE `templatevers_to_attachments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `templateverid` int(11) NOT NULL,
+  `attachmentid` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `IDX_UNIQUE` (`templateverid`,`attachmentid`),
+  KEY `IDX_TEMPLATEVERID` (`templateverid`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 
 
@@ -138,7 +172,7 @@ CREATE TABLE `users` (
   KEY `IDX_STATUS` (`status`),
   KEY `IDX_ARRIVALDATE` (`arrivaldate`),
   KEY `IDX_DEPARTUREDATE` (`departuredate`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 
 

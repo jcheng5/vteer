@@ -19,7 +19,6 @@ class Cron extends Controller
     {
       $user_id = $mail->userid;
       $mail_id = $mail->mailid;
-      $id = $mail->id;
 
       $template = get_mail_template($mail_id, false);
 

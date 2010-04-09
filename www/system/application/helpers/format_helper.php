@@ -27,6 +27,14 @@ function format_datetime_ago($datetime)
   return format_duration($seconds_ago) . " ago";
 }
 
+function format_filesize($bytes)
+{
+  if ($bytes < 1048576)
+    return number_format($bytes/1024, 1) . ' KB';
+
+  return number_format($bytes/1048576, 1) . ' MB';
+}
+
 function render_field($id, $data, $userId)
 {
   $type_hint = FALSE;

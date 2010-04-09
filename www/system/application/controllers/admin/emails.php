@@ -36,14 +36,14 @@ class Emails extends Controller
       $body = '';
     }
 
-
     $verb = $id ? 'Edit' : 'Create New';
 
     $this->load->view('admin/header', array('title' => "$verb E-mail Template"));
     $this->load->view('admin/mail/compose',
                       array('id' => $id,
                             'subject' => $subject,
-                            'body' => $body));
+                            'body' => $body,
+                            'attachments' => $mailTemplate->attachments));
     $this->load->view('admin/footer');
   }
 
@@ -54,6 +54,7 @@ class Emails extends Controller
     $subject = $this->input->post('subject');
     $htmlbody = $this->input->post('htmlbody');
     $textbody = html_to_plaintext($htmlbody);
+    $attachments = $this->input->post('attachment');
 
     $db = new DbConn();
 
@@ -66,10 +67,54 @@ class Emails extends Controller
 
     $rows = $db->exec('insert into mail_template_versions (templateid, subject, html, plaintext) values (?, ?, ?, ?)',
                       (int)$id, $subject, $htmlbody, $textbody);
-
     if ($rows != 1)
       throw new RuntimeException("Insertion failed!");
+    $newId = $db->last_insert_id();
+
+    // process attachments
+    foreach ($attachments as $attachId)
+    {
+      $attachId = (int)$attachId;
+      $db->exec('insert into templatevers_to_attachments (templateverid, attachmentid) values (?, ?)',
+                $newId, $attachId);
+    }
 
     redirect("admin/emails/index/$id");
+  }
+
+  function attach()
+  {
+    $this->load->view('admin/header');
+    $this->load->view('admin/mail/attach');
+    $this->load->view('admin/footer');
+  }
+
+  function upload()
+  {
+    if ($_FILES['file']['error'] !== UPLOAD_ERR_OK) {
+      echo 'File upload failed';
+      die($_FILES['file']['error']);
+    }
+
+    $filename = $_FILES['file']['name'];
+    $filetype = $_FILES['file']['type'];
+    $filesize = filesize($_FILES['file']['tmp_name']);
+
+    $db = new DbConn();
+    $db->exec('insert into mail_attachments (filename, type, size) values (?, ?, ?)',
+              $filename, $filetype, $filesize);
+    $fileId = $db->last_insert_id();
+
+    $destfile = make_file_path(0, "mail$fileId");
+    if (!move_uploaded_file($_FILES['file']['tmp_name'], $destfile))
+      die('Upload failed');
+
+    $this->load->view('admin/header');
+    $this->load->view('admin/mail/uploaded',
+                      array('fileid' => $fileId,
+                            'filename' => $filename,
+                            'filesize' => $filesize,
+                            'filetype' => $filetype));
+    $this->load->view('admin/footer');
   }
 }
