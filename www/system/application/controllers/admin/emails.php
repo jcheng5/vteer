@@ -72,11 +72,14 @@ class Emails extends Controller
     $newId = $db->last_insert_id();
 
     // process attachments
-    foreach ($attachments as $attachId)
+    if ($attachments)
     {
-      $attachId = (int)$attachId;
-      $db->exec('insert into templatevers_to_attachments (templateverid, attachmentid) values (?, ?)',
-                $newId, $attachId);
+      foreach ($attachments as $attachId)
+      {
+        $attachId = (int)$attachId;
+        $db->exec('insert into templatevers_to_attachments (templateverid, attachmentid) values (?, ?)',
+                  $newId, $attachId);
+      }
     }
 
     redirect("admin/emails/index/$id");
@@ -105,7 +108,7 @@ class Emails extends Controller
               $filename, $filetype, $filesize);
     $fileId = $db->last_insert_id();
 
-    $destfile = make_file_path(0, "mail$fileId");
+    $destfile = make_attachment_path($fileId);
     if (!move_uploaded_file($_FILES['file']['tmp_name'], $destfile))
       die('Upload failed');
 
@@ -116,5 +119,19 @@ class Emails extends Controller
                             'filesize' => $filesize,
                             'filetype' => $filetype));
     $this->load->view('admin/footer');
+  }
+
+  function preview_attachment($attachId)
+  {
+    $db = new DbConn();
+    $results = $db->query('select * from mail_attachments where id = ?', (int)$attachId);
+    if ($results->length != 1)
+      show_error("File not found", 404);
+
+    $file = $results->next();
+    $filename = $file->filename;
+    $fileType = $file->type;
+    if (!download_file(make_attachment_path($attachId), $filename, $fileType))
+      show_error("File not found", 404);
   }
 }

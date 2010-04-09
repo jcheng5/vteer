@@ -188,7 +188,7 @@ class Apply extends Controller
   {
     $user = $this->user->get_current_user();
 
-    if (!download_file($user->id, $fieldId))
+    if (!download_user_file($user->id, $fieldId))
       show_error("File not found", 404);
   }
 

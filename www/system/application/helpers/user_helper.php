@@ -187,12 +187,12 @@ function merge_data($userid, $jsonData)
   $db->exec('UPDATE users SET data = ? WHERE id = ?', $mergedJson, $userid);
 }
 
-function download_file($userId, $fieldId)
+function download_user_file($userId, $fieldId)
 {
   $user = get_user($userId);
 
   $filePath = make_file_path($userId, $fieldId);
-  if (!file_exists($filePath) || !$user->data)
+  if (!$user->data)
     return FALSE;
 
   $data = json_decode($user->data);
@@ -200,9 +200,21 @@ function download_file($userId, $fieldId)
   if (!$fileData)
     return FALSE;
 
-  header("Content-Type: $fileData->type");
-  header("Content-Disposition: inline; filename=$fileData->name");
+  $fileType = $fileData->type;
+  $filename = $fileData->name;
+
+  return download_file($filePath, $filename, $fileType);
+}
+
+function download_file($filePath, $filename, $fileType)
+{
+  if (!file_exists($filePath))
+    return FALSE;
+
+  header("Content-Type: $fileType");
+  header("Content-Disposition: inline; filename=$filename");
   readfile($filePath);
+  return TRUE;
 }
 
 function make_file_path($userId, $fieldId)

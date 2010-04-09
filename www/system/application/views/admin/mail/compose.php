@@ -54,7 +54,7 @@ function addFile(id, name, size) {
 
   var link = document.createElement('a');
   link.target = '_blank';
-  link.href = '';
+  link.href = "<?php echo site_url('admin/emails/preview_attachment'); ?>/" + id;
   link.innerText = name;
   div.appendChild(link);
 

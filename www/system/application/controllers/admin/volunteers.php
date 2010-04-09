@@ -119,7 +119,7 @@ class Volunteers extends Controller
 
   function download($userId, $fieldId)
   {
-    if (!download_file($userId, $fieldId))
+    if (!download_user_file($userId, $fieldId))
       show_error("File not found", 404);
   }
 }
