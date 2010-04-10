@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def text(id, label, config={})
-    partial('text', :locals => { :id => id, :label => label, :required => config[:required] })
+    partial('text', :locals => { :id => id, :label => label, :required => config[:required], :config => config })
   end
   
   def password(id, label, config={})
@@ -38,7 +38,8 @@ module ApplicationHelper
     partial('label', :locals => { :id => id, 
                                   :label => label, 
                                   :class_name => config[:class_name],
-                                  :required => config[:required] })
+                                  :required => config[:required],
+                                  :config => config })
   end
   
   def textarea_sm(id, label, config={})
@@ -46,7 +47,9 @@ module ApplicationHelper
                                      :label => label,
                                      :cols => 30,
                                      :rows => 3,
-                                     :required => config[:required] })
+                                     :size => 'small',
+                                     :required => config[:required],
+                                     :config => config })
   end
 
   def textarea_med(id, label, config={})
@@ -54,7 +57,9 @@ module ApplicationHelper
                                      :label => label,
                                      :cols => 40,
                                      :rows => 5,
-                                     :required => config[:required] })
+                                     :size => 'medium',
+                                     :required => config[:required],
+                                     :config => config })
   end
 
   def textarea_lg(id, label, config={})
@@ -62,7 +67,9 @@ module ApplicationHelper
                                      :label => label,
                                      :cols => 70,
                                      :rows => 12,
-                                     :required => config[:required] })
+                                     :size => 'large',
+                                     :required => config[:required],
+                                     :config => config })
   end
   
   def daterange(id, label, config={})

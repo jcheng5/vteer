@@ -2,6 +2,7 @@
 <html>
 <head>
   <title><?php echo htmlentities(isset($title) ? $title : 'Living Hope Volunteer Application'); ?></title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>static/css/application.css"/>
   <?php $this->load->view('jquery'); ?>
   <?php $this->load->view('yui'); ?>
@@ -14,6 +15,9 @@
                                      showButtonPanel: true,
                                      showAnim: 'fadeIn' } );
       $('a.button').each(function() {
+        new YAHOO.widget.Button(this);
+      });
+      $('button.yui').each(function() {
         new YAHOO.widget.Button(this);
       });
     });

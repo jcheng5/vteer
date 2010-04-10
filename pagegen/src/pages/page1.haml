@@ -1,10 +1,10 @@
 .section
   %h2 Basic Information
+  = text(:nickname, 'Nickname')
   = text(:dob, 'Date of birth', :required => true)
   = radio(:gender, 'Gender', ['Male', 'Female'], :required => true)
   = radio(:marital, 'Marital Status', ['Single', 'Married'], :required => true)
-  = text(:ssn, 'Social Security # or ID #')
-  = text(:nickname, 'What you like to be called (name you go by)')
+  = text(:ssn, 'Identification Number', :detail => 'Social Security # (US), National Insurance # (UK), etc.')
   = textarea_sm(:address, 'Mailing Address', :required => true)
   = text(:phone, 'Telephone', :required => true)
   = text(:fax, 'Fax')

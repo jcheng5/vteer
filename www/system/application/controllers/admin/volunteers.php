@@ -59,6 +59,17 @@ class Volunteers extends Controller
     $this->load->view('admin/footer');
   }
 
+  function delete($id)
+  {
+    $db = new DbConn();
+    $db->exec('delete from users where id = ?', $id);
+    $db->exec('delete from mails_scheduled where userid = ?', $id);
+    $db->exec('delete from mails_sent where userid = ?', $id);
+    $db->exec('delete from notes where userid = ?', $id);
+
+    redirect('admin/volunteers');
+  }
+
   function email_history($id)
   {
     $user = get_user($id);
@@ -76,11 +87,8 @@ class Volunteers extends Controller
                             'scheduledMails' => $scheduledMails));
   }
 
-  function acceptreject()
+  function acceptreject($userId, $action)
   {
-    $userId = $this->input->post('id');
-    $action = $this->input->post('action');
-
     if ($action != 'accept' && $action != 'reject')
       throw new RuntimeException("Unknown action: $action");
     if (!is_numeric($userId))

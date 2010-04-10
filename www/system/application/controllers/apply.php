@@ -176,7 +176,6 @@ class Apply extends Controller
   function success()
   {
     $user = $this->user->get_current_user();
-    $this->user->verify_draft($user);
 
     // Use the standard header/footer to not invoke the auto-save javascript
     $this->load->view('header');

@@ -1,7 +1,7 @@
 .section
   %h2 Education
   = select(:educationlevel, 'Highest level of education completed', ['Some high school', 'High school diploma or equivalent', 'Some college', 'Associate Degree', 'Bachelor Degree', 'Advanced Degree'])
-  = textarea_med(:schools, 'List any post-high school institutions attended, as well as the dates attended, degrees attained, and major/minor fields of study.')
+  = textarea_med(:schools, 'Post-High School Education', :detail => 'List any post-high school institutions attended, as well as the dates attended, degrees attained, and major/minor fields of study.')
 
 .section
   %h2 Career History

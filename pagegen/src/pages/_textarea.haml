@@ -1,7 +1,11 @@
 .field
   = label(id, label, :required => required)
-  %br
-  %textarea(name=id id=id rows=rows cols=cols)
+  - if config[:detail]
+    .detail
+      = config[:detail]
+  - else
+    %br
+  %textarea(name=id id=id rows=rows cols=cols class=size)
   :javascript
     load_handlers.push(function (info) {
       var val = info['#{id}'] || '';

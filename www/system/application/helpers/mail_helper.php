@@ -31,11 +31,16 @@ function get_mail_templates()
 function schedule_mail($user_id, $mail_id, $when = NULL)
 {
   if (!$when)
-    $when = new DateTime();
-
-  $db = new DbConn();
-  $db->exec('insert into mails_scheduled (userid, mailid, due) values (?, ?, ?)',
-            $user_id, $mail_id, $when);
+  {
+    $template = get_mail_template($mail_id, TRUE);
+    send_user_mail($template, $user_id);
+  }
+  else
+  {
+    $db = new DbConn();
+    $db->exec('insert into mails_scheduled (userid, mailid, due) values (?, ?, ?)',
+              $user_id, $mail_id, $when);
+  }
 }
 
 function send_mail($from, $to, $subject, $body)

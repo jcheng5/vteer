@@ -24,7 +24,7 @@
       Address
     </label>
     <br />
-    <textarea cols="30" id="churchaddress" name="churchaddress" rows="3"></textarea>
+    <textarea class="small" cols="30" id="churchaddress" name="churchaddress" rows="3"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -100,7 +100,7 @@
       Describe your involvement
     </label>
     <br />
-    <textarea cols="40" id="involvement" name="involvement" rows="5"></textarea>
+    <textarea class="medium" cols="40" id="involvement" name="involvement" rows="5"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -136,7 +136,7 @@
           If yes, please explain
         </label>
         <br />
-        <textarea cols="40" id="healthissues-explain" name="healthissues-explain" rows="5"></textarea>
+        <textarea class="medium" cols="40" id="healthissues-explain" name="healthissues-explain" rows="5"></textarea>
         <script type="text/javascript">
           //<![CDATA[
             load_handlers.push(function (info) {
@@ -205,7 +205,7 @@
           If yes, please explain
         </label>
         <br />
-        <textarea cols="40" id="chronicconditions-explain" name="chronicconditions-explain" rows="5"></textarea>
+        <textarea class="medium" cols="40" id="chronicconditions-explain" name="chronicconditions-explain" rows="5"></textarea>
         <script type="text/javascript">
           //<![CDATA[
             load_handlers.push(function (info) {
@@ -274,7 +274,7 @@
           If yes, please explain
         </label>
         <br />
-        <textarea cols="40" id="foodallergies-explain" name="foodallergies-explain" rows="5"></textarea>
+        <textarea class="medium" cols="40" id="foodallergies-explain" name="foodallergies-explain" rows="5"></textarea>
         <script type="text/javascript">
           //<![CDATA[
             load_handlers.push(function (info) {
@@ -343,7 +343,7 @@
           If yes, please explain
         </label>
         <br />
-        <textarea cols="40" id="otherhealth-explain" name="otherhealth-explain" rows="5"></textarea>
+        <textarea class="medium" cols="40" id="otherhealth-explain" name="otherhealth-explain" rows="5"></textarea>
         <script type="text/javascript">
           //<![CDATA[
             load_handlers.push(function (info) {
@@ -415,7 +415,7 @@
           If yes, please explain
         </label>
         <br />
-        <textarea cols="40" id="alcoholdrugs-explain" name="alcoholdrugs-explain" rows="5"></textarea>
+        <textarea class="medium" cols="40" id="alcoholdrugs-explain" name="alcoholdrugs-explain" rows="5"></textarea>
         <script type="text/javascript">
           //<![CDATA[
             load_handlers.push(function (info) {

@@ -65,20 +65,32 @@
 <script type="text/javascript">
   $(function()
   {
-    var btnAccept = new YAHOO.widget.Button('btnAccept');
-    btnAccept.on('click', function() {
-      return confirm("Are you sure you want to ACCEPT this application?");
-    });
-    var btnReject = new YAHOO.widget.Button('btnReject');
-    btnReject.on('click', function() {
-      return confirm("Are you sure you want to REJECT this application?");
-    });
     new YAHOO.widget.Button('btnAddNote');    
     var btnShowAddNote = new YAHOO.widget.Button('btnShowAddNote');
     btnShowAddNote.on('click', function() {
       $('#btnShowAddNote').css('display', 'none');
       $('#addnote').css('display', 'block');
     });
+
+    var btnDeleteUser = new YAHOO.widget.Button('btnDeleteUser');
+    btnDeleteUser.on('click', function(e) {
+      if (!confirm('Are you sure you want to PERMANENTLY delete this application?'))
+        YAHOO.util.Event.preventDefault(e);
+    });
+
+    <?php if ($user->status == STATUS_SUBMITTED): ?>
+      new YAHOO.widget.Button('btnAccept').on('mousedown', function(e) {
+        if (confirm('Are you sure you want to ACCEPT this application?')) {
+          location.href = '<?php echo site_url("admin/volunteers/acceptreject/$user->id/accept"); ?>';
+        }
+      });
+      new YAHOO.widget.Button('btnReject').on('mousedown', function(e) {
+        if (confirm('Are you sure you want to REJECT this application?')) {
+          location.href = '<?php echo site_url("admin/volunteers/acceptreject/$user->id/reject"); ?>';
+        }
+      });
+    <?php endif; ?>
+
     new YAHOO.widget.Button('lnkBackToList');
   });
 </script>
@@ -93,15 +105,8 @@
 </div>
 
 <?php if ($user->status == STATUS_SUBMITTED): ?>
-
-<?php
-  $this->load->helper('form');
-  echo form_open('admin/volunteers/acceptreject');
-?>
-  <input type="hidden" name="id" value="<?php echo $user->id; ?>"
-  <button id="btnAccept" type="submit" name="action" value="accept"><h3 style="color: #060">Accept</h3></button>
-  <button id="btnReject" type="submit" name="action" value="reject"><h3 style="color: #D00">Reject</h3></button>
-</form>
+  <button id="btnAccept" class="native" type="button"><h3 style="color: #060">Accept</h3></button>
+  <button id="btnReject" class="native" type="button"><h3 style="color: #D00">Reject</h3></button>
 <?php endif; ?>
 
 <p><?php echo anchor("admin/volunteers/email_history/$user->id", 'View e-mails sent'); ?></p>
@@ -159,3 +164,6 @@
 </div>
 <?php endforeach; ?>
 </div>
+
+<?php echo anchor("admin/volunteers/delete/$user->id", 'Permanently Delete User',
+                  array('id' => 'btnDeleteUser')); ?>

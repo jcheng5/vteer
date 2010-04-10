@@ -5,7 +5,7 @@
       Please note any additional comments or concerns you have.
     </label>
     <br />
-    <textarea cols="70" id="comments" name="comments" rows="12"></textarea>
+    <textarea class="large" cols="70" id="comments" name="comments" rows="12"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {

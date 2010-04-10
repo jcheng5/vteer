@@ -5,7 +5,7 @@
       How and when did you become a Christian?
     </label>
     <br />
-    <textarea cols="40" id="conversion" name="conversion" rows="5"></textarea>
+    <textarea class="medium" cols="40" id="conversion" name="conversion" rows="5"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -24,7 +24,7 @@
       Describe how your life has changed.
     </label>
     <br />
-    <textarea cols="40" id="lifechange" name="lifechange" rows="5"></textarea>
+    <textarea class="medium" cols="40" id="lifechange" name="lifechange" rows="5"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -43,7 +43,7 @@
       Please write a brief overview of your personal history (where you grew up, childhood experiences, and how these affect your life now).
     </label>
     <br />
-    <textarea cols="70" id="history" name="history" rows="12"></textarea>
+    <textarea class="large" cols="70" id="history" name="history" rows="12"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -62,7 +62,7 @@
       What would others say is your strongest quality, and why?
     </label>
     <br />
-    <textarea cols="40" id="strength" name="strength" rows="5"></textarea>
+    <textarea class="medium" cols="40" id="strength" name="strength" rows="5"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -81,7 +81,7 @@
       What would others say is your weakest quality, and why?
     </label>
     <br />
-    <textarea cols="40" id="weakness" name="weakness" rows="5"></textarea>
+    <textarea class="medium" cols="40" id="weakness" name="weakness" rows="5"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -100,7 +100,7 @@
       When do you find it difficult to submit to others?
     </label>
     <br />
-    <textarea cols="40" id="submission" name="submission" rows="5"></textarea>
+    <textarea class="medium" cols="40" id="submission" name="submission" rows="5"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -119,7 +119,7 @@
       Describe your personal church history (various ones you've attended, why you switched, etc.).
     </label>
     <br />
-    <textarea cols="70" id="churchhistory" name="churchhistory" rows="12"></textarea>
+    <textarea class="large" cols="70" id="churchhistory" name="churchhistory" rows="12"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -138,7 +138,7 @@
       Describe your personal &quot;statement of faith.&quot; What do you believe?
     </label>
     <br />
-    <textarea cols="70" id="faith" name="faith" rows="12"></textarea>
+    <textarea class="large" cols="70" id="faith" name="faith" rows="12"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -157,7 +157,7 @@
       Do you feel specifically called to South Africa? Explain.
     </label>
     <br />
-    <textarea cols="40" id="southafrica" name="southafrica" rows="5"></textarea>
+    <textarea class="medium" cols="40" id="southafrica" name="southafrica" rows="5"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -176,7 +176,7 @@
       Where do you want to be in five years? What is your personal vision for your life and ministry?
     </label>
     <br />
-    <textarea cols="40" id="fiveyearplan" name="fiveyearplan" rows="5"></textarea>
+    <textarea class="medium" cols="40" id="fiveyearplan" name="fiveyearplan" rows="5"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -195,7 +195,7 @@
       Explain how and why you feel God is calling you to be part of Living Hope. Also include what area of ministry you would specifically like to get involved in and how you see yourself fitting in.
     </label>
     <br />
-    <textarea cols="70" id="calling" name="calling" rows="12"></textarea>
+    <textarea class="large" cols="70" id="calling" name="calling" rows="12"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -399,7 +399,7 @@
       Of the areas you checked, please note which ones you would consider yourself strong enough to lead a team in projects within this area.
     </label>
     <br />
-    <textarea cols="30" id="leadgifts" name="leadgifts" rows="3"></textarea>
+    <textarea class="small" cols="30" id="leadgifts" name="leadgifts" rows="3"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {

@@ -4,7 +4,7 @@
 #
 # Host: localhost (MySQL 5.1.38)
 # Database: vteer_dev
-# Generation Time: 2010-04-09 12:03:24 -0700
+# Generation Time: 2010-04-09 17:25:32 -0700
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -44,7 +44,7 @@ CREATE TABLE `mail_attachments` (
   `type` varchar(30) NOT NULL,
   `size` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 
 
@@ -62,7 +62,7 @@ CREATE TABLE `mail_template_versions` (
   `plaintext` longtext NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_TEMPLATEID` (`templateid`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 
 
 
@@ -74,10 +74,10 @@ DROP TABLE IF EXISTS `mail_templates`;
 CREATE TABLE `mail_templates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `role` int(11) DEFAULT NULL,
+  `role` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_ROLE` (`role`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 
 
@@ -95,7 +95,7 @@ CREATE TABLE `mails_scheduled` (
   KEY `IDX_USERID` (`userid`),
   KEY `IDX_MAILID` (`mailid`),
   KEY `IDX_DUE` (`due`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 
 
@@ -112,7 +112,7 @@ CREATE TABLE `mails_sent` (
   PRIMARY KEY (`id`),
   KEY `IDX_SENT` (`sent`),
   KEY `IDX_USERID` (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 
 
 
@@ -146,7 +146,7 @@ CREATE TABLE `templatevers_to_attachments` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `IDX_UNIQUE` (`templateverid`,`attachmentid`),
   KEY `IDX_TEMPLATEVERID` (`templateverid`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 
 
@@ -172,7 +172,7 @@ CREATE TABLE `users` (
   KEY `IDX_STATUS` (`status`),
   KEY `IDX_ARRIVALDATE` (`arrivaldate`),
   KEY `IDX_DEPARTUREDATE` (`departuredate`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 
 

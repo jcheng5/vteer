@@ -2,6 +2,9 @@
   = label(id, label, :required => required)
   %br
   %input{:name=>id, :id=>id, :type=>(defined?(inputtype) ? inputtype : "text")}
+  - if config[:detail]
+    .detail
+      = config[:detail]
   :javascript
     load_handlers.push(function (info) {
       var val = info['#{id}'] || '';

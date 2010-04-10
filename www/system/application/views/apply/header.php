@@ -2,4 +2,4 @@
 
 <script type="text/javascript" src="<?php echo site_url('apply/apply_js'); ?>"></script>
 
-<form name="mainform">
+<form name="mainform" id="application">

@@ -28,7 +28,7 @@ if ($scheduledMails->length > 0):
   while ($mail = $scheduledMails->next()):
 ?>
   <div class="email">
-    <h3 class="subject"><?php echo htmlspecialchars($mail->name); ?></h3>
+    <h3 class="subject"><?php echo htmlspecialchars($mail->role); ?></h3>
     <div class="date">
       Scheduled for <?php echo htmlspecialchars($mail->due); ?>
     </div>

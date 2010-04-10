@@ -1,10 +1,27 @@
 <div class="section">
   <h2>Basic Information</h2>
   <div class="field">
-    <label for="dob">
-      Date of birth
-      *
+    <label for="nickname">
+      Nickname
     </label>
+    <br />
+    <input id="nickname" name="nickname" type="text" />
+    <script type="text/javascript">
+      //<![CDATA[
+        load_handlers.push(function (info) {
+          var val = info['nickname'] || '';
+          $('#nickname').get(0).value = val;
+        });
+        save_handlers.push(function (info, form) {
+          info['nickname'] = $('#nickname').get(0).value;
+        });
+      //]]>
+    </script>
+    
+  </div>
+  <div class="field">
+    <label for="dob">
+      Date of birth<span class="requiredcue">*</span></label>
     <br />
     <input id="dob" name="dob" type="text" />
     <script type="text/javascript">
@@ -33,9 +50,7 @@
   </div>
   <div class="field">
     <label for="gender">
-      Gender
-      *
-    </label>
+      Gender<span class="requiredcue">*</span></label>
     <br />
     <input id="gender0" name="gender" type="radio" value="Male" />
     <label class="option" for="gender0">
@@ -85,9 +100,7 @@
   </div>
   <div class="field">
     <label for="marital">
-      Marital Status
-      *
-    </label>
+      Marital Status<span class="requiredcue">*</span></label>
     <br />
     <input id="marital0" name="marital" type="radio" value="Single" />
     <label class="option" for="marital0">
@@ -137,10 +150,13 @@
   </div>
   <div class="field">
     <label for="ssn">
-      Social Security # or ID #
+      Identification Number
     </label>
     <br />
     <input id="ssn" name="ssn" type="text" />
+    <div class="detail">
+      Social Security # (US), National Insurance # (UK), etc.
+    </div>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -155,31 +171,10 @@
     
   </div>
   <div class="field">
-    <label for="nickname">
-      What you like to be called (name you go by)
-    </label>
-    <br />
-    <input id="nickname" name="nickname" type="text" />
-    <script type="text/javascript">
-      //<![CDATA[
-        load_handlers.push(function (info) {
-          var val = info['nickname'] || '';
-          $('#nickname').get(0).value = val;
-        });
-        save_handlers.push(function (info, form) {
-          info['nickname'] = $('#nickname').get(0).value;
-        });
-      //]]>
-    </script>
-    
-  </div>
-  <div class="field">
     <label for="address">
-      Mailing Address
-      *
-    </label>
+      Mailing Address<span class="requiredcue">*</span></label>
     <br />
-    <textarea cols="30" id="address" name="address" rows="3"></textarea>
+    <textarea class="small" cols="30" id="address" name="address" rows="3"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -206,9 +201,7 @@
   </div>
   <div class="field">
     <label for="phone">
-      Telephone
-      *
-    </label>
+      Telephone<span class="requiredcue">*</span></label>
     <br />
     <input id="phone" name="phone" type="text" />
     <script type="text/javascript">
@@ -256,9 +249,7 @@
   </div>
   <div class="field">
     <label for="referrer">
-      How did you hear about our ministry?
-      *
-    </label>
+      How did you hear about our ministry?<span class="requiredcue">*</span></label>
     <br />
     <select id="referrer" name="referrer">
       <option value=""></option>
@@ -333,9 +324,7 @@
   <h4>Please indicate when you would like to visit. Since there are many factors involved in scheduling volunteers, please indicate your first, second, and third preferences for working with Living Hope. We have a minimum service time commitment of 30 days.</h4>
   <div class="field">
     <label for="dates1-from">
-      First preference of dates
-      *
-    </label>
+      First preference of dates<span class="requiredcue">*</span></label>
     <br />
     From
     <input class="datepicker" id="dates1-from" type="text" />
@@ -379,9 +368,7 @@
   </div>
   <div class="field">
     <label for="dates2-from">
-      Second preference of dates
-      *
-    </label>
+      Second preference of dates<span class="requiredcue">*</span></label>
     <br />
     From
     <input class="datepicker" id="dates2-from" type="text" />

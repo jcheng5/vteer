@@ -51,10 +51,12 @@
   </div>
   <div class="field">
     <label for="schools">
-      List any post-high school institutions attended, as well as the dates attended, degrees attained, and major/minor fields of study.
+      Post-High School Education
     </label>
-    <br />
-    <textarea cols="40" id="schools" name="schools" rows="5"></textarea>
+    <div class="detail">
+      List any post-high school institutions attended, as well as the dates attended, degrees attained, and major/minor fields of study.
+    </div>
+    <textarea class="medium" cols="40" id="schools" name="schools" rows="5"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -152,7 +154,7 @@
       Briefly describe your career history and tell us how this relates to your ministry.
     </label>
     <br />
-    <textarea cols="40" id="career" name="career" rows="5"></textarea>
+    <textarea class="medium" cols="40" id="career" name="career" rows="5"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -209,7 +211,7 @@
       List the countries you have been to, including the dates, the organization(s) you traveled with, the types of ministry you were involved in, and any leadership positions you held.
     </label>
     <br />
-    <textarea cols="70" id="travel" name="travel" rows="12"></textarea>
+    <textarea class="large" cols="70" id="travel" name="travel" rows="12"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -228,7 +230,7 @@
       List any other formal ministry experience you have had and leadership positions you have held. For each, list the organization/church, responsibilities, and dates.
     </label>
     <br />
-    <textarea cols="70" id="ministry" name="ministry" rows="12"></textarea>
+    <textarea class="large" cols="70" id="ministry" name="ministry" rows="12"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {

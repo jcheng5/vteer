@@ -53,8 +53,8 @@ if (!isset($login_error))
   the certification process and handle any items that need hands-on care while you are still in your home country. This
   process takes from 12 to 24 months, but we will work to expedite the process where we can.</p>
 <p>While we do not have a children's home or orphanage, there are many orphaned children in the surrounding communities
-  and the children’s clubs in which we serve. We work to instill life skills and biblical values into their lives to
-  help them make good choices and protect them from becoming victims of HIV & Aids. In the case of orphaned children, we
+  and the children's clubs in which we serve. We work to instill life skills and biblical values into their lives to
+  help them make good choices and protect them from becoming victims of HIV/AIDS. In the case of orphaned children, we
   make every attempt to find extended family for the children. If this is not possible, our social worker will endeavour
   to place them with a family in the community.</p>
 <p>Thank you so much and God bless.</p>
@@ -103,7 +103,7 @@ if (!isset($login_error))
         <br/>
         <input id="password2" name="password2" type="password"/>
       </div>
-      <p><input type="submit" value="Register"/></p>
+      <p><button class="yui" type="submit">Register</button></p>
     <?php echo form_close(); ?>
 
     </td>
@@ -129,7 +129,7 @@ if (!isset($login_error))
         <br/>
         <input id="login_password" name="login_password" type="password"/>
       </div>
-      <p><input type="submit" value="Log in"/></p>
+      <p><button class="yui" type="submit">Log in</button></p>
     <?php echo form_close(); ?>
 
     </td>

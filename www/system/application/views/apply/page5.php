@@ -14,9 +14,7 @@
     </h3>
     <div class="field">
       <label for="pastor_name">
-        Name
-        *
-      </label>
+        Name<span class="requiredcue">*</span></label>
       <br />
       <input id="pastor_name" name="pastor_name" type="text" />
       <script type="text/javascript">
@@ -45,11 +43,9 @@
     </div>
     <div class="field">
       <label for="pastor_address">
-        Address
-        *
-      </label>
+        Address<span class="requiredcue">*</span></label>
       <br />
-      <textarea cols="30" id="pastor_address" name="pastor_address" rows="3"></textarea>
+      <textarea class="small" cols="30" id="pastor_address" name="pastor_address" rows="3"></textarea>
       <script type="text/javascript">
         //<![CDATA[
           load_handlers.push(function (info) {
@@ -76,9 +72,7 @@
     </div>
     <div class="field">
       <label for="pastor_phone">
-        Phone
-        *
-      </label>
+        Phone<span class="requiredcue">*</span></label>
       <br />
       <input id="pastor_phone" name="pastor_phone" type="text" />
       <script type="text/javascript">
@@ -107,9 +101,7 @@
     </div>
     <div class="field">
       <label for="pastor_email">
-        E-mail
-        *
-      </label>
+        E-mail<span class="requiredcue">*</span></label>
       <br />
       <input id="pastor_email" name="pastor_email" type="text" />
       <script type="text/javascript">
@@ -191,9 +183,7 @@
     </h3>
     <div class="field">
       <label for="friend_name">
-        Name
-        *
-      </label>
+        Name<span class="requiredcue">*</span></label>
       <br />
       <input id="friend_name" name="friend_name" type="text" />
       <script type="text/javascript">
@@ -222,11 +212,9 @@
     </div>
     <div class="field">
       <label for="friend_address">
-        Address
-        *
-      </label>
+        Address<span class="requiredcue">*</span></label>
       <br />
-      <textarea cols="30" id="friend_address" name="friend_address" rows="3"></textarea>
+      <textarea class="small" cols="30" id="friend_address" name="friend_address" rows="3"></textarea>
       <script type="text/javascript">
         //<![CDATA[
           load_handlers.push(function (info) {
@@ -253,9 +241,7 @@
     </div>
     <div class="field">
       <label for="friend_phone">
-        Phone
-        *
-      </label>
+        Phone<span class="requiredcue">*</span></label>
       <br />
       <input id="friend_phone" name="friend_phone" type="text" />
       <script type="text/javascript">
@@ -284,9 +270,7 @@
     </div>
     <div class="field">
       <label for="friend_email">
-        E-mail
-        *
-      </label>
+        E-mail<span class="requiredcue">*</span></label>
       <br />
       <input id="friend_email" name="friend_email" type="text" />
       <script type="text/javascript">
@@ -368,9 +352,7 @@
     </h3>
     <div class="field">
       <label for="employer_name">
-        Name
-        *
-      </label>
+        Name<span class="requiredcue">*</span></label>
       <br />
       <input id="employer_name" name="employer_name" type="text" />
       <script type="text/javascript">
@@ -399,11 +381,9 @@
     </div>
     <div class="field">
       <label for="employer_address">
-        Address
-        *
-      </label>
+        Address<span class="requiredcue">*</span></label>
       <br />
-      <textarea cols="30" id="employer_address" name="employer_address" rows="3"></textarea>
+      <textarea class="small" cols="30" id="employer_address" name="employer_address" rows="3"></textarea>
       <script type="text/javascript">
         //<![CDATA[
           load_handlers.push(function (info) {
@@ -430,9 +410,7 @@
     </div>
     <div class="field">
       <label for="employer_phone">
-        Phone
-        *
-      </label>
+        Phone<span class="requiredcue">*</span></label>
       <br />
       <input id="employer_phone" name="employer_phone" type="text" />
       <script type="text/javascript">
@@ -461,9 +439,7 @@
     </div>
     <div class="field">
       <label for="employer_email">
-        E-mail
-        *
-      </label>
+        E-mail<span class="requiredcue">*</span></label>
       <br />
       <input id="employer_email" name="employer_email" type="text" />
       <script type="text/javascript">
@@ -545,9 +521,7 @@
     </h3>
     <div class="field">
       <label for="leader_name">
-        Name
-        *
-      </label>
+        Name<span class="requiredcue">*</span></label>
       <br />
       <input id="leader_name" name="leader_name" type="text" />
       <script type="text/javascript">
@@ -576,11 +550,9 @@
     </div>
     <div class="field">
       <label for="leader_address">
-        Address
-        *
-      </label>
+        Address<span class="requiredcue">*</span></label>
       <br />
-      <textarea cols="30" id="leader_address" name="leader_address" rows="3"></textarea>
+      <textarea class="small" cols="30" id="leader_address" name="leader_address" rows="3"></textarea>
       <script type="text/javascript">
         //<![CDATA[
           load_handlers.push(function (info) {
@@ -607,9 +579,7 @@
     </div>
     <div class="field">
       <label for="leader_phone">
-        Phone
-        *
-      </label>
+        Phone<span class="requiredcue">*</span></label>
       <br />
       <input id="leader_phone" name="leader_phone" type="text" />
       <script type="text/javascript">
@@ -638,9 +608,7 @@
     </div>
     <div class="field">
       <label for="leader_email">
-        E-mail
-        *
-      </label>
+        E-mail<span class="requiredcue">*</span></label>
       <br />
       <input id="leader_email" name="leader_email" type="text" />
       <script type="text/javascript">
@@ -719,9 +687,7 @@
   <h2>Emergency Information</h2>
   <div class="field">
     <label for="emcontact">
-      Emergency Contact Name
-      *
-    </label>
+      Emergency Contact Name<span class="requiredcue">*</span></label>
     <br />
     <input id="emcontact" name="emcontact" type="text" />
     <script type="text/javascript">
@@ -750,9 +716,7 @@
   </div>
   <div class="field">
     <label for="emrelationship">
-      Relationship
-      *
-    </label>
+      Relationship<span class="requiredcue">*</span></label>
     <br />
     <input id="emrelationship" name="emrelationship" type="text" />
     <script type="text/javascript">
@@ -781,9 +745,7 @@
   </div>
   <div class="field">
     <label for="emphone1">
-      Phone Number
-      *
-    </label>
+      Phone Number<span class="requiredcue">*</span></label>
     <br />
     <input id="emphone1" name="emphone1" type="text" />
     <script type="text/javascript">
