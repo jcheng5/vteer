@@ -22,9 +22,10 @@ function get_mail_templates()
 {
   $db = new DbConn();
   $query = 'select mt.id, mt.name, mtv.subject, mt.role
-             from mail_templates as mt, mail_template_versions as mtv
-             where mt.id = mtv.templateid
-                     and mtv.id in (select max(id) from mail_template_versions where templateid = mt.id)';
+              from mail_templates as mt left join (mail_template_versions as mtv)
+                on (mt.id = mtv.templateid)
+              where mtv.id is null
+                or mtv.id in (select max(id) from mail_template_versions where templateid = mt.id)';
   return $db->query($query);
 }
 
@@ -163,18 +164,25 @@ function get_mail_template($template_id, $throw_on_not_found = FALSE)
   if ($template_id)
   {
     $db = new DbConn();
-    $mail_template = $db->fetch('select * from mail_template_versions where (templateid = ?) order by id desc', $template_id);
+    $mail_template = $db->fetch('select mtv.*, mt.role from mail_templates as mt
+                                 left join (mail_template_versions as mtv)
+                                 on mt.id = mtv.templateid
+                                 where mt.id = ?
+                                 order by id desc', $template_id);
   }
 
   if ($throw_on_not_found && !$mail_template)
     throw new RuntimeException("Mail template #$template_id not found");
 
-  $attachments = $db->query('select ma.id, ma.filename, ma.size
-                                 from mail_attachments as ma, templatevers_to_attachments as t2a
-                                 where ma.id = t2a.attachmentid and t2a.templateverid = ?',
-                            $mail_template->id);
+  if ($mail_template)
+  {
+    $attachments = $db->query('select ma.id, ma.filename, ma.size
+                                   from mail_attachments as ma, templatevers_to_attachments as t2a
+                                   where ma.id = t2a.attachmentid and t2a.templateverid = ?',
+                              $mail_template->id);
 
-  $mail_template->attachments = $attachments;
+    $mail_template->attachments = $attachments;
+  }
 
   return $mail_template;
 }

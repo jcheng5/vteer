@@ -23,19 +23,22 @@ class Emails extends Controller
 
   function compose($id=FALSE)
   {
+    $subject = '';
+    $body = '';
+    $attachments = FALSE;
+    $role = FALSE;
+
     if ($id)
     {
       $id = (int)$id;
-      $mailTemplate = get_mail_template($id, true);
-      $subject = $mailTemplate->subject;
-      $body = $mailTemplate->html;
-      $attachments = $mailTemplate->attachments;
-    }
-    else
-    {
-      $subject = '';
-      $body = '';
-      $attachments = FALSE;
+      $mailTemplate = get_mail_template($id, false);
+      if ($mailTemplate)
+      {
+        $subject = $mailTemplate->subject;
+        $body = $mailTemplate->html;
+        $attachments = $mailTemplate->attachments;
+        $role = $mailTemplate->role;
+      }
     }
 
     $verb = $id ? 'Edit' : 'Create New';
@@ -45,7 +48,8 @@ class Emails extends Controller
                       array('id' => $id,
                             'subject' => $subject,
                             'body' => $body,
-                            'attachments' => $attachments));
+                            'attachments' => $attachments,
+                            'role' => $role));
     $this->load->view('admin/footer');
   }
 

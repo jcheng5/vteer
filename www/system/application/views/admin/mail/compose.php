@@ -140,7 +140,7 @@ function addFile(id, name, size) {
 <?php echo anchor('admin/emails', 'Back to list', array('class' => 'button')); ?>
 </div>
 
-<h2><?php echo $id ? 'Edit' : 'Create New'; ?> E-mail Template</h2>
+<h2><?php echo $id ? 'Edit' : 'Create New'; ?> <?php echo $role ? "\"$role\"" : ''; ?> E-mail Template</h2>
 
 <?php echo form_open('admin/emails/update', array('name' => 'email')); ?>
 
