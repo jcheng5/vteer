@@ -17,6 +17,7 @@ define('MAIL_ITINERARY_CONFIRMED', 5);
 define('MAIL_TWO_MONTHS', 6);
 define('MAIL_ONE_MONTH', 7);
 define('MAIL_ONE_WEEK', 8);
+define('MAIL_PASSWORD', 9);
 
 function get_mail_templates()
 {

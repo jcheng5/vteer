@@ -141,6 +141,42 @@ class Welcome extends Controller
 
   function passwordhelp()
   {
-    // TODO
+    $this->load->view('header');
+    $this->load->view('passwordhelp', array('error' => FALSE));
+    $this->load->view('footer');
+  }
+
+  function sendpassword()
+  {
+    $error = FALSE;
+
+    $email = $this->input->post('email');
+    if (!$email)
+      $error = 'Please enter a valid e-mail address';
+    else
+    {
+      $user = get_user_by_email($email);
+      if (!$user)
+        $error = 'That e-mail address does not exist in our records.';
+      else
+      {
+        schedule_mail($user->id, MAIL_PASSWORD);
+      }
+    }
+
+    if ($error)
+    {
+      $this->load->view('header');
+      $this->load->view('passwordhelp', array('error' => $error));
+      $this->load->view('footer');
+    }
+    else
+    {
+      $this->load->view('header');
+      $this->load->view('loginform', array(
+        'login_error' => "Your password has been e-mailed to you."
+      ));
+      $this->load->view('footer');
+    }
   }
 }

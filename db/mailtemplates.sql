@@ -30,7 +30,8 @@ VALUES
 	(5,'name5','Itinerary confirmed'),
 	(6,'name6','Two months out'),
 	(7,'name7','One month out'),
-	(8,'name8','One week out');
+	(8,'name8','One week out'),
+	(9,'name9','Password reminder');
 
 /*!40000 ALTER TABLE `mail_templates` ENABLE KEYS */;
 UNLOCK TABLES;

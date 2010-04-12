@@ -49,12 +49,7 @@ $users = $user_groups[$j]; ?>
     <td class="name" width="200">
     <?php echo htmlentities("$user->firstname $user->lastname"); ?>
          </td>
-    <td width="115"><?php
-            $submitted = '?';
-    if ($user->laststatuschange)
-      $submitted = format_datetime_ago($user->laststatuschange);
-    echo $submitted;
-    ?></td>
+    <td width="115"><?php echo $user->laststatuschange ? format_datetime_ago($user->laststatuschange) : '?'; ?></td>
   </tr>
 <?php endwhile; ?>
       </table>
