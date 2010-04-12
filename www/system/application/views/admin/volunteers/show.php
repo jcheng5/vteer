@@ -58,7 +58,14 @@
     margin-bottom: 1em;
   }
 
-  #statusvalue {
+  .statustimeline {
+    font-size: 0.66em;
+    color: #777;
+  }
+
+  .statusvalue#status<?php echo $user->status ?> {
+    font-size: 1.5em;
+    color: black;
     font-weight: bold;
   }
 </style>
@@ -101,7 +108,24 @@
 
 <h1><?php echo format_value("$user->firstname $user->lastname"); ?></h1>
 
-<div id="status">Status: <span id="statusvalue"><?php echo htmlspecialchars(format_status($user->status)); ?></span>
+<div id="status">
+  Status:
+
+  <span class="statustimeline">
+    <?php
+      $progression = array(STATUS_CREATED, STATUS_DRAFT, STATUS_SUBMITTED, STATUS_ACCEPTED, STATUS_CONFIRMED);
+      if (in_array($user->status, $progression)) {
+        foreach($progression as $status) {
+          echo "<span class='statusvalue' id='status$status'>" . htmlspecialchars(format_status($status)) . '</span>';
+          if ($status != $progression[sizeof($progression) - 1])
+            echo " &rarr; ";
+        }
+      }
+      else {
+        echo "<span class='statusvalue' id='status$user->status'>" . htmlspecialchars(format_status($user->status)) . '</span>';
+      }
+    ?>
+  </span>
 </div>
 
 <?php if ($user->status == STATUS_SUBMITTED): ?>
@@ -109,7 +133,7 @@
   <button id="btnReject" class="native" type="button"><h3 style="color: #D00">Reject</h3></button>
 <?php endif; ?>
 
-<p><?php echo anchor("admin/volunteers/email_history/$user->id", 'View e-mails sent'); ?></p>
+<p><?php echo anchor("admin/volunteers/email_history/$user->id", 'View system-generated e-mail history', array('class' => 'button')); ?></p>
 
 <h2>Notes</h2>
 
@@ -142,6 +166,33 @@
   </form>
 </div>
 <button id="btnShowAddNote" type="button">Add Note</button>
+
+<?php if ($user->status == STATUS_ACCEPTED || $user->status == STATUS_CONFIRMED): ?>
+  <h2>Travel Logistics</h2>
+  <?php echo form_open('admin/volunteers/change_dates/' . $user->id); ?>
+    <div style="float: left">
+      <label for="arrivaldate">Arrival Date</label><br />
+      <input type="text" class="datepicker" name="arrivaldate" id="arrivaldate" value="<?php echo form_prep(format_date($user->arrivaldate)); ?>">
+    </div>
+    <div style="float: left">
+      <label for="departuredate">Departure Date</label><br />
+      <input type="text" class="datepicker" name="departuredate" id="departuredate" value="<?php echo form_prep(format_date($user->departuredate)); ?>">
+    </div>
+
+    <br clear="all" />
+
+    <p>
+      <input type="checkbox" name="datesconfirmed" id="datesconfirmed" value="yes"
+          <?php echo $user->status == STATUS_CONFIRMED ? 'checked disabled' : ''; ?>>
+      <label for="datesconfirmed">Dates are confirmed</label>
+    </p>
+
+    <p>Flight/Travel Info<br/>
+    <textarea name="travelnotes" cols="30" rows="4"><?php echo form_prep($user->travelnotes); ?></textarea></p>
+
+    <button type="submit">Save Changes</button>
+  <?php echo form_close(); ?>
+<?php endif; ?>
 
 <h2>Application</h2>
 <div id="appbody">

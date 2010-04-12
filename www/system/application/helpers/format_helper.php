@@ -35,6 +35,16 @@ function format_filesize($bytes)
   return number_format($bytes/1048576, 1) . ' MB';
 }
 
+function format_date($date)
+{
+  if (!$date)
+    return '';
+  $dt = date_create($date);
+  if (!$dt)
+    return '(ERROR)';
+  return date_format($dt, 'F j, Y');
+}
+
 function render_field($id, $data, $userId)
 {
   $type_hint = FALSE;

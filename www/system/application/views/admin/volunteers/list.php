@@ -39,7 +39,7 @@ $users = $user_groups[$j]; ?>
   <tr>
     <th></th>
     <th>Name</th>
-    <th>Submitted</th>
+    <th><?php echo htmlspecialchars($datetitles[$j]); ?></th>
   </tr>
 <?php $i = 0; while ($user = $users->next()): ?>
 
@@ -51,8 +51,8 @@ $users = $user_groups[$j]; ?>
          </td>
     <td width="115"><?php
             $submitted = '?';
-    if ($user->submitdate)
-      $submitted = format_datetime_ago($user->submitdate);
+    if ($user->laststatuschange)
+      $submitted = format_datetime_ago($user->laststatuschange);
     echo $submitted;
     ?></td>
   </tr>

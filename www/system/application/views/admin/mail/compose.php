@@ -153,7 +153,7 @@ function addFile(id, name, size) {
     <td><label>Subject:&nbsp;</label></td>
     <td width="99%">
       <input type="text" id="subject" name="subject"
-             value="<?php echo htmlspecialchars($subject); ?>" />
+             value="<?php echo form_prep($subject); ?>" />
     </td>
   </tr>
 </table>

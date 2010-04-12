@@ -27,3 +27,15 @@ table.data tr.odd {
 table.data tr.even {
   background-color: #eee;
 }
+
+#flashdata {
+  float: left;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border: 2px solid #999;
+  background-color: #ffc;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 125%
+}

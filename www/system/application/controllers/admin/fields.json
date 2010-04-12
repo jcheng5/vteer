@@ -2,6 +2,7 @@
   {
     "name": "Basic Information",
     "fields": [
+      {"email": "E-mail Address"},
       {"dob": "Date of birth"},
       {"gender": "Gender"},
       {"marital": "Marital Status"},

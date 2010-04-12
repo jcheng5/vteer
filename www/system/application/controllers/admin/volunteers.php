@@ -16,20 +16,28 @@ class Volunteers extends Controller
 
     $users_submitted = get_users_by_state(STATUS_SUBMITTED);
     $users_accepted = get_users_by_state(STATUS_ACCEPTED);
+    $users_confirmed = get_users_by_state(STATUS_CONFIRMED);
     $users_rejected = get_users_by_state(STATUS_REJECTED);
     $users_draft = get_users_by_state(array(STATUS_DRAFT, STATUS_CREATED));
 
-    $user_groups = array($users_submitted, $users_accepted, $users_rejected, $users_draft);
+    $user_groups = array($users_submitted, $users_accepted, $users_confirmed, $users_rejected, $users_draft);
     $titles = array('Applicants needing review',
       'Applicants that have been accepted',
+      'Applicants that have been confirmed',
       'Applicants that have been rejected',
       'Applicants that have not yet been submitted');
+    $datetitles = array('Submitted',
+      'Accepted',
+      'Confirmed',
+      'Rejected',
+      FALSE);
 
 
     $this->load->view('admin/header');
     $this->load->view('admin/volunteers/list.php',
                       array('user_groups' => $user_groups,
-                        'titles' => $titles));
+                        'titles' => $titles,
+                        'datetitles' => $datetitles));
     $this->load->view('admin/footer');
   }
 
@@ -47,6 +55,8 @@ class Volunteers extends Controller
 
     $fields = json_decode(file_get_contents(dirname(__FILE__) . '/fields.json'));
     $data = json_decode($user->data, TRUE);
+    foreach ($user as $key => $value)
+      $data[$key] = $value;
 
     $this->load->view('admin/header',
                       array('title' => "Volunteer - $user->firstname $user->lastname"));
@@ -129,5 +139,33 @@ class Volunteers extends Controller
   {
     if (!download_user_file($userId, $fieldId))
       show_error("File not found", 404);
+  }
+
+  function change_dates($userId)
+  {
+    $user = get_user($userId);
+    if (!$user)
+      show_error('User not found', 404);
+
+    $arrival = $this->_to_date($this->input->post('arrivaldate'));
+    $departure = $this->_to_date($this->input->post('departuredate'));
+    $travelnotes = $this->input->post('travelnotes');
+    $confirmed = $this->input->post('datesconfirmed');
+
+    $db = new DbConn();
+    $rows = $db->exec('update users set arrivaldate = ?, departuredate = ?, travelnotes = ? where id = ?',
+                      $arrival, $departure, $travelnotes, (int)$userId);
+
+    if ($user->status == STATUS_ACCEPTED && $confirmed)
+      transition_user_to_state($userId, STATUS_CONFIRMED);
+
+    $this->session->set_flashdata('message', 'Changes saved successfully');
+
+    redirect("admin/volunteers/show/$userId");
+  }
+
+  function _to_date($value)
+  {
+    return $value ? date_create($value) : NULL;
   }
 }

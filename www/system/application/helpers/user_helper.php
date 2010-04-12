@@ -106,7 +106,7 @@ function transition_user_to_state($user_id, $newState, $force = false)
   $rows = $db->exec('update users set status = ?, laststatuschange = ? where id = ?', (int) $newState, date_create(), (int) $user_id);
 
 
-  if ($status != STATUS_ACCEPTED || $newStatus != STATUS_CONFIRMED)
+  if ($status != STATUS_ACCEPTED || $newState != STATUS_CONFIRMED)
   {
     $db->exec('delete from mails_scheduled where userid = ?', $user_id);
   }
@@ -130,17 +130,17 @@ function transition_user_to_state($user_id, $newState, $force = false)
       break;
     case STATUS_CONFIRMED:
       schedule_mail($user_id, MAIL_ITINERARY_CONFIRMED);
-      $traveldate = new DateTime($user->traveldate);
+      $arrivaldate = new DateTime($user->arrivaldate);
 
-      $two_months = clone $traveldate;
+      $two_months = clone $arrivaldate;
       $two_months->modify('-2 months');
       schedule_mail($user_id, MAIL_TWO_MONTHS, $two_months);
 
-      $one_month = clone $traveldate;
+      $one_month = clone $arrivaldate;
       $one_month->modify('-1 month');
       schedule_mail($user_id, MAIL_ONE_MONTH, $one_month);
 
-      $one_week = clone $traveldate;
+      $one_week = clone $arrivaldate;
       $one_week->modify('-1 week');
       schedule_mail($user_id, MAIL_ONE_WEEK, $one_week);
 
