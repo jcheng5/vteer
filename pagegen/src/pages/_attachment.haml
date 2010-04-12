@@ -38,3 +38,13 @@
       var childWindow = window.open('<?php echo site_url('apply/attach/#{id}'); ?>', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
       child_windows.push(childWindow);
     };
+  - if required
+    :javascript
+      validation_handlers.push(function(info) {
+        if ($('##{id}-nofile').css('display') != 'none')
+        {
+          error_field_required('#{id}');
+          return false;
+        }
+        return true;
+      });

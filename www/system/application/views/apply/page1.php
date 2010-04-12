@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <label for="dob">
-      Date of birth<span class="requiredcue">*</span></label>
+      Date of Birth<span class="requiredcue">*</span></label>
     <br />
     <input id="dob" name="dob" type="text" />
     <script type="text/javascript">
@@ -315,6 +315,52 @@
           }
           return true;
         });
+      //]]>
+    </script>
+  </div>
+  <div class="field">
+    <label for="photo">
+      Photo of you
+    </label>
+    <br />
+    <div class="nofile" id="photo-nofile">
+      <span>
+        <i>(None attached)</i>
+      </span>
+      <button id="photo-attach" type="button">
+        Attach File
+      </button>
+    </div>
+    <div class="hasfile" id="photo-hasfile">
+      <a href="#" id="photo-link" target="_blank"></a>
+      <button id="photo-remove" onclick="javascript:if (detach_file('photo')) {$('#photo-nofile').get(0).style.display = 'inline'; $('#photo-hasfile').get(0).style.display = 'none'; }" type="button">
+        Remove File
+      </button>
+    </div>
+    <script type="text/javascript">
+      //<![CDATA[
+        load_handlers.push(function(info) {
+          var val = info['photo'];
+          var link = $('#photo-link').get(0);
+          link.href = "<?php echo site_url('apply/download/photo') ?>"; // TODO
+          if (val) {
+            link.innerText = val['name'];
+            $('#photo-nofile').get(0).style.display = 'none';
+            $('#photo-hasfile').get(0).style.display = 'inline';
+          }
+          else {
+            $('#photo-nofile').get(0).style.display = 'inline';
+            $('#photo-hasfile').get(0).style.display = 'none';
+          }
+        });
+        save_handlers.push(function(info) {
+          // info['photo'] = value;
+        });
+        $('#photo-attach').get(0).onclick = function() {
+          // TODO: pass field label, not just ID
+          var childWindow = window.open('<?php echo site_url('apply/attach/photo'); ?>', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
+          child_windows.push(childWindow);
+        };
       //]]>
     </script>
   </div>

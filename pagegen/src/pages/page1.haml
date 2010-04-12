@@ -1,7 +1,7 @@
 .section
   %h2 Basic Information
   = text(:nickname, 'Nickname')
-  = text(:dob, 'Date of birth', :required => true)
+  = text(:dob, 'Date of Birth', :required => true)
   = radio(:gender, 'Gender', ['Male', 'Female'], :required => true)
   = radio(:marital, 'Marital Status', ['Single', 'Married'], :required => true)
   = text(:ssn, 'Identification Number', :detail => 'Social Security # (US), National Insurance # (UK), etc.')
@@ -9,6 +9,7 @@
   = text(:phone, 'Telephone', :required => true)
   = text(:fax, 'Fax')
   = select(:referrer, 'How did you hear about our ministry?', ['ACTS', 'African Encounter', 'Living Hope', 'Friend', 'I am a former volunteer', 'Through my local church', 'Internet Living Hope/Way/Grace', 'Internet ACTS', 'Internet African Encounter', 'Other'], :required => true)
+  = attachment('photo', 'Photo of you')
 
 .section
   %h2 Preferred Dates
