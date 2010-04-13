@@ -93,7 +93,7 @@ function format_value($value, $type_hint = FALSE)
     foreach ($value as $el)
     {
       $str_val = $str_val . $delim . format_value($el);
-      $delim = ', ';
+      $delim = '<br/>';
     }
     return $str_val;
   }

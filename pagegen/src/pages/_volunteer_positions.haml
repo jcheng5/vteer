@@ -1,0 +1,63 @@
+.field
+  - if label
+    = label(id, label, :required => required)
+    %br
+  %table(classname='volpos')
+    %tr
+      %th(align='left')
+        Position
+      %th First Choice
+      %th Second Choice
+      %th Third Choice
+    - positions.each do |position|
+      %tr
+        %td
+          &= position[0]
+        %td(width='110' align='center')
+          %input{ :type => 'radio', :name => "#{id}_1", :value => position[0] }
+        %td(width='110' align='center')
+          %input{ :type => 'radio', :name => "#{id}_2", :value => position[0] }
+        %td(width='110' align='center')
+          %input{ :type => 'radio', :name => "#{id}_3", :value => position[0] }
+  :javascript
+    load_handlers.push(function (info) {
+      var choices = info['#{id}'];
+      if (choices) {
+        if (choices[0]) {
+          $('input[name=#{id}_1]').each(function () {
+            if (this.value == choices[0])
+              this.checked = true;
+          });
+        }
+        if (choices[1]) {
+          $('input[name=#{id}_2]').each(function () {
+            if (this.value == choices[1])
+              this.checked = true;
+          });
+        }
+        if (choices[2]) {
+          $('input[name=#{id}_3]').each(function () {
+            if (this.value == choices[2])
+              this.checked = true;
+          });
+        }
+      }
+    });
+    save_handlers.push(function (info) {
+      var choices = [
+        $('input[name=#{id}_1]:checked').val(),
+        $('input[name=#{id}_2]:checked').val(),
+        $('input[name=#{id}_3]:checked').val()
+      ];
+      info['#{id}'] = choices;
+    });
+  - if required
+    :javascript
+      validation_handlers.push(function (info) {
+        var choices = info['#{id}'];
+        if (!choices || !choices[0] || !choices[1] || !choices[2]) {
+          error_field_required('#{id}');
+          return false;
+        }
+        return true;
+      });

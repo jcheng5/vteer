@@ -416,5 +416,359 @@
 </div>
 <div class="section">
   <h2>Volunteer Positions</h2>
-  <div style="color:red">TODO</div>
+  <div class="field">
+    <table classname="volpos">
+      <tr>
+        <th align="left">
+          Position
+        </th>
+        <th>First Choice</th>
+        <th>Second Choice</th>
+        <th>Third Choice</th>
+      </tr>
+      <tr>
+        <td>
+          Sports Coordinator
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Sports Coordinator" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Sports Coordinator" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Sports Coordinator" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Parenting Support Group Coordinator
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Parenting Support Group Coordinator" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Parenting Support Group Coordinator" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Parenting Support Group Coordinator" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Maintenance (Skilled)
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Maintenance (Skilled)" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Maintenance (Skilled)" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Maintenance (Skilled)" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Administrative Assistant, Finance
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Administrative Assistant, Finance" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Administrative Assistant, Finance" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Administrative Assistant, Finance" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Administrative Assistant, Marketing
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Administrative Assistant, Marketing" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Administrative Assistant, Marketing" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Administrative Assistant, Marketing" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Administrative Assistant, HR
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Administrative Assistant, HR" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Administrative Assistant, HR" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Administrative Assistant, HR" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Administrative Assistant, Health Care Center
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Administrative Assistant, Health Care Center" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Administrative Assistant, Health Care Center" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Administrative Assistant, Health Care Center" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Administrative Assistant, Living Grace
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Administrative Assistant, Living Grace" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Administrative Assistant, Living Grace" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Administrative Assistant, Living Grace" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Fundraising Assistant, Living Grace
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Fundraising Assistant, Living Grace" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Fundraising Assistant, Living Grace" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Fundraising Assistant, Living Grace" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Administrative Assistant, Living Way
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Administrative Assistant, Living Way" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Administrative Assistant, Living Way" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Administrative Assistant, Living Way" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Event Planner
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Event Planner" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Event Planner" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Event Planner" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Photographer
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Photographer" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Photographer" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Photographer" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Chaplain Assistant
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Chaplain Assistant" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Chaplain Assistant" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Chaplain Assistant" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Food Service Assistant
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Food Service Assistant" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Food Service Assistant" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Food Service Assistant" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Cleaner for Health Care Center
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Cleaner for Health Care Center" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Cleaner for Health Care Center" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Cleaner for Health Care Center" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Assistant to carers in HCC
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Assistant to carers in HCC" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Assistant to carers in HCC" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Assistant to carers in HCC" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Landscape/Gardening
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Landscape/Gardening" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Landscape/Gardening" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Landscape/Gardening" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Landscape/Gardening
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Landscape/Gardening" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Landscape/Gardening" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Landscape/Gardening" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Maintenance (General)
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Maintenance (General)" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Maintenance (General)" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Maintenance (General)" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Volunteer Coordinator Assistant
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Volunteer Coordinator Assistant" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Volunteer Coordinator Assistant" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Volunteer Coordinator Assistant" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Resource Library Coordinator
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Resource Library Coordinator" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Resource Library Coordinator" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Resource Library Coordinator" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Assistant to Prevention Manager
+        </td>
+        <td align="center" width="110">
+          <input name="positions_1" type="radio" value="Assistant to Prevention Manager" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_2" type="radio" value="Assistant to Prevention Manager" />
+        </td>
+        <td align="center" width="110">
+          <input name="positions_3" type="radio" value="Assistant to Prevention Manager" />
+        </td>
+      </tr>
+    </table>
+    <script type="text/javascript">
+      //<![CDATA[
+        load_handlers.push(function (info) {
+          var choices = info['positions'];
+          if (choices) {
+            if (choices[0]) {
+              $('input[name=positions_1]').each(function () {
+                if (this.value == choices[0])
+                  this.checked = true;
+              });
+            }
+            if (choices[1]) {
+              $('input[name=positions_2]').each(function () {
+                if (this.value == choices[1])
+                  this.checked = true;
+              });
+            }
+            if (choices[2]) {
+              $('input[name=positions_3]').each(function () {
+                if (this.value == choices[2])
+                  this.checked = true;
+              });
+            }
+          }
+        });
+        save_handlers.push(function (info) {
+          var choices = [
+            $('input[name=positions_1]:checked').val(),
+            $('input[name=positions_2]:checked').val(),
+            $('input[name=positions_3]:checked').val()
+          ];
+          info['positions'] = choices;
+        });
+      //]]>
+    </script>
+  </div>
 </div>

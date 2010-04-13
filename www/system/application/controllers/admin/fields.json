@@ -107,6 +107,7 @@
   {
     "name": "Volunteer Positions",
     "fields": [
+      {"positions.list": "Please choose your top 3 positions."}
     ]
   },
   {

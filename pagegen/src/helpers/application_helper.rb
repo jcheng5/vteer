@@ -1,3 +1,5 @@
+require 'csv'
+
 module ApplicationHelper
 
   def default_validation(id, required)
@@ -90,5 +92,10 @@ module ApplicationHelper
   
   def attachment(id, label, config={})
     partial('attachment', :locals => { :id => id, :label => label, :required => config[:required] })
+  end
+  
+  def volunteer_positions(id, label, config={})
+    positions = CSV.read('pagegen/src/positions.csv')
+    partial('volunteer_positions', :locals => { :id => id, :label => label, :required => config[:required], :config => config, :positions => positions })
   end
 end
