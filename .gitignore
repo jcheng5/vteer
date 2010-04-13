@@ -5,4 +5,4 @@ pagegen/site
 site_config/config.php
 site_config/db.php
 site_config/email.php
-
+db/admins.sql
