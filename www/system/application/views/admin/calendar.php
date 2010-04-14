@@ -104,7 +104,24 @@
 .length7 {
   width: 684px;
 }
+
+#pageframe {
+  width: 100% !important;
+}
+.month {
+  margin-left: auto;
+  margin-right: auto;
+}
+#topnav {
+  width: 718px;
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>
 
-<h2><?php echo $date->format('F Y'); ?></h2>
+<div id="topnav">
+  <div style="float: left"><a class="button" href="<?php echo site_url('admin/calendar/show/'.$prev->format('Y/n')); ?>">&larr; <?php echo $prev->format('F Y'); ?></a></div>
+  <div style="float: right"><a class="button" href="<?php echo site_url('admin/calendar/show/'.$next->format('Y/n')); ?>"><?php echo $next->format('F Y'); ?> &rarr;</a></div>
+  <h2 align="center"><?php echo $date->format('F Y'); ?></h2>
+</div>
 <?php $calendar->render(); ?>

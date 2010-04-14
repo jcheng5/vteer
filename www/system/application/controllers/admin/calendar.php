@@ -11,19 +11,17 @@ class Calendar extends Controller
     $this->load->helper('calendar');
   }
 
-  function show($year = -1, $month = -1)
+  function index()
   {
-    if ($year < 0 || $month < 0)
-    {
-      $now = getdate();
-      if ($year < 0)
-        $year = (int)$now['year'];
-      if ($month < 0)
-        $month = (int)$now['mon'];
-    }
+    $now = getdate();
+    $year = (int)$now['year'];
+    $month = (int)$now['mon'];
+    $this->show($year, $month);
+  }
 
-
-    $calendar = new CalendarMonth($month, $year);
+  function show($year, $month)
+  {
+    $calendar = new EventCalendar($month, $year, '+1 year');
     $start = $calendar->start();
     $end = $calendar->end();
 
@@ -48,9 +46,16 @@ class Calendar extends Controller
                           $user->status != STATUS_CONFIRMED);
     }
 
+    $prev = clone $start;
+    $prev->modify('-1 year');
+    $next = clone $start;
+    $next->modify('+1 year');
+
     $this->load->view('admin/header');
     $this->load->view('admin/calendar', array('calendar' => $calendar,
-                                              'date' => $this->_make_date($year, $month)));
+                                              'date' => $this->_make_date($year, $month),
+                                              'prev' => $prev,
+                                              'next' => $next));
     $this->load->view('admin/footer');
   }
 
