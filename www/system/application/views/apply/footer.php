@@ -2,7 +2,9 @@
   //<![CDATA[
   var existingInfo = downloadInfo();
   load(existingInfo);
-  setInterval(save, 60000);
+  setInterval(function() {
+    save(false, true);
+  }, 60000);
   //]]>
 </script>
 

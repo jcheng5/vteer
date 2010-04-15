@@ -69,10 +69,12 @@ function downloadInfo()
   }
 }
 
-function save(should_validate /* = false */)
+function save(should_validate /* = false */, auto_save /* = false */)
 {
   if (typeof(should_validate) == 'undefined')
     should_validate = false;
+  if (typeof(auto_save) == 'undefined')
+    auto_save = false;
 
   var info = {};
   for (var i = 0; i < save_handlers.length; i++)
@@ -80,12 +82,33 @@ function save(should_validate /* = false */)
     save_handlers[i](info, document.mainform);
   }
 
+  if (auto_save && typeof(last_known_state) != 'undefined')
+  {
+    // Remove values that are not known to have changed. Unless we
+    // do this, it's possible for a browser that's sitting idly on
+    // an apply page to pound over changes that the user is actively
+    // making from another browser.
+    for (var key in last_known_state)
+    {
+      if (info[key] === last_known_state[key])
+        delete info[key];
+    }
+  }
+
   // Replacer function is a hack to work around this IE8 bug:
   // http://blogs.msdn.com/jscript/archive/2009/06/23/serializing-the-value-of-empty-dom-elements-using-native-json-in-ie8.aspx
   var payload = JSON.stringify(info, function(k, v) { return v === "" ? "" : v });
-  //console.log(payload);
+  console.log(payload);
   if (!uploadInfo(payload))
     return false;
+
+  for (var key in info)
+  {
+    if (info[key] == null)
+      delete last_known_state[key];
+    else
+      last_known_state[key] = info[key];
+  }
 
   if (should_validate)
     return validate(info);
@@ -111,6 +134,7 @@ function load(info)
   {
     load_handlers[i](info, document.mainform);
   }
+  last_known_state = info;
 }
 
 function detach_file(field_id)
