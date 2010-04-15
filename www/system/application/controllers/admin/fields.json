@@ -2,7 +2,7 @@
   {
     "name": "Basic Information",
     "fields": [
-      {"photo.file": "Photo"},
+      {"photo.img": "Photo"},
       {"email": "E-mail Address"},
       {"dob": "Date of birth"},
       {"gender": "Gender"},

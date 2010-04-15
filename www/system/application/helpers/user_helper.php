@@ -106,10 +106,7 @@ function transition_user_to_state($user_id, $newState, $force = false)
   $rows = $db->exec('update users set status = ?, laststatuschange = ? where id = ?', (int) $newState, date_create(), (int) $user_id);
 
 
-  if ($status != STATUS_ACCEPTED || $newState != STATUS_CONFIRMED)
-  {
-    $db->exec('delete from mails_scheduled where userid = ?', $user_id);
-  }
+  $db->exec('delete from mails_scheduled where userid = ?', $user_id);
 
   switch ($newState)
   {

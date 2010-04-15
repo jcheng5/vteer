@@ -26,8 +26,7 @@
     <p>I hereby commit myself to serving with FHBCCT (should my application be accepted) in whichever area I am designated by Management. I understand that I am a volunteer and that I will not be receiving any financial reimbursement for the work that I do while at FHBCCT. I commit myself to abide by the policies and procedures of the FHBCCT and to the mission, aims and objectives of the organization.</p>
     <div class="field">
       <label for="signature">
-        Signature (type your full name)
-      </label>
+        Signature (type your full name)<span class="requiredcue">*</span></label>
       <br />
       <input id="signature" name="signature" type="text" />
       <script type="text/javascript">
@@ -41,12 +40,22 @@
           });
         //]]>
       </script>
-      
+      <script type="text/javascript">
+        //<![CDATA[
+          validation_handlers.push(function(info) {
+            if (!has_value(info, 'signature'))
+            {
+              error_field_required('signature');
+              return false;
+            }
+            return true;
+          });
+        //]]>
+      </script>
     </div>
     <div class="field">
       <label for="signaturedate">
-        Today's Date
-      </label>
+        Today's Date<span class="requiredcue">*</span></label>
       <br />
       <input id="signaturedate" name="signaturedate" type="text" />
       <script type="text/javascript">
@@ -60,7 +69,18 @@
           });
         //]]>
       </script>
-      
+      <script type="text/javascript">
+        //<![CDATA[
+          validation_handlers.push(function(info) {
+            if (!has_value(info, 'signaturedate'))
+            {
+              error_field_required('signaturedate');
+              return false;
+            }
+            return true;
+          });
+        //]]>
+      </script>
     </div>
   </div>
 </div>

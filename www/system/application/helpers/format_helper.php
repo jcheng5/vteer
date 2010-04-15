@@ -71,6 +71,10 @@ function render_field($id, $data, $userId)
                   $data[$id]['name'],
                   array('target' => '_blank'));
   }
+  else if ($type_hint == 'img')
+  {
+    return '<div style="padding: 3px; border: 1px solid #ccc; float: left"><img src="'.site_url("admin/volunteers/download/$userId/$id").'" height="200"/></div><br clear="all"/>'; 
+  }
 
   return format_value($data[$id], $type_hint);
 }

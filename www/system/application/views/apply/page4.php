@@ -417,6 +417,9 @@
 <div class="section">
   <h2>Volunteer Positions</h2>
   <div class="field">
+    <label for="positions">
+      Please choose your top three choices for volunteer positions.<span class="requiredcue">*</span></label>
+    <br />
     <table classname="volpos">
       <tr>
         <th align="left">
@@ -767,6 +770,18 @@
             $('input[name=positions_3]:checked').val()
           ];
           info['positions'] = choices;
+        });
+      //]]>
+    </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function (info) {
+          var choices = info['positions'];
+          if (!choices || !choices[0] || !choices[1] || !choices[2]) {
+            error_field_required('positions');
+            return false;
+          }
+          return true;
         });
       //]]>
     </script>

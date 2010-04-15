@@ -30,18 +30,44 @@ function get_mail_templates()
   return $db->query($query);
 }
 
-function schedule_mail($user_id, $mail_id, $when = NULL)
+/**
+ * @param  $user_id
+ * @param  $mail_id
+ * @param bool $when
+ * @param bool $allow_duplicates If false, won't schedule this e-mail if it has already been sent
+ *    in the past, or if it's currently scheduled to be sent
+ * @return void
+ */
+function schedule_mail($user_id, $mail_id, $when = FALSE, $allow_duplicates = FALSE)
 {
+  $db = new DbConn();
+
+  if (!$allow_duplicates)
+  {
+    $results = $db->query('select *
+                           from mails_sent as ms, mail_template_versions as mtv
+                           where ms.templateverid = mtv.id
+                             and mtv.templateid = ?
+                             and userid = ?', $mail_id, $user_id);
+    if ($results->length > 0)
+      return FALSE;
+
+    $results = $db->query('select * from mails_scheduled where userid = ? and mailid = ?', $user_id, $mail_id);
+    if ($results->length > 0)
+      return FALSE;
+  }
+
   if (!$when)
   {
     $template = get_mail_template($mail_id, TRUE);
     send_user_mail($template, $user_id);
+    return TRUE;
   }
   else
   {
-    $db = new DbConn();
     $db->exec('insert into mails_scheduled (userid, mailid, due) values (?, ?, ?)',
               $user_id, $mail_id, $when);
+    return TRUE;
   }
 }
 
