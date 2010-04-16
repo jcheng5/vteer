@@ -4,6 +4,10 @@ if (!isset($login_error))
   $login_error = FALSE;
 ?>
 
+<style type="text/css">
+  #toolbar {display: none;}
+</style>
+
 <h2>Administrator Sign In</h2>
 <?php $this->load->view('error', array('error' => $login_error)); ?>
 

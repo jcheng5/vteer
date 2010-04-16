@@ -37,6 +37,6 @@ class Auth extends Controller
   function logout()
   {
     $this->admin->logout();
-    redirect('admin/auth');
+    redirect('admin');
   }
 }

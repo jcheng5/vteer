@@ -2,8 +2,13 @@ body, td, th, input, textarea {
 	font-family: Lucida Grande, Lucida Sans Unicode, Segoe UI, Tahoma, Verdana, sans-serif;
 	font-size: 12px;
 }
+body {
+  margin-top: 50px;
+  background-color: white;
+  color: #333;
+}
 div#pageframe {
-   width: 650px;
+  width: 650px;
 }
 .yui-button button,
 .yui-button a {
@@ -38,4 +43,40 @@ table.data tr.even {
   padding: 10px;
   font-weight: bold;
   font-size: 125%
+}
+
+#toolbar div {
+}
+#toolbar a {
+  color: #333;
+  text-decoration: none;
+  text-shadow: #eee 0 1px 1px;
+  font-weight: bold;
+}
+#toolbar a:hover {
+  text-decoration: underline;
+}
+#toolbar .left {
+  float: left;
+  padding: 6px;
+  padding-left: 12px;
+}
+#toolbar .left a {
+  margin-right: 12px;
+}
+#toolbar .right {
+  float: right;
+  padding: 6px;
+}
+#toolbar .right a {
+  margin-left: 12px;
+}
+#toolbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 36px;
+  background-repeat: repeat-x;
+  background-position: top;
 }

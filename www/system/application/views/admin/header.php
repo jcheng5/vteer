@@ -27,6 +27,17 @@
   <?php $this->load->view('googleanalytics'); ?>
 </head>
 <body class="yui-skin-sam">
+<div id="toolbar" style="background-image: url(<?php echo base_url() . 'static/images/toolbartile.png'; ?>)">
+  <div class="left">
+    <?php echo anchor('admin', 'Volunteer Dashboard'); ?>
+    <?php echo anchor('admin/calendar', 'Calendar'); ?>
+    <?php echo anchor('admin/emails', 'E-mail Templates'); ?>
+  </div>
+  <div class="right">
+    <?php echo anchor('admin/auth/logout', 'Sign out'); ?>
+  </div>
+  <br clear="all"/>
+</div>
 <div id="pageframe">
 
   <?php if ($this->session->flashdata('message')): ?>
