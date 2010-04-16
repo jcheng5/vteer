@@ -36,7 +36,8 @@ function get_mail_templates()
               from mail_templates as mt left join (mail_template_versions as mtv)
                 on (mt.id = mtv.templateid)
               where mtv.id is null
-                or mtv.id in (select max(id) from mail_template_versions where templateid = mt.id)';
+                or mtv.id in (select max(id) from mail_template_versions where templateid = mt.id)
+              order by templateid';
   return $db->query($query);
 }
 

@@ -1,0 +1,17 @@
+id,"role","recurrence",allowdupes,recipient
+1,"Application created",NULL,0,1
+2,"Confirm application submission",NULL,1,1
+3,"Application accepted",NULL,1,1
+4,"Application denied",NULL,1,1
+5,"Itinerary confirmed",NULL,1,1
+6,"Two months out",NULL,0,1
+7,"One month out",NULL,0,1
+8,"One week out",NULL,0,1
+9,"Forgot password",NULL,1,1
+10,"Admin: Application submitted",NULL,1,2
+11,"Admin: Decision due",NULL,1,2
+12,"Admin: Decision overdue","+3 days",1,2
+13,"Admin: Confirmation reminder","+2 weeks",1,2
+
+
+
