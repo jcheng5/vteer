@@ -23,7 +23,7 @@ class Auth extends Controller
     $persist = $this->input->post('persist');
 
     if ($this->admin->login($username, $password, $persist))
-      redirect('admin/volunteers');
+      redirect($this->admin->requested_url('admin/volunteers'));
     else
     {
       $err = 'Incorrect username or password';

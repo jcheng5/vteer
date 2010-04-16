@@ -12,9 +12,18 @@ class Admin
   {
     if (!$this->id(TRUE))
     {
+      $CI =& get_instance();
+      $CI->session->set_userdata('desturl', current_url());
       redirect('admin/auth/login');
       exit;
     }
+  }
+
+  function requested_url($default_url)
+  {
+    $CI =& get_instance();
+    $url = $CI->session->userdata('desturl');
+    return $url ? $url : $default_url;
   }
 
   function logout()
