@@ -113,33 +113,22 @@ function transition_user_to_state($user_id, $newState, $force = false)
     case STATUS_DRAFT:
       break;
     case STATUS_SUBMITTED:
-      $CI =& get_instance();
-      $mail_sender = $CI->config->item('mail_sender');
-      $admin_email = $CI->config->item('admin_email');
       schedule_mail($user_id, MAIL_CONFIRM_APP);
-      send_mail($mail_sender,
-                $admin_email,
-                "New volunteer application: $user->firstname  $user->lastname",
-                base_url());
+      schedule_mail($user_id, ADMINMAIL_SUBMITTED_NOTIFICATION);
+      schedule_mail($user_id, ADMINMAIL_DECISION_DUE, new DateTime('+2 weeks'));
+      schedule_mail($user_id, ADMINMAIL_DECISION_OVERDUE, new DateTime('+4 weeks'));
       break;
     case STATUS_ACCEPTED:
       schedule_mail($user_id, MAIL_ACCEPTED);
+      schedule_mail($user_id, ADMINMAIL_CONFIRMATION_REMINDER, new DateTime("+1 month"));
       break;
     case STATUS_CONFIRMED:
       schedule_mail($user_id, MAIL_ITINERARY_CONFIRMED);
       $arrivaldate = new DateTime($user->arrivaldate);
 
-      $two_months = clone $arrivaldate;
-      $two_months->modify('-2 months');
-      schedule_mail($user_id, MAIL_TWO_MONTHS, $two_months);
-
-      $one_month = clone $arrivaldate;
-      $one_month->modify('-1 month');
-      schedule_mail($user_id, MAIL_ONE_MONTH, $one_month);
-
-      $one_week = clone $arrivaldate;
-      $one_week->modify('-1 week');
-      schedule_mail($user_id, MAIL_ONE_WEEK, $one_week);
+      schedule_mail($user_id, MAIL_TWO_MONTHS, new DateTime("$user->arrivaldate -2 months"));
+      schedule_mail($user_id, MAIL_ONE_MONTH, new DateTime("$user->arrivaldate -1 month"));
+      schedule_mail($user_id, MAIL_ONE_WEEK, new DateTime("$user->arrivaldate -1 week"));
 
       break;
 

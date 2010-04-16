@@ -4,11 +4,9 @@ class EventCalendar
 {
   function __construct($month, $year, $rangespec)
   {
-    $this->days_of_week = array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
     $this->start = new DateTime();
     $this->start->setDate($year, $month, 1);
     $this->start->setTime(0, 0, 0);
-    $this->start->setTimezone(new DateTimeZone('UTC'));
     $this->end = clone $this->start;
     $this->end->modify($rangespec);
 

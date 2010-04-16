@@ -210,6 +210,7 @@ class DbFormatHelper
       case 'object':
         if (get_class($value) == 'DateTime')
         {
+          // TODO: Convert to default time zone
           return "'" . $value->format('Y-m-d H:i:s') . "'";
         }
         throw new RuntimeException("Don't know how to escape arbitrary objects");

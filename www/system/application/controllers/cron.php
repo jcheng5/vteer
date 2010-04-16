@@ -13,7 +13,7 @@ class Cron extends Controller
     $this->load->helper('mail');
 
     $db = new DbConn();
-    $mails = $db->query('select * from mails_scheduled where due <= UTC_TIMESTAMP()');
+    $mails = $db->query('select * from mails_scheduled where due <= NOW()');
 
     while ($mail = $mails->next())
     {

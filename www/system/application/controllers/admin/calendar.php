@@ -70,7 +70,6 @@ class Calendar extends Controller
     $date = new DateTime();
     $date->setDate($year, $month, $day);
     $date->setTime(0, 0, 0);
-    $date->setTimezone(new DateTimeZone('UTC'));
     return $date;
   }
 }

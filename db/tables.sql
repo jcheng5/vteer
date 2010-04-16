@@ -4,7 +4,7 @@
 #
 # Host: localhost (MySQL 5.1.38)
 # Database: vteer_dev
-# Generation Time: 2010-04-09 17:25:32 -0700
+# Generation Time: 2010-04-16 00:41:07 -0700
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -44,7 +44,7 @@ CREATE TABLE `mail_attachments` (
   `type` varchar(30) NOT NULL,
   `size` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 
 
@@ -56,13 +56,14 @@ DROP TABLE IF EXISTS `mail_template_versions`;
 CREATE TABLE `mail_template_versions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `templateid` int(11) NOT NULL,
-  `datecreated` timestamp NULL DEFAULT NULL,
+  `datecreated` datetime DEFAULT NULL,
   `subject` varchar(255) NOT NULL,
   `html` longtext NOT NULL,
   `plaintext` longtext NOT NULL,
+  `creator` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `IDX_TEMPLATEID` (`templateid`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
 
 
 
@@ -73,11 +74,13 @@ DROP TABLE IF EXISTS `mail_templates`;
 
 CREATE TABLE `mail_templates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
   `role` varchar(100) DEFAULT NULL,
+  `recurrence` varchar(50) DEFAULT NULL,
+  `allowdupes` tinyint(4) NOT NULL DEFAULT '0',
+  `recipient` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `IDX_ROLE` (`role`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 
 
@@ -95,7 +98,7 @@ CREATE TABLE `mails_scheduled` (
   KEY `IDX_USERID` (`userid`),
   KEY `IDX_MAILID` (`mailid`),
   KEY `IDX_DUE` (`due`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 
 
@@ -112,7 +115,7 @@ CREATE TABLE `mails_sent` (
   PRIMARY KEY (`id`),
   KEY `IDX_SENT` (`sent`),
   KEY `IDX_USERID` (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
 
 
 
@@ -167,12 +170,13 @@ CREATE TABLE `users` (
   `data` longtext,
   `arrivaldate` date DEFAULT NULL,
   `departuredate` date DEFAULT NULL,
+  `travelnotes` text,
   PRIMARY KEY (`id`),
   UNIQUE KEY `IDX_EMAIL` (`email`),
   KEY `IDX_STATUS` (`status`),
   KEY `IDX_ARRIVALDATE` (`arrivaldate`),
   KEY `IDX_DEPARTUREDATE` (`departuredate`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 
 

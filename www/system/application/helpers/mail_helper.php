@@ -9,6 +9,7 @@
 $CI =& get_instance();
 $CI->load->helper('html2text');
 
+// E-mails to applicants
 define('MAIL_INTRO', 1);
 define('MAIL_CONFIRM_APP', 2);
 define('MAIL_ACCEPTED', 3);
@@ -18,11 +19,20 @@ define('MAIL_TWO_MONTHS', 6);
 define('MAIL_ONE_MONTH', 7);
 define('MAIL_ONE_WEEK', 8);
 define('MAIL_PASSWORD', 9);
+// E-mails to administrators
+define('ADMINMAIL_SUBMITTED_NOTIFICATION', 10);
+define('ADMINMAIL_DECISION_DUE', 11);
+define('ADMINMAIL_DECISION_OVERDUE', 12);
+define('ADMINMAIL_CONFIRMATION_REMINDER', 13);
+
+// Constants for DB field mail_template_versions.recipient
+define('MAILRECIPIENT_APPLICANT', 1);
+define('MAILRECIPIENT_ADMIN', 2);
 
 function get_mail_templates()
 {
   $db = new DbConn();
-  $query = 'select mt.id, mt.name, mtv.subject, mt.role
+  $query = 'select mt.id, mtv.subject, mt.role
               from mail_templates as mt left join (mail_template_versions as mtv)
                 on (mt.id = mtv.templateid)
               where mtv.id is null
@@ -33,16 +43,19 @@ function get_mail_templates()
 /**
  * @param  $user_id
  * @param  $mail_id
- * @param bool $when
+ * @param DateTime $when The approximate date/time the e-mail should be sent
  * @param bool $allow_duplicates If false, won't schedule this e-mail if it has already been sent
- *    in the past, or if it's currently scheduled to be sent
+ *    in the past, or if it's currently scheduled to be sent. If true, will schedule the e-mail
+ *    no matter what. If NULL (or omitted) then the mail template's preferred setting will be used
  * @return void
  */
-function schedule_mail($user_id, $mail_id, $when = FALSE, $allow_duplicates = FALSE)
+function schedule_mail($user_id, $mail_id, $when = FALSE, $allow_duplicates = NULL)
 {
   $db = new DbConn();
 
-  if (!$allow_duplicates)
+  $template = get_mail_template($mail_id, TRUE);
+
+  if ($allow_duplicates === FALSE || (is_null($allow_duplicates) && !$template->allowdupes))
   {
     $results = $db->query('select *
                            from mails_sent as ms, mail_template_versions as mtv
@@ -59,7 +72,6 @@ function schedule_mail($user_id, $mail_id, $when = FALSE, $allow_duplicates = FA
 
   if (!$when)
   {
-    $template = get_mail_template($mail_id, TRUE);
     send_user_mail($template, $user_id);
     return TRUE;
   }
@@ -101,6 +113,11 @@ function send_user_mail($template, $user, $to = NULL)
     $user = get_user_assoc($user);
   }
 
+  if ($template->recipient == MAILRECIPIENT_ADMIN || $to)
+  {
+    $user['application_url'] = site_url('admin/volunteers/show/'.$user['id']);
+  }
+
   $mail = render_mail($template, $user);
 
   $CI->email->initialize(array('mailtype' => 'html'));
@@ -108,8 +125,15 @@ function send_user_mail($template, $user, $to = NULL)
   $CI->email->from($mail_sender);
   if ($to)
     $CI->email->to($to);
-  else
+  else if ($template->recipient == MAILRECIPIENT_APPLICANT)
     $CI->email->to($user['email']);
+  else if ($template->recipient == MAILRECIPIENT_ADMIN)
+  {
+    $CI->load->library('admin');
+    // get all admin e-mails
+    $emails = $CI->admin->get_admin_emails();
+    $CI->email->to(implode(', ', $emails));
+  }
   $CI->email->subject($mail->subject);
   $CI->email->message($mail->html);
   $CI->email->set_alt_message($mail->plaintext);
@@ -135,6 +159,11 @@ function send_user_mail($template, $user, $to = NULL)
   }
 
   $CI->email->send();
+
+  if ($template->recurrence)
+  {
+    schedule_mail($user['id'], $template->templateid, new DateTime($template->recurrence));
+  }
 
   $db = new DbConn();
   $db->exec('insert into mails_sent (userid, templateverid, sent) values (?, ?, ?)',
@@ -179,7 +208,7 @@ function replace_tokens($str, $params)
 {
   foreach ($params as $key => $value)
   {
-    $str = preg_replace("/\\\$$key\\\$/", $value, $str);
+    $str = preg_replace("/\\#$key\\#/", $value, $str);
   }
   return $str;
 }
@@ -191,7 +220,8 @@ function get_mail_template($template_id, $throw_on_not_found = FALSE)
   if ($template_id)
   {
     $db = new DbConn();
-    $mail_template = $db->fetch('select mtv.*, mt.role from mail_templates as mt
+    $mail_template = $db->fetch('select mtv.*, mt.role, mt.recipient, mt.allowdupes, mt.recurrence
+                                 from mail_templates as mt
                                  left join (mail_template_versions as mtv)
                                  on mt.id = mtv.templateid
                                  where mt.id = ?

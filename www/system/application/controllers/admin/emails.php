@@ -71,8 +71,9 @@ class Emails extends Controller
       $id = $db->last_insert_id();
     }
 
-    $rows = $db->exec('insert into mail_template_versions (templateid, subject, html, plaintext) values (?, ?, ?, ?)',
-                      (int)$id, $subject, $htmlbody, $textbody);
+    $rows = $db->exec('insert into mail_template_versions (templateid, subject, html, plaintext, datecreated, creator)
+                       values (?, ?, ?, ?, ?, ?)',
+                      (int)$id, $subject, $htmlbody, $textbody, date_create(), $this->admin->id());
     if ($rows != 1)
       throw new RuntimeException("Insertion failed!");
     $newId = $db->last_insert_id();

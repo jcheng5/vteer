@@ -183,6 +183,7 @@
 
     <p>
       <input type="checkbox" name="datesconfirmed" id="datesconfirmed" value="yes"
+          onclick="if (this.checked && ($('#arrivaldate').val() == '' || $('#departuredate').val() == '')) {this.checked=false;alert('Please provide arrival and departure dates before attempting to mark the dates confirmed.');}"
           <?php echo $user->status == STATUS_CONFIRMED ? 'checked disabled' : ''; ?>>
       <label for="datesconfirmed">Dates are confirmed</label>
     </p>

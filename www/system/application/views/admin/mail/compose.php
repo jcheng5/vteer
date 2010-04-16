@@ -23,7 +23,7 @@ $(function() {
     type: 'menu',
     menu: 'selInsertMenu'
   }).getMenu().subscribe('click', function(type, args) {
-    ckeditor.insertText(args[1].value + ' ');
+    ckeditor.insertHtml(args[1].value + ' ');
     ckeditor.focus();
   });
 
@@ -183,10 +183,10 @@ function addFile(id, name, size) {
   <div style="float:left">
     <button class="native" id="btnInsert" type="button">Insert placeholder</button>
     <select id="selInsertMenu">
-      <option value="$firstname$">Applicant's first name</option>
-      <option value="$lastname$">Applicant's last name</option>
-      <option value="$nickname$">Applicant's nickname</option>
-      <option value="$email$">Applicant's e-mail</option>
+      <option value="#firstname#">Applicant's first name</option>
+      <option value="#lastname#">Applicant's last name</option>
+      <option value="#email#">Applicant's e-mail</option>
+      <option value="&lt;a href=&quot;#application_url#&quot;&gt;#application_url#&lt;/a&gt;">Link to application (only for e-mails to Administrators)</option>
     </select>
   </div>
 

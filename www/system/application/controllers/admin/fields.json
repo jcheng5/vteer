@@ -156,5 +156,21 @@
       {"signature": "Signature (type your full name)"},
       {"signaturedate": "Today's Date"}
     ]
+  },
+  {
+    "name": "Statement of Faith",
+    "fields": [
+      {"signature2": "Signature (type your full name)"},
+      {"signaturedate2": "Today's Date"}
+    ]
+  },
+  {
+    "name": "Indemnity Form",
+    "fields": [
+      {"signature3": "Signature of volunteer or parent/guardian"},
+      {"signaturedate3": "Today's Date"},
+      {"indemnitywitness1": "Signature of Witness 1"},
+      {"indemnitywitness2": "Signature of Witness 2"}
+    ]
   }
 ]

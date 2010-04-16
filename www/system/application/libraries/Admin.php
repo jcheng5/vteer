@@ -52,6 +52,16 @@ class Admin
     return TRUE;
   }
 
+  function get_admin_emails()
+  {
+    $db = new DbConn();
+    $results = $db->query('select email from admins where email is not null');
+    $emails = array();
+    while ($email = $results->next())
+      array_push($emails, $email->email);
+    return $emails;
+  }
+
   function id($verify = FALSE)
   {
     $id = get_cookie('admin_id');
