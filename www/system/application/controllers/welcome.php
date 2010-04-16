@@ -35,6 +35,8 @@ class Welcome extends Controller
     }
     else
     {
+      log_event(LOG_USER_LOGIN, $user->id);
+      
       $this->session->set_userdata('userid', $user->id);
       // TODO: Pick up where user left off, not on page 1
       redirect('welcome/dispatch');

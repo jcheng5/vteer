@@ -24,6 +24,39 @@ function format_status($status)
   return $map[$status];
 }
 
+function format_status_desc($status)
+{
+  $map = array(
+    STATUS_CREATED => 'Applicants that have registered but not started the application',
+    STATUS_DRAFT => 'Applications that have not yet been submitted',
+    STATUS_SUBMITTED => 'Applications needing review',
+    STATUS_ACCEPTED => 'Applications that have been accepted',
+    STATUS_CONFIRMED => 'Applications that have been confirmed',
+    STATUS_REJECTED => 'Applications that have been rejected',
+    STATUS_INACTIVE => 'Inactive applications');
+  return $map[$status];
+}
+
+function format_status_nextstep($status)
+{
+  $map = array(
+    STATUS_CREATED => 'Applicant begins application',
+    STATUS_DRAFT => 'Applicant completes and submits application',
+    STATUS_SUBMITTED => 'Volunteer Coordinator accepts or rejects application',
+    STATUS_ACCEPTED => 'Administrator enters and confirm travel dates',
+    STATUS_CONFIRMED => FALSE,
+    STATUS_REJECTED => FALSE,
+    STATUS_INACTIVE => FALSE);
+  return $map[$status];
+}
+
+$titles = array('Applicants needing review',
+  'Applicants that have been accepted',
+  'Applicants that have been confirmed',
+  'Applicants that have been rejected',
+  'Applicants that have not yet been submitted');
+
+
 function create_user($firstname, $lastname, $email, $password)
 {
   $db = new DbConn();
@@ -31,6 +64,8 @@ function create_user($firstname, $lastname, $email, $password)
                      $firstname, $lastname, $email, $password))
     throw new RuntimeException('A database error occurred');
   $newId = $db->last_insert_id();
+
+  log_event(LOG_USER_CREATED, $newId);
 
   schedule_mail($newId, MAIL_INTRO);
 
@@ -105,6 +140,7 @@ function transition_user_to_state($user_id, $newState, $force = false)
   $db = new DbConn();
   $rows = $db->exec('update users set status = ?, laststatuschange = ? where id = ?', (int) $newState, date_create(), (int) $user_id);
 
+  log_event(LOG_USER_STATE_CHANGE, (int)$user_id, (int)$newState);
 
   $db->exec('delete from mails_scheduled where userid = ?', $user_id);
 

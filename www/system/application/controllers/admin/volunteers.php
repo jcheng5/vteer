@@ -12,33 +12,46 @@ class Volunteers extends Controller
 
   function index()
   {
+    $this->load->view('admin/header');
+    $this->_history(FALSE, 30);
+    $this->load->view('admin/pagetitle', array('pagetitle' => 'Volunteer Dashboard'));
+    $this->load->view('admin/volunteers/tasks');
+    $this->_status(array(STATUS_SUBMITTED, STATUS_ACCEPTED, STATUS_CONFIRMED, STATUS_DRAFT, STATUS_REJECTED),
+                   25);
+    $this->load->view('admin/footer');
+  }
+
+  function status($status, $limit=FALSE)
+  {
+    $this->load->view('admin/header');
+    $this->load->view('admin/pagetitle', array('pagetitle' => "Applications: " . format_status($status)));
+    $this->_status($status, $limit);
+    $this->load->view('admin/footer');
+  }
+
+  function _status($status, $limit=FALSE)
+  {
+    if (is_array($status))
+      $statuses = $status;
+    else
+      $statuses = explode('_', $status);
+
+    // Probably not necessary to cast these to ints, I just can't help myself
+    for ($i = 0; $i < sizeof($statuses); $i++)
+      $statuses[$i] = (int)$statuses[$i];
+
     $this->load->helper('format');
 
-    $users_submitted = get_users_by_state(STATUS_SUBMITTED);
-    $users_accepted = get_users_by_state(STATUS_ACCEPTED);
-    $users_confirmed = get_users_by_state(STATUS_CONFIRMED);
-    $users_rejected = get_users_by_state(STATUS_REJECTED);
-    $users_draft = get_users_by_state(array(STATUS_DRAFT, STATUS_CREATED));
+    $user_groups = array_map("get_users_by_state", $statuses);
+    $titles = array_map("format_status_desc", $statuses);
+    $datetitles = array_map("format_status", $statuses);
 
-    $user_groups = array($users_submitted, $users_accepted, $users_confirmed, $users_rejected, $users_draft);
-    $titles = array('Applicants needing review',
-      'Applicants that have been accepted',
-      'Applicants that have been confirmed',
-      'Applicants that have been rejected',
-      'Applicants that have not yet been submitted');
-    $datetitles = array('Submitted',
-      'Accepted',
-      'Confirmed',
-      'Rejected',
-      FALSE);
-
-
-    $this->load->view('admin/header');
     $this->load->view('admin/volunteers/list.php',
-                      array('user_groups' => $user_groups,
-                        'titles' => $titles,
-                        'datetitles' => $datetitles));
-    $this->load->view('admin/footer');
+                      array('statuses' => $statuses,
+                            'user_groups' => $user_groups,
+                            'titles' => $titles,
+                            'datetitles' => $datetitles,
+                            'limit' => $limit));
   }
 
   function show($id)
@@ -49,7 +62,7 @@ class Volunteers extends Controller
 
     $user = get_user($id);
     if (!$user)
-      throw new RuntimeException('User not found');
+      show_error('User not found', 404);
 
     $notes = get_notes($user->id);
 
@@ -77,14 +90,43 @@ class Volunteers extends Controller
     $db->exec('delete from mails_sent where userid = ?', $id);
     $db->exec('delete from notes where userid = ?', $id);
 
+    log_event(LOG_USER_DELETED, $id);
+
     redirect('admin/volunteers');
+  }
+
+  function history($id=null, $limit=FALSE)
+  {
+    $this->load->view('admin/header');
+    $this->history($id, $limit);
+    $this->load->view('admin/footer');
+  }
+  function _history($id=null, $limit=FALSE)
+  {
+    if ($id)
+    {
+      $user = get_user($id);
+      if (!$user)
+        show_error('User not found', 404);
+      $events = get_log_events($id, $limit);
+      $pagetitle = "History for $user->firstname $user->lastname";
+    }
+    else
+    {
+      $events = get_log_events(FALSE, $limit);
+      $pagetitle = "Latest Activity";
+    }
+
+    $this->load->view('admin/volunteers/history.php',
+                      array('pagetitle' => $pagetitle, 
+                            'events' => $events));
   }
 
   function email_history($id)
   {
     $user = get_user($id);
     if (!$user)
-      throw new RuntimeException('User not found');
+      show_error('User not found', 404);
     $db = new DbConn();
     $sentMails = $db->query('select * from mails_sent, mail_template_versions where mails_sent.templateverid = mail_template_versions.id and mails_sent.userid = ? order by sent desc', $id);
     $scheduledMails = $db->query('select * from mails_scheduled, mail_templates where mails_scheduled.mailid = mail_templates.id and mails_scheduled.userid = ? order by due asc', $id);
@@ -155,6 +197,10 @@ class Volunteers extends Controller
     $db = new DbConn();
     $rows = $db->exec('update users set arrivaldate = ?, departuredate = ?, travelnotes = ? where id = ?',
                       $arrival, $departure, $travelnotes, (int)$userId);
+
+    $arrival_str = $arrival->format('Y-m-d');
+    $departure_str = $arrival->format('Y-m-d');
+    log_event(LOG_TRAVEL_INFO_UPDATE, $userId, substr("Arrive: $arrival_str\nDepart: $departure_str\nNotes: $travelnotes", 0, 255));
 
     if ($user->status == STATUS_ACCEPTED && $confirmed)
       transition_user_to_state($userId, STATUS_CONFIRMED);

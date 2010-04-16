@@ -62,6 +62,10 @@
     font-size: 0.66em;
     color: #777;
   }
+  .nextstep {
+    font-size: 0.66em;
+    margin-top: 0.4em;
+  }
 
   .statusvalue#status<?php echo $user->status ?> {
     font-size: 1.5em;
@@ -103,6 +107,9 @@
 </script>
 
 <div style="float: right">
+<?php echo anchor("admin/volunteers/history/$user->id", 'View history', array('class' => 'button')); ?>
+<?php echo anchor("admin/volunteers/email_history/$user->id", 'View e-mails', array('class' => 'button')); ?>
+&nbsp;&nbsp;
 <?php echo anchor('admin/volunteers', 'Back to list', array('id' => 'lnkBackToList')); ?>
 </div>
 
@@ -126,14 +133,17 @@
       }
     ?>
   </span>
+  <?php if (format_status_nextstep($user->status)): ?>
+    <div class="nextstep">
+      <strong>Next step:</strong> <?php echo htmlspecialchars(format_status_nextstep($user->status)); ?>
+    </div>
+  <?php endif; ?>
 </div>
 
 <?php if ($user->status == STATUS_SUBMITTED): ?>
   <button id="btnAccept" class="native" type="button"><h3 style="color: #060">Accept</h3></button>
   <button id="btnReject" class="native" type="button"><h3 style="color: #D00">Reject</h3></button>
 <?php endif; ?>
-
-<p><?php echo anchor("admin/volunteers/email_history/$user->id", 'View system-generated e-mail history', array('class' => 'button')); ?></p>
 
 <h2>Notes</h2>
 
