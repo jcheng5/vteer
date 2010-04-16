@@ -4,7 +4,7 @@
 #
 # Host: localhost (MySQL 5.1.38)
 # Database: vteer_dev
-# Generation Time: 2010-04-16 00:41:07 -0700
+# Generation Time: 2010-04-16 15:48:55 -0700
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -30,6 +30,26 @@ CREATE TABLE `admins` (
   `token` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table event_log
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `event_log`;
+
+CREATE TABLE `event_log` (
+  `id` bigint(11) NOT NULL AUTO_INCREMENT,
+  `userid` int(11) DEFAULT NULL,
+  `adminid` int(11) DEFAULT NULL,
+  `messageid` int(11) NOT NULL,
+  `when` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `state` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_USERID` (`userid`),
+  KEY `IDX_ADMINID` (`adminid`),
+  KEY `IDX_MESSAGEID` (`messageid`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 
 
@@ -98,7 +118,7 @@ CREATE TABLE `mails_scheduled` (
   KEY `IDX_USERID` (`userid`),
   KEY `IDX_MAILID` (`mailid`),
   KEY `IDX_DUE` (`due`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 
 
 
@@ -115,7 +135,7 @@ CREATE TABLE `mails_sent` (
   PRIMARY KEY (`id`),
   KEY `IDX_SENT` (`sent`),
   KEY `IDX_USERID` (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
 
 
 
@@ -133,7 +153,7 @@ CREATE TABLE `notes` (
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_USERID` (`userid`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 
 
@@ -176,7 +196,7 @@ CREATE TABLE `users` (
   KEY `IDX_STATUS` (`status`),
   KEY `IDX_ARRIVALDATE` (`arrivaldate`),
   KEY `IDX_DEPARTUREDATE` (`departuredate`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 
 
