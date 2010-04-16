@@ -89,6 +89,10 @@ class Emails extends Controller
       }
     }
 
+    $template = get_mail_template($id);
+    $role = $template ? $template->role : '(unknown)';
+    log_event(LOG_MAIL_TEMPLATE_EDITED, NULL, $role);
+
     redirect("admin/emails/index/$id");
   }
 

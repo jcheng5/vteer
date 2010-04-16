@@ -7,6 +7,7 @@ define('LOG_NOTE_ADDED', 101);
 define('LOG_NOTE_DELETED', 102);
 define('LOG_TRAVEL_INFO_UPDATE', 201);
 define('LOG_USER_DELETED', 301);
+define('LOG_MAIL_TEMPLATE_EDITED', 401);
 
 function log_event($messageId, $userId, $state=NULL)
 {
@@ -84,6 +85,8 @@ function format_log_event($event, $html=TRUE)
       return "$event->admin updated travel dates/details for $user$delim$details";
     case LOG_USER_DELETED:
       return "$event->admin deleted $user";
+    case LOG_MAIL_TEMPLATE_EDITED:
+      return "$event->admin edited mail template [$event->state]";
   }
 }
 

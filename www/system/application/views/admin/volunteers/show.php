@@ -107,8 +107,8 @@
 </script>
 
 <div style="float: right">
-<?php echo anchor("admin/volunteers/history/$user->id", 'View history', array('class' => 'button')); ?>
-<?php echo anchor("admin/volunteers/email_history/$user->id", 'View e-mails', array('class' => 'button')); ?>
+<?php echo anchor("admin/volunteers/history/$user->id", 'History...', array('class' => 'button')); ?>
+<?php echo anchor("admin/volunteers/email_history/$user->id", 'E-mail Schedule...', array('class' => 'button')); ?>
 &nbsp;&nbsp;
 <?php echo anchor('admin/volunteers', 'Back to list', array('id' => 'lnkBackToList')); ?>
 </div>
@@ -175,7 +175,7 @@
     <button id="btnAddNote" type="submit">Save Note</button>
   </form>
 </div>
-<button id="btnShowAddNote" type="button">Add Note</button>
+<button id="btnShowAddNote" type="button">Add Note...</button>
 
 <?php if ($user->status == STATUS_ACCEPTED || $user->status == STATUS_CONFIRMED): ?>
   <h2>Travel Logistics</h2>

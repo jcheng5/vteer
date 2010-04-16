@@ -98,7 +98,7 @@ class Volunteers extends Controller
   function history($id=null, $limit=FALSE)
   {
     $this->load->view('admin/header');
-    $this->history($id, $limit);
+    $this->_history($id, $limit);
     $this->load->view('admin/footer');
   }
   function _history($id=null, $limit=FALSE)
