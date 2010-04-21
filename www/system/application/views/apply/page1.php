@@ -24,6 +24,9 @@
       Date of Birth<span class="requiredcue">*</span></label>
     <br />
     <input id="dob" name="dob" type="text" />
+    <div class="detail">
+      example: April 17, 1980
+    </div>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
@@ -320,8 +323,7 @@
   </div>
   <div class="field">
     <label for="photo">
-      Photo of you
-    </label>
+      Photo of you<span class="requiredcue">*</span></label>
     <br />
     <div class="nofile" id="photo-nofile">
       <span>
@@ -363,6 +365,18 @@
         };
       //]]>
     </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if ($('#photo-nofile').css('display') != 'none')
+          {
+            error_field_required('photo');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
 </div>
 <div class="section">
@@ -395,6 +409,28 @@
         });
         save_handlers.push(function (info, form) {
           info['dates1-to'] = $('#dates1-to').get(0).value;
+        });
+      //]]>
+    </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        window.date_select_handlers["dates1-from"] = function(dateText, inst) {
+          var DAY = 1000*60*60*24;
+          var fromDate = new Date($('#dates1-from').val());
+          var millisLimit = fromDate.getTime() + DAY*30;
+          var to = $('#dates1-to');
+          var toDate = new Date(to.val());
+          if (toDate.getTime() < millisLimit) {
+            to.val('');
+          }
+          to.datepicker('option', 'minDate', new Date(millisLimit));
+        };
+      //]]>
+    </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        $(function() {
+          $('#dates1-from').datepicker('option', 'minDate', new Date());
         });
       //]]>
     </script>
@@ -444,6 +480,28 @@
     </script>
     <script type="text/javascript">
       //<![CDATA[
+        window.date_select_handlers["dates2-from"] = function(dateText, inst) {
+          var DAY = 1000*60*60*24;
+          var fromDate = new Date($('#dates2-from').val());
+          var millisLimit = fromDate.getTime() + DAY*30;
+          var to = $('#dates2-to');
+          var toDate = new Date(to.val());
+          if (toDate.getTime() < millisLimit) {
+            to.val('');
+          }
+          to.datepicker('option', 'minDate', new Date(millisLimit));
+        };
+      //]]>
+    </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        $(function() {
+          $('#dates2-from').datepicker('option', 'minDate', new Date());
+        });
+      //]]>
+    </script>
+    <script type="text/javascript">
+      //<![CDATA[
         validation_handlers.push(function(info) {
           if (!has_value(info, "dates2-from") || !has_value(info, "dates2-to"))
           {
@@ -484,6 +542,28 @@
         });
         save_handlers.push(function (info, form) {
           info['dates3-to'] = $('#dates3-to').get(0).value;
+        });
+      //]]>
+    </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        window.date_select_handlers["dates3-from"] = function(dateText, inst) {
+          var DAY = 1000*60*60*24;
+          var fromDate = new Date($('#dates3-from').val());
+          var millisLimit = fromDate.getTime() + DAY*30;
+          var to = $('#dates3-to');
+          var toDate = new Date(to.val());
+          if (toDate.getTime() < millisLimit) {
+            to.val('');
+          }
+          to.datepicker('option', 'minDate', new Date(millisLimit));
+        };
+      //]]>
+    </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        $(function() {
+          $('#dates3-from').datepicker('option', 'minDate', new Date());
         });
       //]]>
     </script>

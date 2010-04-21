@@ -62,7 +62,9 @@ function create_user($firstname, $lastname, $email, $password)
   $db = new DbConn();
   if (0 == $db->exec('insert into users (firstname, lastname, email, password) values (?, ?, ?, ?)',
                      $firstname, $lastname, $email, $password))
+  {
     throw new RuntimeException('A database error occurred');
+  }
   $newId = $db->last_insert_id();
 
   log_event(LOG_USER_CREATED, $newId);
@@ -151,8 +153,8 @@ function transition_user_to_state($user_id, $newState, $force = false)
     case STATUS_SUBMITTED:
       schedule_mail($user_id, MAIL_CONFIRM_APP);
       schedule_mail($user_id, ADMINMAIL_SUBMITTED_NOTIFICATION);
-      schedule_mail($user_id, ADMINMAIL_DECISION_DUE, new DateTime('+2 weeks'));
-      schedule_mail($user_id, ADMINMAIL_DECISION_OVERDUE, new DateTime('+4 weeks'));
+      schedule_mail($user_id, ADMINMAIL_DECISION_DUE, new DateTime('+2 weeks -2 days'));
+      schedule_mail($user_id, ADMINMAIL_DECISION_OVERDUE, new DateTime('+2 weeks +1 day'));
       break;
     case STATUS_ACCEPTED:
       schedule_mail($user_id, MAIL_ACCEPTED);

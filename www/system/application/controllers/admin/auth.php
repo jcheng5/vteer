@@ -23,7 +23,9 @@ class Auth extends Controller
     $persist = $this->input->post('persist');
 
     if ($this->admin->login($username, $password, $persist))
-      redirect($this->admin->requested_url('admin/volunteers'));
+    {
+      header("Location: ".$this->admin->requested_url(site_url('admin/volunteers')), TRUE, 302);
+    }
     else
     {
       $err = 'Incorrect username or password';

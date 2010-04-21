@@ -23,6 +23,7 @@ class Admin
   {
     $CI =& get_instance();
     $url = $CI->session->userdata('desturl');
+    $CI->session->unset_userdata('desturl');
     return $url ? $url : $default_url;
   }
 
@@ -97,5 +98,4 @@ class Admin
     return $id;
   }
 }
-
 ?>

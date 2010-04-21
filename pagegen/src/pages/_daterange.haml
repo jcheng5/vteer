@@ -5,6 +5,24 @@
   = date_raw("#{id}-from", 3)
   to
   = date_raw("#{id}-to", 3)
+  - if config[:min_duration]
+    :javascript
+      window.date_select_handlers["#{id}-from"] = function(dateText, inst) {
+        var DAY = 1000*60*60*24;
+        var fromDate = new Date($('##{id}-from').val());
+        var millisLimit = fromDate.getTime() + DAY*#{config[:min_duration]};
+        var to = $('##{id}-to');
+        var toDate = new Date(to.val());
+        if (toDate.getTime() < millisLimit) {
+          to.val('');
+        }
+        to.datepicker('option', 'minDate', new Date(millisLimit));
+      };
+  - if config[:disallow_past]
+    :javascript
+      $(function() {
+        $('##{id}-from').datepicker('option', 'minDate', new Date());
+      });
   - if required
     :javascript
       validation_handlers.push(function(info) {

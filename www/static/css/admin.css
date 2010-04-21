@@ -46,6 +46,8 @@ table.data tr.even {
 }
 
 #toolbar div {
+  position: relative;
+  top: 1px;
 }
 #toolbar a {
   color: #333;
@@ -60,6 +62,7 @@ table.data tr.even {
   float: left;
   padding: 6px;
   padding-left: 12px;
+  margin-left: 145px;
 }
 #toolbar .left a {
   margin-right: 12px;
@@ -72,6 +75,7 @@ table.data tr.even {
   margin-left: 12px;
 }
 #toolbar {
+  font-size: 11px;
   position: absolute;
   left: 0;
   right: 0;
@@ -79,4 +83,9 @@ table.data tr.even {
   height: 36px;
   background-repeat: repeat-x;
   background-position: top;
+}
+#logo {
+  position: absolute;
+  left: 8px;
+  top: 0;
 }

@@ -8,12 +8,18 @@
   <?php $this->load->view('yui'); ?>
   <script type="text/javascript" src="<?php echo base_url(); ?>static/js/json2.js"></script>
   <script type="text/javascript">
+    window.date_select_handlers = {};
     $(function() {
       $('.datepicker').datepicker( { dateFormat: 'MM d, yy',
                                      changeMonth: true,
                                      changeYear: true,
                                      showButtonPanel: true,
-                                     showAnim: 'fadeIn' } );
+                                     showAnim: 'fadeIn',
+                                     onSelect: function(dateText, inst) {
+                                       if (window.date_select_handlers[this.id])
+                                         window.date_select_handlers[this.id](dateText, inst);
+                                     }
+                                   } );
       $('a.button').each(function() {
         new YAHOO.widget.Button(this);
       });

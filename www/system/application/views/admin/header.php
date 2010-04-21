@@ -8,11 +8,12 @@
   <?php $this->load->view('jquery'); ?>
   <script type="text/javascript">
     $(function() {
-      $('.datepicker').datepicker( { dateFormat: 'MM d, yy',
-                                     changeMonth: true,
-                                     changeYear: true,
-                                     showButtonPanel: true,
-                                     showAnim: 'fadeIn' } );
+      $('.datepicker').datepicker({ dateFormat: 'MM d, yy',
+                                    changeMonth: true,
+                                    changeYear: true,
+                                    showButtonPanel: true,
+                                    showAnim: 'fadeIn'
+                                  });
       $('a.button').each(function()
       {
         new YAHOO.widget.Button(this);
@@ -28,6 +29,7 @@
 </head>
 <body class="yui-skin-sam">
 <div id="toolbar" style="background-image: url(<?php echo base_url() . 'static/images/toolbartile.png'; ?>)">
+  <img id="logo" src="<?php echo base_url() . 'static/images/logo.png'; ?>" alt="Living Hope" />
   <div class="left">
     <?php echo anchor('admin', 'Volunteer Dashboard'); ?>
     <?php echo anchor('admin/calendar', 'Calendar'); ?>

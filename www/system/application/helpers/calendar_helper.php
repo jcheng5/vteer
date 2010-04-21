@@ -108,7 +108,8 @@ class EventCalendar
       $anchorEnd = '</a>';
     }
 
-    $tooltip = $event->startDate->format('l, F j, Y') . ' &ndash; ' . $event->endDate->format('l, F j, Y');
+    $tooltip = 'From: ' . $event->startDate->format('l, F j, Y') . "\nTo: " . $event->endDate->format('l, F j, Y') . "\n";
+    $tooltip .= $event->tentative ? 'TENTATIVE' : 'CONFIRMED';
 
     echo "<div class=\"event offset$offset length$length$tentative\" title=\"$tooltip\" style=\"background-color: $event->color\">$anchorStart$desc$anchorEnd</div>\n";
   }

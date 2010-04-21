@@ -1,7 +1,7 @@
 .section
   %h2 Basic Information
   = text(:nickname, 'Nickname')
-  = text(:dob, 'Date of Birth', :required => true)
+  = text(:dob, 'Date of Birth', :required => true, :detail => 'example: April 17, 1980')
   = radio(:gender, 'Gender', ['Male', 'Female'], :required => true)
   = radio(:marital, 'Marital Status', ['Single', 'Married'], :required => true)
   = text(:ssn, 'Identification Number', :detail => 'Social Security # (US), National Insurance # (UK), etc.')
@@ -9,14 +9,14 @@
   = text(:phone, 'Telephone', :required => true)
   = text(:fax, 'Fax')
   = select(:referrer, 'How did you hear about our ministry?', ['ACTS', 'African Encounter', 'Living Hope', 'Friend', 'I am a former volunteer', 'Through my local church', 'Internet Living Hope/Way/Grace', 'Internet ACTS', 'Internet African Encounter', 'Other'], :required => true)
-  = attachment('photo', 'Photo of you')
+  = attachment('photo', 'Photo of you', :required => true)
 
 .section
   %h2 Preferred Dates
   %h4 Please indicate when you would like to visit. Since there are many factors involved in scheduling volunteers, please indicate your first, second, and third preferences for working with Living Hope. We have a minimum service time commitment of 30 days.
-  = daterange(:dates1, 'First preference of dates', :required => true)
-  = daterange(:dates2, 'Second preference of dates', :required => true)
-  = daterange(:dates3, 'Third preference of dates')
+  = daterange(:dates1, 'First preference of dates', :required => true, :min_duration => 30, :disallow_past => true)
+  = daterange(:dates2, 'Second preference of dates', :required => true, :min_duration => 30, :disallow_past => true)
+  = daterange(:dates3, 'Third preference of dates', :min_duration => 30, :disallow_past => true)
   
 .section
   %h2 Transport

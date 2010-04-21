@@ -1,7 +1,7 @@
 <style type="text/css">
 .calendar {
   font-size: 12px;
-  font-family: Lucida Grande;
+  font-family: Lucida Grande, Lucida Sans Unicode, Segoe UI, Tahoma, Verdana, sans-serif;
 }
 .month {
   width: 718px;

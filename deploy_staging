@@ -1,0 +1,3 @@
+#!/bin/sh
+
+rsync -rPt --delete --exclude=.idea --exclude=.DS_Store www/ jcheng1978@staging.joecheng.com:/home/jcheng1978/staging.joecheng.com/www/
