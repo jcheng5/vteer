@@ -94,6 +94,12 @@ class Welcome extends Controller
       return;
     }
 
+    if ($password == '')
+    {
+      $this->_index_with_error('Password is required');
+      return;
+    }
+
     $user = get_user_by_email($email);
     if ($user)
     {
