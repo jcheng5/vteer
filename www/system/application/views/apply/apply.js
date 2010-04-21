@@ -98,7 +98,7 @@ function save(should_validate /* = false */, auto_save /* = false */)
   // Replacer function is a hack to work around this IE8 bug:
   // http://blogs.msdn.com/jscript/archive/2009/06/23/serializing-the-value-of-empty-dom-elements-using-native-json-in-ie8.aspx
   var payload = JSON.stringify(info, function(k, v) { return v === "" ? "" : v });
-  console.log(payload);
+  //console.log(payload);
   if (!uploadInfo(payload))
     return false;
 
