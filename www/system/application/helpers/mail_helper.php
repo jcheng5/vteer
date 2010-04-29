@@ -118,6 +118,7 @@ function send_user_mail($template, $user, $to = NULL)
   {
     $user['application_url'] = site_url('admin/volunteers/show/'.$user['id']);
   }
+  $user['homepage_url'] = base_url();
 
   $mail = render_mail($template, $user);
 
