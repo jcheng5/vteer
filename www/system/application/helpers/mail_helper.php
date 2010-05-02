@@ -106,8 +106,10 @@ function send_user_mail($template, $user, $to = NULL)
 {
   $CI =& get_instance();
   $CI->load->library('email');
+  $CI->load->library('admin');
 
-  $mail_sender = $CI->config->item('mail_sender');
+  $mail_sender_name = $CI->config->item('mail_sender_name');
+  $mail_sender_email = $CI->config->item('mail_sender_email');
 
   if (!is_array($user))
   {
@@ -124,7 +126,11 @@ function send_user_mail($template, $user, $to = NULL)
 
   $CI->email->initialize(array('mailtype' => 'html'));
   $CI->email->clear(TRUE);
-  $CI->email->from($mail_sender);
+  $CI->email->from($mail_sender_email, $mail_sender_name);
+  $volunteer_coordinator = $CI->admin->get_volunteer_coordinator();
+  if ($volunteer_coordinator)
+    $CI->email->reply_to($volunteer_coordinator->email, $volunteer_coordinator->name);
+
   if ($to)
     $CI->email->to($to);
   else if ($template->recipient == MAILRECIPIENT_APPLICANT)

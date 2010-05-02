@@ -36,6 +36,8 @@ class Apply extends Controller
 
     $data = array('page_num' => $page_num,
       'max_page' => $max_page,
+      'logout_link' => site_url('welcome/logout'),
+      'user_email' => $user->email,
       'prev_link' => $prev_link,
       'next_link' => $next_link,
       'next_label' => $next_label);

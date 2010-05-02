@@ -7,5 +7,5 @@
 </p>
 <p>
   If you have further questions, please
-  <?php echo anchor('contact', 'contact us'); ?>.
+  e-mail <?php echo anchor('mailto:' . ADMIN_EMAIL, ADMIN_EMAIL); ?>.
 </p>

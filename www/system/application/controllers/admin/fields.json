@@ -24,13 +24,6 @@
     ]
   },
   {
-    "name": "Transport",
-    "fields": [
-      {"transport": "Will you have your own transportation? (Do you plan to rent or purchase a car?)"},
-      {"license": "Do you have an international driver's license?"}
-    ]
-  },
-  {
     "name": "Education",
     "fields": [
       {"educationlevel": "Highest level of education completed"},
@@ -98,7 +91,6 @@
       {"churchhistory": "Describe your personal church history (various ones you've attended, why you switched, etc.)."},
       {"faith": "Describe your personal \"statement of faith.\" What do you believe?"},
       {"southafrica": "Do you feel specifically called to South Africa? Explain."},
-      {"fiveyearplan": "Where do you want to be in five years? What is your personal vision for your life and ministry?"},
       {"calling": "Explain how and why you feel God is calling you to be part of Living Hope. Also include what area of ministry you would specifically like to get involved in and how you see yourself fitting in."},
       {"gifts": "Please check all areas you consider yourself gifted in."},
       {"leadgifts": "Of the areas you checked, please note which ones you would consider yourself strong enough to lead a team in projects within this area."}
@@ -107,7 +99,7 @@
   {
     "name": "Volunteer Positions",
     "fields": [
-      {"positions.list": "Please choose your top 3 positions."}
+      {"positions": "Please choose your top 3 positions."}
     ]
   },
   {

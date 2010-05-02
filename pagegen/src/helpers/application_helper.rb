@@ -36,7 +36,7 @@ module ApplicationHelper
   end
   
   def checkbox(id, label, options, config={})
-    partial('checkbox', :locals => { :id => id, :label => label, :options => options, :required => config[:required] })
+    partial('checkbox', :locals => { :id => id, :label => label, :options => options, :required => config[:required], :config => config })
   end
   
   def label(id, label, config={})

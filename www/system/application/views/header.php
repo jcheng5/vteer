@@ -30,6 +30,64 @@
   </script>
   <?php //$this->load->view('yui'); ?>
   <?php $this->load->view('googleanalytics'); ?>
+  <style type="text/css">
+  body {
+    background: #053A66 url(<?php echo base_url()."static/images/page_bg.png"; ?>) top repeat-x;
+  }
+  #page {
+    margin: 0 auto 0 auto;
+    width: 924px;
+  }
+  #pageheader {
+    position: relative;
+    background: url(<?php echo base_url()."static/images/header.png"; ?>) no-repeat top center;
+    width: 924px;
+    height: 130px; 
+  }
+  #pagetop {
+    background: url(<?php echo base_url()."static/images/main_top.png"; ?>) no-repeat top center;
+    width: 100%;
+    height: 35px;
+  }
+  #pagetile {
+    width: 100%;
+    background: url(<?php echo base_url()."static/images/main_bg.png"; ?>) repeat-y center;
+  }
+  #pageframe {
+    min-height: 400px;
+  }
+  #pagebottom {
+    background: url(<?php echo base_url()."static/images/main_bottom.png"; ?>) no-repeat top center;
+    width: 100%;
+    height: 35px;
+  }
+  .public .section {
+    border: none;
+  }
+  #headergraphic a {
+    text-decoration: none;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 340px;
+    height: 90px;
+  }
+  .relative {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .invisible {
+    position: relative;
+    left: -10000em;
+  }
+  </style>
 </head>
-<body class="narrow yui-skin-sam">
-<div id="pageframe">
+<body class="narrow yui-skin-sam public">
+<table id="page" cellspacing="0" cellpadding="0" border="0">
+  <tr><td id="pageheader"><div class="relative">
+    <h1 id="headergraphic"><a href="http://www.livinghope.co.za/"><span class="invisible">Living Hope</span></a></h1>
+  </div></td></tr>
+  <tr><td id="pagetop"></td></tr>
+  <tr><td id="pagetile" valign="top">
+  <div id="pageframe">

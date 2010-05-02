@@ -21,4 +21,11 @@
         if ($('##{id}#{i}').get(0).checked)
           info['#{id}'].push('#{option}')
       });
+  - if config[:other]
+    = text("#{id}-other", 'Other', :inline => true)
+    :javascript
+      save_handlers.push(function (info) {
+        if (has_value(info, '#{id}-other'))
+          info['#{id}'].push(info['#{id}-other']);
+      });
   = default_validation(id, required)

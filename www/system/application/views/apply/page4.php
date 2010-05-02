@@ -2,8 +2,7 @@
   <h2>Biographical Information</h2>
   <div class="field">
     <label for="conversion">
-      How and when did you become a Christian?
-    </label>
+      How and when did you become a Christian?<span class="requiredcue">*</span></label>
     <br />
     <textarea class="medium" cols="40" id="conversion" name="conversion" rows="5"></textarea>
     <script type="text/javascript">
@@ -17,12 +16,22 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'conversion'))
+          {
+            error_field_required('conversion');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="lifechange">
-      Describe how your life has changed.
-    </label>
+      Describe how your life has changed.<span class="requiredcue">*</span></label>
     <br />
     <textarea class="medium" cols="40" id="lifechange" name="lifechange" rows="5"></textarea>
     <script type="text/javascript">
@@ -36,12 +45,22 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'lifechange'))
+          {
+            error_field_required('lifechange');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="history">
-      Please write a brief overview of your personal history (where you grew up, childhood experiences, and how these affect your life now).
-    </label>
+      Please write a brief overview of your personal history (where you grew up, childhood experiences, and how these affect your life now).<span class="requiredcue">*</span></label>
     <br />
     <textarea class="large" cols="70" id="history" name="history" rows="12"></textarea>
     <script type="text/javascript">
@@ -55,12 +74,22 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'history'))
+          {
+            error_field_required('history');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="strength">
-      What would others say is your strongest quality, and why?
-    </label>
+      What would others say is your strongest quality, and why?<span class="requiredcue">*</span></label>
     <br />
     <textarea class="medium" cols="40" id="strength" name="strength" rows="5"></textarea>
     <script type="text/javascript">
@@ -74,12 +103,22 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'strength'))
+          {
+            error_field_required('strength');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="weakness">
-      What would others say is your weakest quality, and why?
-    </label>
+      What would others say is your weakest quality, and why?<span class="requiredcue">*</span></label>
     <br />
     <textarea class="medium" cols="40" id="weakness" name="weakness" rows="5"></textarea>
     <script type="text/javascript">
@@ -93,12 +132,22 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'weakness'))
+          {
+            error_field_required('weakness');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="submission">
-      When do you find it difficult to submit to others?
-    </label>
+      When do you find it difficult to submit to others?<span class="requiredcue">*</span></label>
     <br />
     <textarea class="medium" cols="40" id="submission" name="submission" rows="5"></textarea>
     <script type="text/javascript">
@@ -112,12 +161,22 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'submission'))
+          {
+            error_field_required('submission');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="churchhistory">
-      Describe your personal church history (various ones you've attended, why you switched, etc.).
-    </label>
+      Describe your personal church history (various ones you've attended, why you switched, etc.).<span class="requiredcue">*</span></label>
     <br />
     <textarea class="large" cols="70" id="churchhistory" name="churchhistory" rows="12"></textarea>
     <script type="text/javascript">
@@ -131,12 +190,22 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'churchhistory'))
+          {
+            error_field_required('churchhistory');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="faith">
-      Describe your personal &quot;statement of faith.&quot; What do you believe?
-    </label>
+      Describe your personal &quot;statement of faith.&quot; What do you believe?<span class="requiredcue">*</span></label>
     <br />
     <textarea class="large" cols="70" id="faith" name="faith" rows="12"></textarea>
     <script type="text/javascript">
@@ -150,12 +219,22 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'faith'))
+          {
+            error_field_required('faith');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="southafrica">
-      Do you feel specifically called to South Africa? Explain.
-    </label>
+      Do you feel specifically called to South Africa? Explain.<span class="requiredcue">*</span></label>
     <br />
     <textarea class="medium" cols="40" id="southafrica" name="southafrica" rows="5"></textarea>
     <script type="text/javascript">
@@ -169,31 +248,22 @@
         });
       //]]>
     </script>
-    
-  </div>
-  <div class="field">
-    <label for="fiveyearplan">
-      Where do you want to be in five years? What is your personal vision for your life and ministry?
-    </label>
-    <br />
-    <textarea class="medium" cols="40" id="fiveyearplan" name="fiveyearplan" rows="5"></textarea>
     <script type="text/javascript">
       //<![CDATA[
-        load_handlers.push(function (info) {
-          var val = info['fiveyearplan'] || '';
-          $('#fiveyearplan').get(0).value = val;
-        });
-        save_handlers.push(function (info, form) {
-          info['fiveyearplan'] = $('#fiveyearplan').get(0).value;
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'southafrica'))
+          {
+            error_field_required('southafrica');
+            return false;
+          }
+          return true;
         });
       //]]>
     </script>
-    
   </div>
   <div class="field">
     <label for="calling">
-      Explain how and why you feel God is calling you to be part of Living Hope. Also include what area of ministry you would specifically like to get involved in and how you see yourself fitting in.
-    </label>
+      Explain how and why you feel God is calling you to be part of Living Hope. Also include what area of ministry you would specifically like to get involved in and how you see yourself fitting in.<span class="requiredcue">*</span></label>
     <br />
     <textarea class="large" cols="70" id="calling" name="calling" rows="12"></textarea>
     <script type="text/javascript">
@@ -207,12 +277,22 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'calling'))
+          {
+            error_field_required('calling');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="gifts">
-      Please check all areas you consider yourself gifted in
-    </label>
+      Please check all areas you consider yourself gifted in<span class="requiredcue">*</span></label>
     <br />
     <script type="text/javascript">
       //<![CDATA[
@@ -392,12 +472,162 @@
         });
       //]]>
     </script>
-    
+    <input id="gifts9" name="gifts" type="checkbox" value="Prayer" />
+    <label for="gifts9">
+      Prayer
+    </label>
+    <br />
+    <script type="text/javascript">
+      //<![CDATA[
+        load_handlers.push(function (info) {
+          var val = info['gifts'];
+          $('#gifts9').get(0).checked = (typeof(val) != 'undefined')
+                                           && (val.indexOf('Prayer') >= 0);
+        });
+        save_handlers.push(function (info) {
+          var values = [];
+          if ($('#gifts9').get(0).checked)
+            info['gifts'].push('Prayer')
+        });
+      //]]>
+    </script>
+    <input id="gifts10" name="gifts" type="checkbox" value="Counseling" />
+    <label for="gifts10">
+      Counseling
+    </label>
+    <br />
+    <script type="text/javascript">
+      //<![CDATA[
+        load_handlers.push(function (info) {
+          var val = info['gifts'];
+          $('#gifts10').get(0).checked = (typeof(val) != 'undefined')
+                                           && (val.indexOf('Counseling') >= 0);
+        });
+        save_handlers.push(function (info) {
+          var values = [];
+          if ($('#gifts10').get(0).checked)
+            info['gifts'].push('Counseling')
+        });
+      //]]>
+    </script>
+    <input id="gifts11" name="gifts" type="checkbox" value="Reading" />
+    <label for="gifts11">
+      Reading
+    </label>
+    <br />
+    <script type="text/javascript">
+      //<![CDATA[
+        load_handlers.push(function (info) {
+          var val = info['gifts'];
+          $('#gifts11').get(0).checked = (typeof(val) != 'undefined')
+                                           && (val.indexOf('Reading') >= 0);
+        });
+        save_handlers.push(function (info) {
+          var values = [];
+          if ($('#gifts11').get(0).checked)
+            info['gifts'].push('Reading')
+        });
+      //]]>
+    </script>
+    <input id="gifts12" name="gifts" type="checkbox" value="Computer" />
+    <label for="gifts12">
+      Computer
+    </label>
+    <br />
+    <script type="text/javascript">
+      //<![CDATA[
+        load_handlers.push(function (info) {
+          var val = info['gifts'];
+          $('#gifts12').get(0).checked = (typeof(val) != 'undefined')
+                                           && (val.indexOf('Computer') >= 0);
+        });
+        save_handlers.push(function (info) {
+          var values = [];
+          if ($('#gifts12').get(0).checked)
+            info['gifts'].push('Computer')
+        });
+      //]]>
+    </script>
+    <input id="gifts13" name="gifts" type="checkbox" value="Journalism" />
+    <label for="gifts13">
+      Journalism
+    </label>
+    <br />
+    <script type="text/javascript">
+      //<![CDATA[
+        load_handlers.push(function (info) {
+          var val = info['gifts'];
+          $('#gifts13').get(0).checked = (typeof(val) != 'undefined')
+                                           && (val.indexOf('Journalism') >= 0);
+        });
+        save_handlers.push(function (info) {
+          var values = [];
+          if ($('#gifts13').get(0).checked)
+            info['gifts'].push('Journalism')
+        });
+      //]]>
+    </script>
+    <input id="gifts14" name="gifts" type="checkbox" value="Sewing" />
+    <label for="gifts14">
+      Sewing
+    </label>
+    <br />
+    <script type="text/javascript">
+      //<![CDATA[
+        load_handlers.push(function (info) {
+          var val = info['gifts'];
+          $('#gifts14').get(0).checked = (typeof(val) != 'undefined')
+                                           && (val.indexOf('Sewing') >= 0);
+        });
+        save_handlers.push(function (info) {
+          var values = [];
+          if ($('#gifts14').get(0).checked)
+            info['gifts'].push('Sewing')
+        });
+      //]]>
+    </script>
+    <div class="field">
+      <label for="gifts-other">
+        Other
+      </label>
+      <input id="gifts-other" name="gifts-other" type="text" />
+      <script type="text/javascript">
+        //<![CDATA[
+          load_handlers.push(function (info) {
+            var val = info['gifts-other'] || '';
+            $('#gifts-other').get(0).value = val;
+          });
+          save_handlers.push(function (info, form) {
+            info['gifts-other'] = $('#gifts-other').get(0).value;
+          });
+        //]]>
+      </script>
+      
+    </div>
+    <script type="text/javascript">
+      //<![CDATA[
+        save_handlers.push(function (info) {
+          if (has_value(info, 'gifts-other'))
+            info['gifts'].push(info['gifts-other']);
+        });
+      //]]>
+    </script>
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'gifts'))
+          {
+            error_field_required('gifts');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="leadgifts">
-      Of the areas you checked, please note which ones you would consider yourself strong enough to lead a team in projects within this area.
-    </label>
+      Of the areas you checked, please note which ones you would consider yourself strong enough to lead a team in projects within this area.<span class="requiredcue">*</span></label>
     <br />
     <textarea class="small" cols="30" id="leadgifts" name="leadgifts" rows="3"></textarea>
     <script type="text/javascript">
@@ -411,373 +641,43 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'leadgifts'))
+          {
+            error_field_required('leadgifts');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
 </div>
 <div class="section">
   <h2>Volunteer Positions</h2>
   <div class="field">
     <label for="positions">
-      Please choose your top three choices for volunteer positions.<span class="requiredcue">*</span></label>
+      Please list your top three choices for volunteer positions.<span class="requiredcue">*</span></label>
     <br />
-    <table classname="volpos">
-      <tr>
-        <th align="left">
-          Position
-        </th>
-        <th>First Choice</th>
-        <th>Second Choice</th>
-        <th>Third Choice</th>
-      </tr>
-      <tr>
-        <td>
-          Sports Coordinator
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Sports Coordinator" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Sports Coordinator" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Sports Coordinator" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Parenting Support Group Coordinator
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Parenting Support Group Coordinator" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Parenting Support Group Coordinator" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Parenting Support Group Coordinator" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Maintenance (Skilled)
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Maintenance (Skilled)" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Maintenance (Skilled)" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Maintenance (Skilled)" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Administrative Assistant, Finance
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Administrative Assistant, Finance" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Administrative Assistant, Finance" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Administrative Assistant, Finance" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Administrative Assistant, Marketing
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Administrative Assistant, Marketing" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Administrative Assistant, Marketing" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Administrative Assistant, Marketing" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Administrative Assistant, HR
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Administrative Assistant, HR" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Administrative Assistant, HR" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Administrative Assistant, HR" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Administrative Assistant, Health Care Center
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Administrative Assistant, Health Care Center" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Administrative Assistant, Health Care Center" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Administrative Assistant, Health Care Center" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Administrative Assistant, Living Grace
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Administrative Assistant, Living Grace" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Administrative Assistant, Living Grace" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Administrative Assistant, Living Grace" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Fundraising Assistant, Living Grace
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Fundraising Assistant, Living Grace" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Fundraising Assistant, Living Grace" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Fundraising Assistant, Living Grace" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Administrative Assistant, Living Way
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Administrative Assistant, Living Way" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Administrative Assistant, Living Way" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Administrative Assistant, Living Way" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Event Planner
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Event Planner" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Event Planner" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Event Planner" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Photographer
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Photographer" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Photographer" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Photographer" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Chaplain Assistant
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Chaplain Assistant" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Chaplain Assistant" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Chaplain Assistant" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Food Service Assistant
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Food Service Assistant" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Food Service Assistant" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Food Service Assistant" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Cleaner for Health Care Center
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Cleaner for Health Care Center" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Cleaner for Health Care Center" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Cleaner for Health Care Center" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Assistant to carers in HCC
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Assistant to carers in HCC" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Assistant to carers in HCC" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Assistant to carers in HCC" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Landscape/Gardening
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Landscape/Gardening" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Landscape/Gardening" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Landscape/Gardening" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Landscape/Gardening
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Landscape/Gardening" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Landscape/Gardening" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Landscape/Gardening" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Maintenance (General)
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Maintenance (General)" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Maintenance (General)" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Maintenance (General)" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Volunteer Coordinator Assistant
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Volunteer Coordinator Assistant" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Volunteer Coordinator Assistant" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Volunteer Coordinator Assistant" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Resource Library Coordinator
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Resource Library Coordinator" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Resource Library Coordinator" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Resource Library Coordinator" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Assistant to Prevention Manager
-        </td>
-        <td align="center" width="110">
-          <input name="positions_1" type="radio" value="Assistant to Prevention Manager" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_2" type="radio" value="Assistant to Prevention Manager" />
-        </td>
-        <td align="center" width="110">
-          <input name="positions_3" type="radio" value="Assistant to Prevention Manager" />
-        </td>
-      </tr>
-    </table>
+    <textarea class="medium" cols="40" id="positions" name="positions" rows="5"></textarea>
     <script type="text/javascript">
       //<![CDATA[
         load_handlers.push(function (info) {
-          var choices = info['positions'];
-          if (choices) {
-            if (choices[0]) {
-              $('input[name=positions_1]').each(function () {
-                if (this.value == choices[0])
-                  this.checked = true;
-              });
-            }
-            if (choices[1]) {
-              $('input[name=positions_2]').each(function () {
-                if (this.value == choices[1])
-                  this.checked = true;
-              });
-            }
-            if (choices[2]) {
-              $('input[name=positions_3]').each(function () {
-                if (this.value == choices[2])
-                  this.checked = true;
-              });
-            }
-          }
+          var val = info['positions'] || '';
+          $('#positions').get(0).value = val;
         });
-        save_handlers.push(function (info) {
-          var choices = [
-            $('input[name=positions_1]:checked').val(),
-            $('input[name=positions_2]:checked').val(),
-            $('input[name=positions_3]:checked').val()
-          ];
-          info['positions'] = choices;
+        save_handlers.push(function (info, form) {
+          info['positions'] = $('#positions').get(0).value;
         });
       //]]>
     </script>
     <script type="text/javascript">
       //<![CDATA[
-        validation_handlers.push(function (info) {
-          var choices = info['positions'];
-          if (!choices || !choices[0] || !choices[1] || !choices[2]) {
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'positions'))
+          {
             error_field_required('positions');
             return false;
           }

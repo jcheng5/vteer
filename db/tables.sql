@@ -4,7 +4,7 @@
 #
 # Host: localhost (MySQL 5.1.38)
 # Database: vteer_dev
-# Generation Time: 2010-04-16 15:48:55 -0700
+# Generation Time: 2010-05-02 01:05:13 -0700
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -28,8 +28,9 @@ CREATE TABLE `admins` (
   `password` varchar(255) NOT NULL,
   `name` varchar(100) NOT NULL,
   `token` varchar(50) DEFAULT NULL,
+  `iscoordinator` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 
 
@@ -49,7 +50,7 @@ CREATE TABLE `event_log` (
   KEY `IDX_USERID` (`userid`),
   KEY `IDX_ADMINID` (`adminid`),
   KEY `IDX_MESSAGEID` (`messageid`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 
 
@@ -83,7 +84,7 @@ CREATE TABLE `mail_template_versions` (
   `creator` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `IDX_TEMPLATEID` (`templateid`)
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
 
 
 

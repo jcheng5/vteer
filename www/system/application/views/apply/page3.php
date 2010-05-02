@@ -2,8 +2,7 @@
   <h2>Church</h2>
   <div class="field">
     <label for="church">
-      Name of your home church
-    </label>
+      Name of your home church<span class="requiredcue">*</span></label>
     <br />
     <input id="church" name="church" type="text" />
     <script type="text/javascript">
@@ -17,12 +16,22 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'church'))
+          {
+            error_field_required('church');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="churchaddress">
-      Address
-    </label>
+      Address<span class="requiredcue">*</span></label>
     <br />
     <textarea class="small" cols="30" id="churchaddress" name="churchaddress" rows="3"></textarea>
     <script type="text/javascript">
@@ -36,12 +45,22 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'churchaddress'))
+          {
+            error_field_required('churchaddress');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="churchphone">
-      Phone
-    </label>
+      Phone<span class="requiredcue">*</span></label>
     <br />
     <input id="churchphone" name="churchphone" type="text" />
     <script type="text/javascript">
@@ -55,12 +74,22 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'churchphone'))
+          {
+            error_field_required('churchphone');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="pastor">
-      Senior Pastor
-    </label>
+      Senior Pastor<span class="requiredcue">*</span></label>
     <br />
     <input id="pastor" name="pastor" type="text" />
     <script type="text/javascript">
@@ -74,12 +103,22 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'pastor'))
+          {
+            error_field_required('pastor');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="attendance">
-      Length of time in attendance
-    </label>
+      Length of time in attendance<span class="requiredcue">*</span></label>
     <br />
     <input id="attendance" name="attendance" type="text" />
     <script type="text/javascript">
@@ -93,7 +132,18 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'attendance'))
+          {
+            error_field_required('attendance');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="involvement">
@@ -119,8 +169,7 @@
   <h2>Health</h2>
   <div class="field">
     <label for="healthissues">
-      Do you have any physical handicaps, disabilities, or diseases that might affect your ability to fully function in remote areas or harsh conditions?
-    </label>
+      Do you have any physical handicaps, disabilities, or diseases that might affect your ability to fully function in remote areas or harsh conditions?<span class="requiredcue">*</span></label>
     <br />
     <input id="healthissues-yes" name="healthissues" onclick="syncExplain('healthissues')" type="radio" value="Yes" />
     <label class="option" for="healthissues-yes">
@@ -172,11 +221,22 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'healthissues'))
+          {
+            error_field_required('healthissues');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
     <script type="text/javascript">
       //<![CDATA[
         validation_handlers.push(function (info) {
-          if (info['healthissues'] == 'Yes' && !has_value(info['healthissues-explain']))
+          if (info['healthissues'] == 'Yes' && !has_value(info, 'healthissues-explain'))
           {
             error_field_required('healthissues-explain');
             return false;
@@ -188,8 +248,7 @@
   </div>
   <div class="field">
     <label for="chronicconditions">
-      Do you have any chronic illnesses or allergies?
-    </label>
+      Do you have any chronic illnesses or allergies?<span class="requiredcue">*</span></label>
     <br />
     <input id="chronicconditions-yes" name="chronicconditions" onclick="syncExplain('chronicconditions')" type="radio" value="Yes" />
     <label class="option" for="chronicconditions-yes">
@@ -241,11 +300,22 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'chronicconditions'))
+          {
+            error_field_required('chronicconditions');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
     <script type="text/javascript">
       //<![CDATA[
         validation_handlers.push(function (info) {
-          if (info['chronicconditions'] == 'Yes' && !has_value(info['chronicconditions-explain']))
+          if (info['chronicconditions'] == 'Yes' && !has_value(info, 'chronicconditions-explain'))
           {
             error_field_required('chronicconditions-explain');
             return false;
@@ -257,8 +327,7 @@
   </div>
   <div class="field">
     <label for="foodallergies">
-      Do you have any food or drug related allergies?
-    </label>
+      Do you have any food or drug related allergies?<span class="requiredcue">*</span></label>
     <br />
     <input id="foodallergies-yes" name="foodallergies" onclick="syncExplain('foodallergies')" type="radio" value="Yes" />
     <label class="option" for="foodallergies-yes">
@@ -310,11 +379,22 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'foodallergies'))
+          {
+            error_field_required('foodallergies');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
     <script type="text/javascript">
       //<![CDATA[
         validation_handlers.push(function (info) {
-          if (info['foodallergies'] == 'Yes' && !has_value(info['foodallergies-explain']))
+          if (info['foodallergies'] == 'Yes' && !has_value(info, 'foodallergies-explain'))
           {
             error_field_required('foodallergies-explain');
             return false;
@@ -326,8 +406,7 @@
   </div>
   <div class="field">
     <label for="otherhealth">
-      Do you have any other medical problems that we should be aware of?
-    </label>
+      Do you have any other medical problems that we should be aware of?<span class="requiredcue">*</span></label>
     <br />
     <input id="otherhealth-yes" name="otherhealth" onclick="syncExplain('otherhealth')" type="radio" value="Yes" />
     <label class="option" for="otherhealth-yes">
@@ -379,11 +458,22 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'otherhealth'))
+          {
+            error_field_required('otherhealth');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
     <script type="text/javascript">
       //<![CDATA[
         validation_handlers.push(function (info) {
-          if (info['otherhealth'] == 'Yes' && !has_value(info['otherhealth-explain']))
+          if (info['otherhealth'] == 'Yes' && !has_value(info, 'otherhealth-explain'))
           {
             error_field_required('otherhealth-explain');
             return false;
@@ -455,7 +545,7 @@
     <script type="text/javascript">
       //<![CDATA[
         validation_handlers.push(function (info) {
-          if (info['alcoholdrugs'] == 'Yes' && !has_value(info['alcoholdrugs-explain']))
+          if (info['alcoholdrugs'] == 'Yes' && !has_value(info, 'alcoholdrugs-explain'))
           {
             error_field_required('alcoholdrugs-explain');
             return false;

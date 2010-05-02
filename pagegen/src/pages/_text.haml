@@ -1,6 +1,7 @@
-.field
+%div{ :class => config[:indent] ? 'field indent' : 'field' }
   = label(id, label, :required => required)
-  %br
+  - if not config[:inline]
+    %br
   %input{:name=>id, :id=>id, :type=>(defined?(inputtype) ? inputtype : "text")}
   - if config[:detail]
     .detail

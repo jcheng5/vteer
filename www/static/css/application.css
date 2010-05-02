@@ -17,6 +17,9 @@ h4 {
 .field {
   margin-bottom: 1.4em; }
 
+.field.indent {
+  margin-left: 3em; }
+
 .section {
   border: 1px solid #CCC;
   padding: 1em; }
@@ -65,7 +68,13 @@ form#application textarea.large {
   width: 650px; }
 
 .nav {
+  font-weight: bold;
+  background-color: #cca;
+  border: 1px solid #333;
+  text-shadow: #000 0 1px 1px;
+  color: white;
   text-align: center;
+  padding: 6px;
   margin-top: 1.4em;
   margin-bottom: 1.2em; }
   .nav a {
@@ -73,6 +82,10 @@ form#application textarea.large {
     color: black; }
   .nav a.active {
     color: red; }
+
+#identity {
+  color: #667;
+  text-align: right; }
 
 .error div {
   float: left;

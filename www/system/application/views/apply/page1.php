@@ -153,8 +153,7 @@
   </div>
   <div class="field">
     <label for="ssn">
-      Identification Number
-    </label>
+      Identification Number<span class="requiredcue">*</span></label>
     <br />
     <input id="ssn" name="ssn" type="text" />
     <div class="detail">
@@ -171,7 +170,18 @@
         });
       //]]>
     </script>
-    
+    <script type="text/javascript">
+      //<![CDATA[
+        validation_handlers.push(function(info) {
+          if (!has_value(info, 'ssn'))
+          {
+            error_field_required('ssn');
+            return false;
+          }
+          return true;
+        });
+      //]]>
+    </script>
   </div>
   <div class="field">
     <label for="address">
@@ -257,13 +267,10 @@
     <select id="referrer" name="referrer">
       <option value=""></option>
       <option>
-        ACTS
+        Google or other web search engine
       </option>
       <option>
-        African Encounter
-      </option>
-      <option>
-        Living Hope
+        ACTS/African Encounter
       </option>
       <option>
         Friend
@@ -275,13 +282,10 @@
         Through my local church
       </option>
       <option>
-        Internet Living Hope/Way/Grace
+        Heard John Thomas speak in person
       </option>
       <option>
-        Internet ACTS
-      </option>
-      <option>
-        Internet African Encounter
+        Presentation at my school
       </option>
       <option>
         Other
@@ -320,6 +324,25 @@
         });
       //]]>
     </script>
+  </div>
+  <div class="field indent">
+    <label for="referrer_other">
+      If &quot;Other&quot;, please specify:
+    </label>
+    <br />
+    <input id="referrer_other" name="referrer_other" type="text" />
+    <script type="text/javascript">
+      //<![CDATA[
+        load_handlers.push(function (info) {
+          var val = info['referrer_other'] || '';
+          $('#referrer_other').get(0).value = val;
+        });
+        save_handlers.push(function (info, form) {
+          info['referrer_other'] = $('#referrer_other').get(0).value;
+        });
+      //]]>
+    </script>
+    
   </div>
   <div class="field">
     <label for="photo">
@@ -567,44 +590,5 @@
         });
       //]]>
     </script>
-  </div>
-</div>
-<div class="section">
-  <h2>Transport</h2>
-  <h4>Please note that there is no public transportation in our area.</h4>
-  <div class="field">
-    <label for="transport">
-      Will you have your own transportation? (Do you plan to rent or purchase a car?)
-    </label>
-    <br />
-    <input id="transport-yes" name="transport" type="radio" value="Yes" />
-    <label class="option" for="transport-yes">
-      Yes
-    </label>
-    <input id="transport-no" name="transport" type="radio" value="No" />
-    <label class="option" for="transport-no">
-      No
-    </label>
-    <script type="text/javascript">
-      //<![CDATA[
-        load_handlers.push(function(info) {
-          var val = info['transport'];
-          $('#transport-yes').get(0).checked = (val === 'Yes');
-          $('#transport-no').get(0).checked = (val === 'No');
-        });
-        save_handlers.push(function(info) {
-          var value;
-          if ($('#transport-yes').get(0).checked)
-            value = 'Yes';
-          else if ($('#transport-no').get(0).checked)
-            value = 'No';
-          else
-            value = '';
-          
-          info['transport'] = value;
-        });
-      //]]>
-    </script>
-    
   </div>
 </div>

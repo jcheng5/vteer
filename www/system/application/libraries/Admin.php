@@ -72,6 +72,12 @@ class Admin
     return $emails;
   }
 
+  function get_volunteer_coordinator()
+  {
+    $db = new DbConn();
+    return $db->fetch('select name, email from admins where iscoordinator = 1');
+  }
+
   function id($verify = FALSE)
   {
     $id = get_cookie('admin_id');

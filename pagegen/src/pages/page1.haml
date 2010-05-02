@@ -4,11 +4,12 @@
   = text(:dob, 'Date of Birth', :required => true, :detail => 'example: April 17, 1980')
   = radio(:gender, 'Gender', ['Male', 'Female'], :required => true)
   = radio(:marital, 'Marital Status', ['Single', 'Married'], :required => true)
-  = text(:ssn, 'Identification Number', :detail => 'Social Security # (US), National Insurance # (UK), etc.')
+  = text(:ssn, 'Identification Number', :detail => 'Social Security # (US), National Insurance # (UK), etc.', :required => true)
   = textarea_sm(:address, 'Mailing Address', :required => true)
   = text(:phone, 'Telephone', :required => true)
   = text(:fax, 'Fax')
-  = select(:referrer, 'How did you hear about our ministry?', ['ACTS', 'African Encounter', 'Living Hope', 'Friend', 'I am a former volunteer', 'Through my local church', 'Internet Living Hope/Way/Grace', 'Internet ACTS', 'Internet African Encounter', 'Other'], :required => true)
+  = select(:referrer, 'How did you hear about our ministry?', ['Google or other web search engine', 'ACTS/African Encounter', 'Friend', 'I am a former volunteer', 'Through my local church', 'Heard John Thomas speak in person', 'Presentation at my school', 'Other'], :required => true)
+  = text(:referrer_other, 'If "Other", please specify:', :indent => true)
   = attachment('photo', 'Photo of you', :required => true)
 
 .section
@@ -17,8 +18,3 @@
   = daterange(:dates1, 'First preference of dates', :required => true, :min_duration => 30, :disallow_past => true)
   = daterange(:dates2, 'Second preference of dates', :required => true, :min_duration => 30, :disallow_past => true)
   = daterange(:dates3, 'Third preference of dates', :min_duration => 30, :disallow_past => true)
-  
-.section
-  %h2 Transport
-  %h4 Please note that there is no public transportation in our area.
-  = bool(:transport, 'Will you have your own transportation? (Do you plan to rent or purchase a car?)')
