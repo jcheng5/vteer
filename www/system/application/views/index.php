@@ -14,8 +14,13 @@ if (!isset($login_error))
   input[type=text], input[type=password] {
     width: 250px;
   }
+
+  #scriptonly {
+    display: none;
+  }
 </style>
 
+<div id="scriptonly">
 <h2>Thank you for your interest in serving at Living Hope!</h2>
 <p>Before you begin the application process, please take note of the following:</p>
 <ul>
@@ -115,3 +120,16 @@ if (!isset($login_error))
     </td>
   </tr>
 </table>
+
+</div>
+
+<script type="text/javascript">
+$(function() {
+  $('#scriptonly').css('display', 'block');
+});
+</script>
+
+<noscript>
+  <h2>This website requires JavaScript to be enabled in your web browser.</h2>
+  <p>Please <a href="http://support.microsoft.com/gp/howtoscript" target="_blank">enable JavaScript</a> and then reload this page.</p>
+</noscript>
