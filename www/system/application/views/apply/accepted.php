@@ -5,5 +5,5 @@
 </p>
 <p>
   If you didn't receive an acceptance e-mail or if you have additional questions, please
-  e-mail <?php echo anchor('mailto:' . ADMIN_EMAIL, ADMIN_EMAIL); ?>.
+  e-mail <?php echo anchor('mailto:' . $admin_email, $admin_email); ?>.
 </p>

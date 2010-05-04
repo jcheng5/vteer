@@ -7,5 +7,5 @@ If you have any further questions, please contact us.
   Although this is not the right fit for you, the Lord has designed something for you and it is our hope you find it a blessing. Please be encouraged in your ministry and next steps.
 </p>
 <p>
-  If you have any further questions, please e-mail <?php echo anchor('mailto:' . ADMIN_EMAIL, ADMIN_EMAIL); ?>.
+  If you have any further questions, please e-mail <?php echo anchor('mailto:' . $admin_email, $admin_email); ?>.
 </p>

@@ -46,9 +46,11 @@ class Welcome extends Controller
   function dispatch()
   {
     $this->load->library('user');
+    $this->load->library('admin');
     $user = $this->user->get_current_user();
 
-    $data = array('user' => $user);
+    $volunteer_coordinator = $this->admin->get_volunteer_coordinator();
+    $data = array('user' => $user, 'admin_email' => $volunteer_coordinator->email);
 
     if ($user->status == STATUS_CREATED)
       redirect('apply/page/1');

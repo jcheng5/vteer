@@ -177,11 +177,13 @@ class Apply extends Controller
 
   function success()
   {
+    $this->load->library('admin');
+    $volunteer_coordinator = $this->admin->get_volunteer_coordinator();
     $user = $this->user->get_current_user();
 
     // Use the standard header/footer to not invoke the auto-save javascript
     $this->load->view('header');
-    $this->load->view('apply/success');
+    $this->load->view('apply/success', array('admin_email' => $volunteer_coordinator->email));
     $this->load->view('footer');
   }
 

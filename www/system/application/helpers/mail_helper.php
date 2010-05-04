@@ -107,6 +107,7 @@ function send_user_mail($template, $user, $to = NULL)
   $CI =& get_instance();
   $CI->load->library('email');
   $CI->load->library('admin');
+  $volunteer_coordinator = $CI->admin->get_volunteer_coordinator();
 
   $mail_sender_name = $CI->config->item('mail_sender_name');
   $mail_sender_email = $CI->config->item('mail_sender_email');
@@ -121,13 +122,14 @@ function send_user_mail($template, $user, $to = NULL)
     $user['application_url'] = site_url('admin/volunteers/show/'.$user['id']);
   }
   $user['homepage_url'] = base_url();
+  $user['admin_email'] = $volunteer_coordinator->email;
+  $user['admin_name'] = $volunteer_coordinator->name;
 
   $mail = render_mail($template, $user);
 
   $CI->email->initialize(array('mailtype' => 'html'));
   $CI->email->clear(TRUE);
   $CI->email->from($mail_sender_email, $mail_sender_name);
-  $volunteer_coordinator = $CI->admin->get_volunteer_coordinator();
   if ($volunteer_coordinator)
     $CI->email->reply_to($volunteer_coordinator->email, $volunteer_coordinator->name);
 

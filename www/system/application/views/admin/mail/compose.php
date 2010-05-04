@@ -186,6 +186,8 @@ function addFile(id, name, size) {
       <option value="#firstname#">Applicant's first name</option>
       <option value="#lastname#">Applicant's last name</option>
       <option value="#email#">Applicant's e-mail</option>
+      <option value="#admin_name#">Volunteer coordinator's name</option>
+      <option value="&lt;a href=&quot;mailto:#admin_email#&quot;&gt;#admin_email#&lt;/a&gt;">Volunteer coordinator's e-mail</option>
       <option value="&lt;a href=&quot;#application_url#&quot;&gt;#application_url#&lt;/a&gt;">Link to application (only for e-mails to Administrators)</option>
       <option value="&lt;a href=&quot;#homepage_url#&quot;&gt;#homepage_url#&lt;/a&gt;">Link to volunteer application homepage (<?php echo base_url(); ?>)</option>
     </select>

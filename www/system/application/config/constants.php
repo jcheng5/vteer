@@ -1,8 +1,5 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-define('ADMIN_NAME', 'Mike Talley');
-define('ADMIN_EMAIL', 'mike@livinghope.co.za');
-
 /*
 |--------------------------------------------------------------------------
 | File and Directory Modes
