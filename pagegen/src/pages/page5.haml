@@ -19,6 +19,7 @@
 :javascript
   validation_handlers.push(function(info) {
     if ($('div.hasfile:hidden').length > 2) {
+      $('#twoletters').addClass('error');
       $('#twoletters').addClass('error_required');
       return false;
     }

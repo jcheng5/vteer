@@ -8,4 +8,7 @@
     You're signed in as <strong><?php echo htmlspecialchars($user_email); ?></strong> |
     <a href="<?php echo htmlspecialchars($logout_link); ?>">Sign out</a>
   </div>
-  
+
+  <div id="fileuploaddiv" style="display: none">
+    <iframe id="fileuploadframe" src="javascript:false" style="width: 250px; height: 100px; border: none"></iframe>
+  </div>

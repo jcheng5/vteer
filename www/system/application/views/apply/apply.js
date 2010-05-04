@@ -120,11 +120,21 @@ function validate(info)
 {
   // clear existing errors
   $('span.error').remove();
+  $('.error').removeClass('error error_required');
   var success = true;
   for (var i = 0; i < validation_handlers.length; i++)
   {
     success &= validation_handlers[i](info);
   }
+
+  if (!success)
+  {
+    var errors = $('.error');
+    if (errors)
+      errors.get(0).scrollIntoView(true);
+    alert('Please correct the problems highlighted in red, then try again.');
+  }
+
   return success;
 }
 
@@ -190,3 +200,8 @@ function closeChildWindows()
 }
 
 $(window).unload(closeChildWindows);
+
+function finishFileUpload()
+{
+  $('#fileuploaddiv').dialog('destroy');
+}

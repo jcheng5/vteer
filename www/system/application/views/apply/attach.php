@@ -4,5 +4,5 @@
   <input type="file" name="file"/>
   <br/>
   <br/>
-  <input type="submit" value="Attach"/>
+  <input type="submit" value="Upload File"/>
 </form>

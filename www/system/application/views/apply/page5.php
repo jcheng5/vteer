@@ -167,9 +167,8 @@
             // info['pastor_letter'] = value;
           });
           $('#pastor_letter-attach').get(0).onclick = function() {
-            // TODO: pass field label, not just ID
-            var childWindow = window.open('<?php echo site_url('apply/attach/pastor_letter'); ?>', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
-            child_windows.push(childWindow);
+            $('#fileuploaddiv').dialog({height: 150, width: 320, modal: true, title: "Upload File"});
+            $('#fileuploadframe').get(0).src = "<?php echo site_url('apply/attach/pastor_letter'); ?>";
           };
         //]]>
       </script>
@@ -336,9 +335,8 @@
             // info['friend_letter'] = value;
           });
           $('#friend_letter-attach').get(0).onclick = function() {
-            // TODO: pass field label, not just ID
-            var childWindow = window.open('<?php echo site_url('apply/attach/friend_letter'); ?>', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
-            child_windows.push(childWindow);
+            $('#fileuploaddiv').dialog({height: 150, width: 320, modal: true, title: "Upload File"});
+            $('#fileuploadframe').get(0).src = "<?php echo site_url('apply/attach/friend_letter'); ?>";
           };
         //]]>
       </script>
@@ -505,9 +503,8 @@
             // info['employer_letter'] = value;
           });
           $('#employer_letter-attach').get(0).onclick = function() {
-            // TODO: pass field label, not just ID
-            var childWindow = window.open('<?php echo site_url('apply/attach/employer_letter'); ?>', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
-            child_windows.push(childWindow);
+            $('#fileuploaddiv').dialog({height: 150, width: 320, modal: true, title: "Upload File"});
+            $('#fileuploadframe').get(0).src = "<?php echo site_url('apply/attach/employer_letter'); ?>";
           };
         //]]>
       </script>
@@ -674,9 +671,8 @@
             // info['leader_letter'] = value;
           });
           $('#leader_letter-attach').get(0).onclick = function() {
-            // TODO: pass field label, not just ID
-            var childWindow = window.open('<?php echo site_url('apply/attach/leader_letter'); ?>', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
-            child_windows.push(childWindow);
+            $('#fileuploaddiv').dialog({height: 150, width: 320, modal: true, title: "Upload File"});
+            $('#fileuploadframe').get(0).src = "<?php echo site_url('apply/attach/leader_letter'); ?>";
           };
         //]]>
       </script>
@@ -796,6 +792,7 @@
   //<![CDATA[
     validation_handlers.push(function(info) {
       if ($('div.hasfile:hidden').length > 2) {
+        $('#twoletters').addClass('error');
         $('#twoletters').addClass('error_required');
         return false;
       }

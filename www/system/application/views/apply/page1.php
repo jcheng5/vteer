@@ -382,9 +382,8 @@
           // info['photo'] = value;
         });
         $('#photo-attach').get(0).onclick = function() {
-          // TODO: pass field label, not just ID
-          var childWindow = window.open('<?php echo site_url('apply/attach/photo'); ?>', 'vteer_attach', 'height=200,width=350,location=0,menubar=0,resizable=0,scrollbars=0,status=1,titlebar=1,toolbar=0');
-          child_windows.push(childWindow);
+          $('#fileuploaddiv').dialog({height: 150, width: 320, modal: true, title: "Upload File"});
+          $('#fileuploadframe').get(0).src = "<?php echo site_url('apply/attach/photo'); ?>";
         };
       //]]>
     </script>
