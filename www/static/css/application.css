@@ -1,5 +1,5 @@
 body {
-  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Tahoma, Helvetica, sans-serif;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Helvetica, sans-serif;
   font-size: 9pt; }
 
 body.narrow #pageframe {
@@ -21,7 +21,7 @@ h4 {
   margin-left: 3em; }
 
 .section {
-  border: 1px solid #CCC;
+  border: 1px solid #cccccc;
   padding: 1em; }
 
 .section + .section {
@@ -37,7 +37,7 @@ span.requiredcue {
   margin-left: 1px; }
 
 .detail {
-  color: #777;
+  color: #777777;
   width: 300px; }
 
 .explain {
@@ -55,7 +55,7 @@ form#application input[type='text'].datepicker {
 
 form#application textarea,
 form#application input {
-  family: 'Lucida Grande', 'Lucida Sans Unicode', Tahoma, Helvetica, sans-serif;
+  family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Helvetica, sans-serif;
   font-size: 10pt; }
 
 form#application textarea.small {
@@ -69,9 +69,9 @@ form#application textarea.large {
 
 .nav {
   font-weight: bold;
-  background-color: #cca;
-  border: 1px solid #333;
-  text-shadow: #000 0 1px 1px;
+  background-color: #ccccaa;
+  border: 1px solid #333333;
+  text-shadow: black 0 1px 1px;
   color: white;
   text-align: center;
   padding: 6px;
@@ -84,7 +84,7 @@ form#application textarea.large {
     color: red; }
 
 #identity {
-  color: #667;
+  color: #666677;
   text-align: right; }
 
 .error div {
@@ -92,7 +92,7 @@ form#application textarea.large {
   font-weight: bold;
   color: maroon;
   border: red dotted 1px;
-  background-color: #ffc;
+  background-color: #ffffcc;
   padding: 0.6em;
   margin-bottom: 1em; }
 
@@ -104,7 +104,7 @@ span.error_required {
   font-size: 0.8em; }
 
 label.error_required, strong.error_required {
-  background-color: #c00;
+  background-color: #cc0000;
   color: white;
   margin: -2px;
   padding: 2px; }
