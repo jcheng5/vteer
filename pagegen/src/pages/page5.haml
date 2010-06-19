@@ -10,6 +10,12 @@
   = reference(:leader, 'Other Leadership Reference', :required => true)
 
 .section
+  %h2 Police Clearance
+  %h4 <strong>Due to the increasing volume of international crime, all employees and volunteers are required to present a police clearance letter along with their application for consideration.</strong>  This letter can usually be obtained free of charge from your local or state police headquarters in just a few days.  You can scan the letter and email it with your application or you may fax it to +27 (0)21 785 2414 (please be sure to put "Attn: <?php echo htmlspecialchars(get_volunteer_coordinator_name()); ?>" on the cover letter).
+
+  = attachment(:police_letter, "Police Clearance Certificate")
+
+.section
   %h2 Emergency Information
   = text(:emcontact, 'Emergency Contact Name', :required => true)
   = text(:emrelationship, 'Relationship', :required => true)

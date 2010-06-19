@@ -680,6 +680,55 @@
   </div>
 </div>
 <div class="section">
+  <h2>Police Clearance</h2>
+  <h4><strong>Due to the increasing volume of international crime, all employees and volunteers are required to present a police clearance letter along with their application for consideration.</strong>  This letter can usually be obtained free of charge from your local or state police headquarters in just a few days.  You can scan the letter and email it with your application or you may fax it to +27 (0)21 785 2414 (please be sure to put "Attn: <?php echo htmlspecialchars(get_volunteer_coordinator_name()); ?>" on the cover letter).</h4>
+  <div class="field">
+    <label for="police_letter">
+      Police Clearance Certificate
+    </label>
+    <br />
+    <div class="nofile" id="police_letter-nofile">
+      <span>
+        <i>(None attached)</i>
+      </span>
+      <button id="police_letter-attach" type="button">
+        Attach File
+      </button>
+    </div>
+    <div class="hasfile" id="police_letter-hasfile">
+      <a href="#" id="police_letter-link" target="_blank"></a>
+      <button id="police_letter-remove" onclick="javascript:if (detach_file('police_letter')) {$('#police_letter-nofile').get(0).style.display = 'inline'; $('#police_letter-hasfile').get(0).style.display = 'none'; }" type="button">
+        Remove File
+      </button>
+    </div>
+    <script type="text/javascript">
+      //<![CDATA[
+        load_handlers.push(function(info) {
+          var val = info['police_letter'];
+          var link = $('#police_letter-link').get(0);
+          link.href = "<?php echo site_url('apply/download/police_letter') ?>"; // TODO
+          if (val) {
+            link.innerText = val['name'];
+            $('#police_letter-nofile').get(0).style.display = 'none';
+            $('#police_letter-hasfile').get(0).style.display = 'inline';
+          }
+          else {
+            $('#police_letter-nofile').get(0).style.display = 'inline';
+            $('#police_letter-hasfile').get(0).style.display = 'none';
+          }
+        });
+        save_handlers.push(function(info) {
+          // info['police_letter'] = value;
+        });
+        $('#police_letter-attach').get(0).onclick = function() {
+          $('#fileuploaddiv').dialog({height: 150, width: 320, modal: true, title: "Upload File"});
+          $('#fileuploadframe').get(0).src = "<?php echo site_url('apply/attach/police_letter'); ?>";
+        };
+      //]]>
+    </script>
+  </div>
+</div>
+<div class="section">
   <h2>Emergency Information</h2>
   <div class="field">
     <label for="emcontact">

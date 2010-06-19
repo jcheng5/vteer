@@ -1,4 +1,14 @@
-<?php $this->load->view('header'); ?>
+<?php
+  $this->load->view('header');
+  
+  function get_volunteer_coordinator_name()
+  {
+    $CI =& get_instance();
+    $CI->load->library('admin');
+    $volunteer_coordinator = $CI->admin->get_volunteer_coordinator();
+    return $volunteer_coordinator->name;
+  }
+?>
 
 <script type="text/javascript" src="<?php echo site_url('apply/apply_js'); ?>"></script>
 
